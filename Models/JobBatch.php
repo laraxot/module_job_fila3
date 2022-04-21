@@ -1,6 +1,7 @@
 <?php
 /**
  * ---.
+ * @link https://philo.dev/laravel-batches-and-real-time-progress-with-livewire/
  */
 
 declare(strict_types=1);
