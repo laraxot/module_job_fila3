@@ -4,22 +4,21 @@ declare(strict_types=1);
 
 namespace Modules\Job\Models\Panels\Actions;
 
+use Modules\Xot\Services\ArtisanService;
 use Modules\Xot\Models\Panels\Actions\XotBasePanelAction;
 
 
 /**
  * Class ShowFailedJobAction.
  */
-class ShowFailedJobAction extends XotBasePanelAction {
-    public bool $onContainer = false; //onlyContainer
+class DeleteFailedJobsAction extends XotBasePanelAction 
 
-    public bool $onItem = true; //onlyContainer
 
-    public string $icon = '<i class="fas fa-eye"></i>';
 
-    protected string $cmd;
+{
+    public bool $onContainer = true;
 
-    protected array $cmd_params;
+    public string $icon = '<i class="fas fa-dumpster-fire"></i>';
 
     /**
      * ArtisanAction constructor.
@@ -31,7 +30,9 @@ class ShowFailedJobAction extends XotBasePanelAction {
      * @return mixed
      */
     public function handle() {
-        dddx($this->panel->row);
+        $cmd='queue:flush';
+        $out = ArtisanService::act($cmd);
+        return $out.'<h3>+Done</h3>';
     }
 
     //end handle
