@@ -134,7 +134,8 @@ class FailedJobPanel extends XotBasePanel {
      */
     public function actions(): array {
         return [
-            new ArtisanContainerAction('queue:flush'),
+            //new ArtisanContainerAction('queue:flush'),
+            new Actions\DeleteFailedJobsAction(),
             new Actions\ShowFailedJobAction(),
         ];
     }
