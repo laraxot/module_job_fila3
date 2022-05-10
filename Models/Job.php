@@ -19,6 +19,7 @@ namespace Modules\Job\Models;
  * @property \Illuminate\Support\Carbon                                           $created_at
  * @property \Illuminate\Database\Eloquent\Collection|\Modules\Xot\Models\Image[] $images
  * @property int|null                                                             $images_count
+ *
  * @method static \Modules\Xot\Database\Factories\JobFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Job newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Job newQuery()

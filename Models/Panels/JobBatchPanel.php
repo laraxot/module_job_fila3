@@ -4,12 +4,11 @@ declare(strict_types=1);
 
 namespace Modules\Job\Models\Panels;
 
-use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
-use Modules\Xot\Contracts\RowsContract;
+use Illuminate\Http\Request;
 use Modules\Xot\Models\Panels\XotBasePanel;
 
-//--- Services --
+// --- Services --
 
 class JobBatchPanel extends XotBasePanel {
     /**
@@ -22,66 +21,65 @@ class JobBatchPanel extends XotBasePanel {
      */
     public static string $title = 'title';
 
-
     /**
      * Get the fields displayed by the resource.
         'value'=>'..',
      */
     public function fields(): array {
         return [
-             (object) [
+            (object) [
                 'type' => 'String',
                 'name' => 'id',
                 'rules' => 'required',
                 'comment' => null,
             ],
-             (object) [
+            (object) [
                 'type' => 'String',
                 'name' => 'name',
                 'rules' => 'required',
                 'comment' => null,
             ],
-             (object) [
+            (object) [
                 'type' => 'Integer',
                 'name' => 'total_jobs',
                 'rules' => 'required',
                 'comment' => null,
             ],
-             (object) [
+            (object) [
                 'type' => 'Integer',
                 'name' => 'pending_jobs',
                 'rules' => 'required',
                 'comment' => null,
             ],
-             (object) [
+            (object) [
                 'type' => 'Integer',
                 'name' => 'failed_jobs',
                 'rules' => 'required',
                 'comment' => null,
             ],
-             (object) [
+            (object) [
                 'type' => 'Text',
                 'name' => 'failed_job_ids',
                 'rules' => 'required',
                 'comment' => null,
             ],
-             (object) [
+            (object) [
                 'type' => 'Text',
                 'name' => 'options',
                 'comment' => null,
             ],
-             (object) [
+            (object) [
                 'type' => 'Integer',
                 'name' => 'cancelled_at',
                 'comment' => null,
             ],
-             (object) [
+            (object) [
                 'type' => 'Integer',
                 'name' => 'created_at',
                 'rules' => 'required',
                 'comment' => null,
             ],
-             (object) [
+            (object) [
                 'type' => 'Integer',
                 'name' => 'finished_at',
                 'comment' => null,

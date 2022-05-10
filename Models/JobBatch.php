@@ -1,7 +1,8 @@
 <?php
 /**
  * ---.
- * @link https://philo.dev/laravel-batches-and-real-time-progress-with-livewire/
+ *
+ * @see https://philo.dev/laravel-batches-and-real-time-progress-with-livewire/
  */
 
 declare(strict_types=1);
@@ -23,6 +24,7 @@ namespace Modules\Job\Models;
  * @property int|null                                                             $finished_at
  * @property \Illuminate\Database\Eloquent\Collection|\Modules\Xot\Models\Image[] $images
  * @property int|null                                                             $images_count
+ *
  * @method static \Modules\Xot\Database\Factories\JobBatchFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|JobBatch newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|JobBatch newQuery()
