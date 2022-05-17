@@ -43,8 +43,7 @@ namespace Modules\Job\Models;
  * @mixin IdeHelperJobBatch
  */
 class JobBatch extends BaseModel {
-
-     /**
+    /**
      * The "type" of the primary key ID.
      *
      * @var string
@@ -75,14 +74,15 @@ class JobBatch extends BaseModel {
      * The attributes that should be cast.
      *
      * @var array
-     * @link https://philo.dev/laravel-batches-and-real-time-progress-with-livewire/
+     *
+     * @see https://philo.dev/laravel-batches-and-real-time-progress-with-livewire/
      */
     protected $casts = [
-        'options'      => 'collection',
-        'failed_jobs'  => 'integer',
-        'created_at'   => 'datetime',
+        'options' => 'collection',
+        'failed_jobs' => 'integer',
+        'created_at' => 'datetime',
         'cancelled_at' => 'datetime',
-        'finished_at'  => 'datetime',
+        'finished_at' => 'datetime',
     ];
 
     /**
@@ -90,68 +90,49 @@ class JobBatch extends BaseModel {
      *
      * @return int
      */
-    public function processedJobs()
-    {
+    public function processedJobs() {
         return $this->total_jobs - $this->pending_jobs;
     }
 
     /**
      * Get the percentage of jobs that have been processed (between 0-100).
-     *
-     * @return int
      */
-    public function progress(): int
-    {
+    public function progress(): int {
         return $this->total_jobs > 0 ? round(($this->processedJobs() / $this->total_jobs) * 100) : 0;
     }
 
     /**
-     * Determine if the batch has pending jobs
-     *
-     * @return bool
+     * Determine if the batch has pending jobs.
      */
-    public function hasPendingJobs(): bool
-    {
+    public function hasPendingJobs(): bool {
         return $this->pending_jobs > 0;
     }
 
     /**
      * Determine if the batch has finished executing.
-     *
-     * @return bool
      */
-    public function finished(): bool
-    {
-        return !is_null($this->finished_at);
+    public function finished(): bool {
+        return ! is_null($this->finished_at);
     }
 
     /**
      * Determine if the batch has job failures.
-     *
-     * @return bool
      */
-    public function hasFailures(): bool
-    {
+    public function hasFailures(): bool {
         return $this->failed_jobs > 0;
     }
 
     /**
      * Determine if all jobs failed.
-     *
-     * @return bool
      */
-    public function failed(): bool
-    {
+    public function failed(): bool {
         return $this->failed_jobs === $this->total_jobs;
     }
 
     /**
      * Determine if the batch has been canceled.
-     *
-     * @return bool
      */
-    public function cancelled(): bool
-    {
-        return !is_null($this->cancelled_at);
+    public function cancelled(): bool {
+        return ! is_null($this->cancelled_at);
     }
 }

@@ -9,11 +9,11 @@ use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Models\Panels\Policies\XotBasePanelPolicy;
 
 /**
- * Undocumented class
+ * Undocumented class.
  */
 class JobPanelPolicy extends XotBasePanelPolicy {
     /**
-     * Undocumented function
+     * Undocumented function.
      */
     public function deleteAllJobs(?UserContract $user, PanelContract $panel): bool {
         return true;
