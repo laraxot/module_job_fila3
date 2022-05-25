@@ -40,7 +40,6 @@ namespace Modules\Job\Models;
  * @method static \Illuminate\Database\Eloquent\Builder|JobBatch wherePendingJobs($value)
  * @method static \Illuminate\Database\Eloquent\Builder|JobBatch whereTotalJobs($value)
  * @mixin \Eloquent
- * @mixin IdeHelperJobBatch
  */
 class JobBatch extends BaseModel {
     /**
@@ -98,7 +97,9 @@ class JobBatch extends BaseModel {
      * Get the percentage of jobs that have been processed (between 0-100).
      */
     public function progress(): int {
-        return $this->total_jobs > 0 ? round(($this->processedJobs() / $this->total_jobs) * 100) : 0;
+        $progress = $this->total_jobs > 0 ? round(($this->processedJobs() / $this->total_jobs) * 100) : 0;
+
+        return (int) $progress;
     }
 
     /**

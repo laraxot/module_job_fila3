@@ -27,9 +27,10 @@ class DeleteAllJobsAction extends XotBasePanelAction {
     public function handle() {
         $cmd = 'queue:clear';
         $out = ArtisanService::act($cmd);
-        $res = $this->rows->delete();
+        // Call to an undefined method Modules\Xot\Contracts\RowsContract::delete()
+        // $res = $this->rows->delete();
 
-        return $out.'<h3>+Done ['.$res.'] deleted '.class_basename(__CLASS__).'</h3>';
+        return $out.'<h3>+Done deleted '.class_basename(__CLASS__).'</h3>';
     }
 
     // end handle

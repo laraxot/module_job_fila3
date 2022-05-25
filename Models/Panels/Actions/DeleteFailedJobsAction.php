@@ -28,7 +28,7 @@ class DeleteFailedJobsAction extends XotBasePanelAction {
         $cmd = 'queue:flush';
         $out = ArtisanService::act($cmd);
 
-        return $out.'<h3>+Done</h3>';
+        return $out; // .'<h3>+Done</h3>';
     }
 
     // end handle

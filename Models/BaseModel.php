@@ -28,7 +28,7 @@ abstract class BaseModel extends Model {
      *
      * @var bool
      */
-    // public static $snakeAttributes = true;
+    public static $snakeAttributes = true;
 
     protected $perPage = 30;
 
@@ -70,13 +70,6 @@ abstract class BaseModel extends Model {
      * @var bool
      */
     public $timestamps = true;
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
-     */
-    public function images() {
-        return $this->morphMany(Image::class, 'post');
-    }
 
     /**
      * Create a new factory instance for the model.
