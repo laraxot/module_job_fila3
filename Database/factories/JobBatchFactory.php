@@ -4,16 +4,17 @@ declare(strict_types=1);
 
 namespace Modules\Job\Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
-
 use Modules\Job\Models\JobBatch;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 class JobBatchFactory extends Factory {
     /**
      * The name of the factory's corresponding model.
      *
-     * @var string
+     * @var  class-string<Model>
      */
     protected $model = JobBatch::class;
 
@@ -28,14 +29,15 @@ class JobBatchFactory extends Factory {
         return [
             'id' => $this->faker->word,
             'name' => $this->faker->name,
-            'total_jobs' => $this->faker->randomNumber,
-            'pending_jobs' => $this->faker->randomNumber,
-            'failed_jobs' => $this->faker->randomNumber,
+            //31     Access to an undefined property Faker\Generator::$randomNumber.            
+            //'total_jobs' => $this->faker->randomNumber,
+            //'pending_jobs' => $this->faker->randomNumber,
+            //'failed_jobs' => $this->faker->randomNumber,
             'failed_job_ids' => $this->faker->text,
             'options' => $this->faker->text,
-            'cancelled_at' => $this->faker->randomNumber,
-            'created_at' => $this->faker->randomNumber,
-            'finished_at' => $this->faker->randomNumber
+            //'cancelled_at' => $this->faker->randomNumber,
+            //'created_at' => $this->faker->randomNumber,
+            //'finished_at' => $this->faker->randomNumber
         ];
     }
 }

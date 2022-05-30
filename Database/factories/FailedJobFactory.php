@@ -4,16 +4,17 @@ declare(strict_types=1);
 
 namespace Modules\Job\Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
-
 use Modules\Job\Models\FailedJob;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 class FailedJobFactory extends Factory {
     /**
      * The name of the factory's corresponding model.
      *
-     * @var string
+     * @var class-string<Model> 
      */
     protected $model = FailedJob::class;
 
@@ -26,7 +27,8 @@ class FailedJobFactory extends Factory {
        
 
         return [
-            'id' => $this->faker->randomNumber,
+            // 29     Access to an undefined property Faker\Generator::$randomNumber.         
+            //'id' => $this->faker->randomNumber,
             'uuid' => $this->faker->uuid,
             'connection' => $this->faker->text,
             'queue' => $this->faker->text,
