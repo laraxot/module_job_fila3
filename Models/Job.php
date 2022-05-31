@@ -8,19 +8,16 @@ declare(strict_types=1);
 namespace Modules\Job\Models;
 
 /**
- * Undocumented class.
+ * Modules\Job\Models\Job
  *
- * @property int                                                                  $id
- * @property string                                                               $queue
- * @property string                                                               $payload
- * @property int                                                                  $attempts
- * @property int|null                                                             $reserved_at
- * @property int                                                                  $available_at
- * @property \Illuminate\Support\Carbon                                           $created_at
- * @property \Illuminate\Database\Eloquent\Collection|\Modules\Xot\Models\Image[] $images
- * @property int|null                                                             $images_count
- *
- * @method static \Modules\Xot\Database\Factories\JobFactory factory(...$parameters)
+ * @property int $id
+ * @property string $queue
+ * @property string $payload
+ * @property int $attempts
+ * @property int|null $reserved_at
+ * @property int $available_at
+ * @property \Illuminate\Support\Carbon $created_at
+ * @method static \Modules\Job\Database\Factories\JobFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Job newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Job newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Job query()

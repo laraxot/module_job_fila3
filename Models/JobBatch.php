@@ -10,22 +10,19 @@ declare(strict_types=1);
 namespace Modules\Job\Models;
 
 /**
- * Undocumented class.
+ * Modules\Job\Models\JobBatch
  *
- * @property int                                                                  $id
- * @property string                                                               $name
- * @property int                                                                  $total_jobs
- * @property int                                                                  $pending_jobs
- * @property int                                                                  $failed_jobs
- * @property string                                                               $failed_job_ids
- * @property string|null                                                          $options
- * @property int|null                                                             $cancelled_at
- * @property \Illuminate\Support\Carbon                                           $created_at
- * @property int|null                                                             $finished_at
- * @property \Illuminate\Database\Eloquent\Collection|\Modules\Xot\Models\Image[] $images
- * @property int|null                                                             $images_count
- *
- * @method static \Modules\Xot\Database\Factories\JobBatchFactory factory(...$parameters)
+ * @property string $id
+ * @property string $name
+ * @property int $total_jobs
+ * @property int $pending_jobs
+ * @property int $failed_jobs
+ * @property string $failed_job_ids
+ * @property \Illuminate\Support\Collection|null $options
+ * @property \Illuminate\Support\Carbon|null $cancelled_at
+ * @property \Illuminate\Support\Carbon $created_at
+ * @property \Illuminate\Support\Carbon|null $finished_at
+ * @method static \Modules\Job\Database\Factories\JobBatchFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|JobBatch newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|JobBatch newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|JobBatch query()
