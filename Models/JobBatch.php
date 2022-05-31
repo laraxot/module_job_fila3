@@ -72,9 +72,9 @@ class JobBatch extends BaseModel {
     /**
      * The attributes that should be cast.
      *
-     * @var array
-     *
      * @see https://philo.dev/laravel-batches-and-real-time-progress-with-livewire/
+     *
+     * @var array<string, string>
      */
     protected $casts = [
         'options' => 'collection',
