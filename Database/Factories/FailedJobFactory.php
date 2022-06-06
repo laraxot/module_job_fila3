@@ -15,7 +15,7 @@ class FailedJobFactory extends Factory {
      *
      * @var class-string<\Illuminate\Database\Eloquent\Model>
      */
-    protected $model = Modules\Job\Models\FailedJob::class;
+    protected $model = FailedJob::class;
 
     /**
      * Define the model's default state.
@@ -26,7 +26,7 @@ class FailedJobFactory extends Factory {
        
 
         return [
-            'id' => $this->faker->randomNumber,
+            'id' => $this->faker->randomNumber(5, false),
             'uuid' => $this->faker->uuid,
             'connection' => $this->faker->text,
             'queue' => $this->faker->text,

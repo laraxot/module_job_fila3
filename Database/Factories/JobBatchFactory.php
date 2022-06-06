@@ -15,7 +15,7 @@ class JobBatchFactory extends Factory {
      *
      * @var class-string<\Illuminate\Database\Eloquent\Model>
      */
-    protected $model = Modules\Job\Models\JobBatch::class;
+    protected $model = JobBatch::class;
 
     /**
      * Define the model's default state.
@@ -28,14 +28,14 @@ class JobBatchFactory extends Factory {
         return [
             'id' => $this->faker->word,
             'name' => $this->faker->name,
-            'total_jobs' => $this->faker->randomNumber,
-            'pending_jobs' => $this->faker->randomNumber,
-            'failed_jobs' => $this->faker->randomNumber,
+            'total_jobs' => $this->faker->randomNumber(5, false),
+            'pending_jobs' => $this->faker->randomNumber(5, false),
+            'failed_jobs' => $this->faker->randomNumber(5, false),
             'failed_job_ids' => $this->faker->text,
             'options' => $this->faker->text,
-            'cancelled_at' => $this->faker->randomNumber,
-            'created_at' => $this->faker->randomNumber,
-            'finished_at' => $this->faker->randomNumber
+            'cancelled_at' => $this->faker->randomNumber(5, false),
+            'created_at' => $this->faker->randomNumber(5, false),
+            'finished_at' => $this->faker->randomNumber(5, false),
         ];
     }
 }
