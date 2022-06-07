@@ -80,7 +80,7 @@ class WorkerCheck extends Command {
     /**
      * Save the queue listener PID to a file.
      *
-     * @param $pid
+     * @param string $pid
      *
      * @return void
      */
@@ -91,13 +91,13 @@ class WorkerCheck extends Command {
     /**
      * Start the queue listener.
      *
-     * @return int
+     * @return string
      */
     private function startQueueListener() {
         // $command = 'php-cli ' . base_path() . '/artisan queue:listen --timeout=60 --sleep=5 --tries=3 > /dev/null & echo $!'; // 5.1
         $command = 'php-cli '.base_path().'/artisan queue:work --timeout=60 --sleep=5 --tries=3 > /dev/null & echo $!'; // 5.6 - see comments
         $pid = exec($command);
 
-        return $pid;
+        return (string)$pid;
     }
 }
