@@ -40,23 +40,32 @@ class WorkerRetry extends Command {
      * @return mixed
      */
     public function handle() {
+        // Cannot access offset 'queue.failer' on Illuminate\Contracts\Foundation\Application.
         $ids = Arr::pluck($this->laravel['queue.failer']->all(), 'id');
         foreach ($ids as $id) {
             $this->retryJob($id);
         }
     }
 
+    /**
+     * Undocumented function.
+     *
+     * @param string $id
+     *
+     * @return void
+     */
     protected function retryJob($id) {
+        // Cannot access offset 'queue.failer' on Illuminate\Contracts\Foundation\Application.
         $failed = $this->laravel['queue.failer']->find($id);
 
         if (null !== $failed) {
             $failed = (object) $failed;
 
             $failed->payload = $this->resetAttempts($failed->payload);
-
+            // Cannot access offset 'queue' on Illuminate\Contracts\Foundation\Application.
             $this->laravel['queue']->connection($failed->connection)
                 ->pushRaw($failed->payload, $failed->queue);
-
+            // Cannot access offset 'queue.failer' on Illuminate\Contracts\Foundation\Application
             $this->laravel['queue.failer']->forget($failed->id);
 
             $this->info("The failed job [{$id}] has been pushed back onto the queue!");
@@ -65,6 +74,13 @@ class WorkerRetry extends Command {
         }
     }
 
+    /**
+     * Undocumented function.
+     *
+     * @param string $payload
+     *
+     * @return string|bool
+     */
     protected function resetAttempts($payload) {
         $payload = json_decode($payload, true);
 
