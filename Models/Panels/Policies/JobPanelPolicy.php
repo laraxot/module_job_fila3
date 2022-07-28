@@ -18,4 +18,11 @@ class JobPanelPolicy extends XotBasePanelPolicy {
     public function deleteAllJobs(?UserContract $user, PanelContract $panel): bool {
         return true;
     }
+    /**
+     * Undocumented function.
+     */
+    public function fixQueueName(?UserContract $user, PanelContract $panel): bool {
+        return true;
+    }
+    
 }
