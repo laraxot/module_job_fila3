@@ -40,4 +40,8 @@ class FailedJob extends BaseModel {
         'exception',
         'failed_at',
     ];
+
+    protected $casts = [
+        'payload'=>'array',
+    ];
 }

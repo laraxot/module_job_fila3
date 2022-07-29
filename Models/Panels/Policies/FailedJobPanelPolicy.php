@@ -16,6 +16,9 @@ class FailedJobPanelPolicy extends XotBasePanelPolicy {
     public function showFailedJob(?UserContract $user, PanelContract $panel): bool {
         return true;
     }
+    public function retryFailedJob(?UserContract $user, PanelContract $panel): bool {
+        return true;
+    }
 
     public function deleteFailedJobs(?UserContract $user, PanelContract $panel): bool {
         return true;
