@@ -14,7 +14,7 @@ namespace Modules\Job\Models;
  * @property string $uuid
  * @property string $connection
  * @property string $queue
- * @property string $payload
+ * @property array $payload
  * @property string $exception
  * @property string $failed_at
  * @method static \Modules\Job\Database\Factories\FailedJobFactory factory(...$parameters)
