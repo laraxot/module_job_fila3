@@ -6,14 +6,13 @@ namespace Modules\Job\Models\Panels\Actions;
 
 use Modules\Xot\Models\Panels\Actions\XotBasePanelAction;
 
-
 /**
  * Class ShowFailedJobAction.
  */
 class ShowFailedJobAction extends XotBasePanelAction {
-    public bool $onContainer = false; //onlyContainer
+    public bool $onContainer = false; // onlyContainer
 
-    public bool $onItem = true; //onlyContainer
+    public bool $onItem = true; // onlyContainer
 
     public string $icon = '<i class="fas fa-eye"></i>';
 
@@ -34,5 +33,5 @@ class ShowFailedJobAction extends XotBasePanelAction {
         dddx($this->panel->row);
     }
 
-    //end handle
+    // end handle
 }

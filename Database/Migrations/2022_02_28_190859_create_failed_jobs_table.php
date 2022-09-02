@@ -1,19 +1,18 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
+declare(strict_types=1);
+
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Database\Migrations\Migration;
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
-class CreateFailedJobsTable extends XotBaseMigration
-{
+class CreateFailedJobsTable extends XotBaseMigration {
     /**
      * Run the migrations.
      *
      * @return void
      */
     public function up() {
-        //-- CREATE --
+        // -- CREATE --
         $this->tableCreate(
             function (Blueprint $table) {
                 $table->id();
@@ -26,6 +25,4 @@ class CreateFailedJobsTable extends XotBaseMigration
             }
         );
     }
-
-   
 }
