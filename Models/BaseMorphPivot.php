@@ -10,9 +10,18 @@ use Modules\Xot\Traits\Updater;
 /**
  * Class BaseMorphPivot.
  */
-abstract class BaseMorphPivot extends MorphPivot
-{
+abstract class BaseMorphPivot extends MorphPivot {
     use Updater;
+    /**
+     * Indicates whether attributes are snake cased on arrays.
+     *
+     * @see  https://laravel-news.com/6-eloquent-secrets
+     *
+     * @var bool
+     */
+     public static $snakeAttributes = true;
+
+    protected $perPage = 30;
 
     protected $connection = 'mysql'; // this will use the specified database connection
 
@@ -36,7 +45,7 @@ abstract class BaseMorphPivot extends MorphPivot
      */
     public $timestamps = true;
 
-    //protected $attributes = ['related_type' => 'cuisine_cat'];
+    // protected $attributes = ['related_type' => 'cuisine_cat'];
 
     /**
      * @var string[]

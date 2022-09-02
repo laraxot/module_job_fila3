@@ -6,7 +6,7 @@ namespace Modules\Job\Models\Panels;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
-//--- Services --
+// --- Services --
 
 use Modules\Xot\Models\Panels\XotBasePanel;
 
@@ -108,6 +108,7 @@ class JobPanel extends XotBasePanel {
     public function actions(): array {
         return [
             new Actions\DeleteAllJobsAction(),
+            new Actions\FixQueueNameAction(),
         ];
     }
 }
