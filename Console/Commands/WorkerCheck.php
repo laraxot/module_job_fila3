@@ -38,13 +38,16 @@ class WorkerCheck extends Command {
      * @return void
      */
     public function handle() {
+
         if (! $this->isQueueListenerRunning()) {
             $this->comment('Queue listener is being started.');
             $pid = $this->startQueueListener();
             $this->saveQueueListenerPID($pid);
+            echo  'Queue listener is being started ['.$pid.'].';
         }
 
         $this->comment('Queue listener is running.');
+        echo  'Queue listener is running.';
     }
 
     /**
