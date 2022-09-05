@@ -7,17 +7,21 @@ namespace Modules\Job\Http\Livewire\Job;
 use Livewire\Component;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Contracts\Support\Renderable;
-use Illuminate\Support\Facades\Artisan;
+
 // use Illuminate\Support\Carbon;
 
 /**
  * Class RolePermission.
  */
 class Status extends Component {
+
+    public string $out='';
    
     public function mount(){
-        dddx(Artisan::call('passport:install'));
-       // dddx(\Artisan::call('route:list'));
+        Artisan::call('queue:monitor',['queues'=>'default,queue01,emails']);
+        $this->out.=Artisan::output();
+        Artisan::call('worker:check');
+        $this->out.=Artisan::output();
     }
 
     public function render(): Renderable {
