@@ -8,4 +8,5 @@
            
         </x-slot>
     </x-card-simple>
+    <button class="btn btn-primary" wire:click="dummyAction()">send 1000 Dummy Action</button>
 </div>

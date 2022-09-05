@@ -38,6 +38,8 @@ class WorkerCheck extends Command {
      * @return void
      */
     public function handle() {
+        $this->restartQueue();
+
         if (! $this->isQueueListenerRunning()) {
             
             $pid = $this->startQueueListener();
@@ -94,6 +96,24 @@ class WorkerCheck extends Command {
         $this->comment('saved on ['.$path.'] size ['.filesize($path).']');
     }
 
+     /**
+     * Start the queue listener.
+     *
+     * @return string
+     */
+    private function restartQueue() {
+        // $command = 'php-cli ' . base_path() . '/artisan queue:listen --timeout=60 --sleep=5 --tries=3 > /dev/null & echo $!'; // 5.1
+        //$command = 'php-cli '.base_path().'/artisan queue:work --timeout=60 --sleep=5 --tries=3 > /dev/null & echo //$!'; // 5.6 - see comments
+
+        $command = ' /usr/local/bin/php '.base_path().'/artisan queue:restart --timeout=60 --sleep=5 --tries=3 > /dev/null & echo $!'; 
+        //$this->comment($command);
+
+        $pid = exec($command);
+        $this->comment($pid);
+
+        return (string)$pid;
+    }
+
     /**
      * Start the queue listener.
      *
@@ -107,6 +127,7 @@ class WorkerCheck extends Command {
         //$this->comment($command);
 
         $pid = exec($command);
+        $this->comment($pid);
 
         return (string)$pid;
     }
