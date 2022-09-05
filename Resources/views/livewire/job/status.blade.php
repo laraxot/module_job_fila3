@@ -4,10 +4,8 @@
         <x-slot name="txt">
             <pre>{!! $out !!}</pre>
 
-            <select class="form-control" >
-                <option value="sync">sync</option>
-                <option value="database">database</option>
-            </select>
+            <x-input.group type="select" name="conn" :options="['sync'=>'sync','database'=>'database']" wire.model.lazy="form_data.conn" />
+           
         </x-slot>
     </x-card-simple>
 </div>

@@ -40,8 +40,9 @@ class WorkerCheck extends Command {
     public function handle() {
 
         if (! $this->isQueueListenerRunning()) {
-            $this->comment('Queue listener is being started.');
+            
             $pid = $this->startQueueListener();
+            $this->comment('Queue listener is being started. pid['.$pid.']');
             $this->saveQueueListenerPID($pid);
         }
 
@@ -58,8 +59,9 @@ class WorkerCheck extends Command {
         if (! $pid = $this->getLastQueueListenerPID()) {
             return false;
         }
-
-        $process = exec("ps -p $pid -opid=,cmd=");
+        $process_cmd="ps -p $pid -opid=,cmd=";
+        //$this->comment($process_cmd);
+        $process = exec($process_cmd);
         // $processIsQueueListener = str_contains($process, 'queue:listen'); // 5.1
         $processIsQueueListener = ! empty($process); // 5.6 - see comments
 
@@ -87,7 +89,9 @@ class WorkerCheck extends Command {
      * @return void
      */
     private function saveQueueListenerPID($pid) {
-        file_put_contents(__DIR__.'/queue.pid', $pid);
+        $path=__DIR__.'/queue.pid';
+        file_put_contents($path, $pid);
+        $this->comment('saved on ['.$path.'] size ['.filesize($path).']');
     }
 
     /**
@@ -97,7 +101,11 @@ class WorkerCheck extends Command {
      */
     private function startQueueListener() {
         // $command = 'php-cli ' . base_path() . '/artisan queue:listen --timeout=60 --sleep=5 --tries=3 > /dev/null & echo $!'; // 5.1
-        $command = 'php-cli '.base_path().'/artisan queue:work --timeout=60 --sleep=5 --tries=3 > /dev/null & echo $!'; // 5.6 - see comments
+        //$command = 'php-cli '.base_path().'/artisan queue:work --timeout=60 --sleep=5 --tries=3 > /dev/null & echo //$!'; // 5.6 - see comments
+
+        $command = 'php '.base_path().'/artisan queue:work --timeout=60 --sleep=5 --tries=3 > /dev/null & echo $!'; 
+        //$this->comment($command);
+
         $pid = exec($command);
 
         return (string)$pid;
