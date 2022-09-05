@@ -16,6 +16,7 @@ class _ModulePanel extends XotBasePanel {
     public function actions(): array {
         return [
             // new Actions\XlsImportAction(),
+            new Actions\TryJobAction(),
         ];
     }
 }

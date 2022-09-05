@@ -38,7 +38,6 @@ class WorkerCheck extends Command {
      * @return void
      */
     public function handle() {
-
         if (! $this->isQueueListenerRunning()) {
             
             $pid = $this->startQueueListener();
@@ -60,9 +59,10 @@ class WorkerCheck extends Command {
             return false;
         }
         $process_cmd="ps -p $pid -opid=,cmd=";
-        //$this->comment($process_cmd);
+        $this->comment($process_cmd);
         $process = exec($process_cmd);
         // $processIsQueueListener = str_contains($process, 'queue:listen'); // 5.1
+        $this->comment($process);
         $processIsQueueListener = ! empty($process); // 5.6 - see comments
 
         return $processIsQueueListener;
@@ -103,7 +103,7 @@ class WorkerCheck extends Command {
         // $command = 'php-cli ' . base_path() . '/artisan queue:listen --timeout=60 --sleep=5 --tries=3 > /dev/null & echo $!'; // 5.1
         //$command = 'php-cli '.base_path().'/artisan queue:work --timeout=60 --sleep=5 --tries=3 > /dev/null & echo //$!'; // 5.6 - see comments
 
-        $command = 'php '.base_path().'/artisan queue:work --timeout=60 --sleep=5 --tries=3 > /dev/null & echo $!'; 
+        $command = ' /usr/local/bin/php '.base_path().'/artisan queue:work --timeout=60 --sleep=5 --tries=3 > /dev/null & echo $!'; 
         //$this->comment($command);
 
         $pid = exec($command);

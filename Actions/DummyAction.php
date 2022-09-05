@@ -1,0 +1,25 @@
+<?php
+
+namespace Modules\Job\Actions;
+
+use Spatie\QueueableAction\QueueableAction;
+
+
+class DummyAction {
+    use QueueableAction;
+
+    /**
+     * Undocumented function
+     */
+    public function __construct() {
+    }
+
+    /**
+     * Undocumented function
+     *
+     */
+    public function execute() {
+        // The business logic goes here, this can be executed in an async job.
+        echo 'hello'.PHP_EOL;
+    }
+}

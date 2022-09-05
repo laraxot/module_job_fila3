@@ -22,4 +22,15 @@ class _ModulePanelPolicy extends XotBasePanelPolicy {
     public function xlsImport(UserContract $user, PanelContract $panel): bool {
         return true;
     }
+
+    /**
+     * Undocumented function
+     *
+     * @param UserContract $user
+     * @param PanelContract $panel
+     * @return boolean
+     */
+    public function tryJob(UserContract $user, PanelContract $panel): bool {
+        return true;
+    }
 }
