@@ -12,8 +12,6 @@ class JobServiceProvider extends XotBaseServiceProvider {
     protected string $module_ns = __NAMESPACE__;
 
     public string $module_name = 'job';
-<<<<<<< HEAD
-=======
 
     public function bootCallback(): void {
         
@@ -24,5 +22,4 @@ class JobServiceProvider extends XotBaseServiceProvider {
         );
 
     }
->>>>>>> bb58c29a38fec6af76ff96155b466b272beb677a
 }
