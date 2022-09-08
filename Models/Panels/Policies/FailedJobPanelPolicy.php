@@ -16,7 +16,21 @@ class FailedJobPanelPolicy extends XotBasePanelPolicy {
     public function showFailedJob(?UserContract $user, PanelContract $panel): bool {
         return true;
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> bb58c29a38fec6af76ff96155b466b272beb677a
     public function retryFailedJob(?UserContract $user, PanelContract $panel): bool {
+        return true;
+    }
+
+<<<<<<< HEAD
+    public function deleteFailedJobs(?UserContract $user, PanelContract $panel): bool {
+        return true;
+    }
+}
+=======
+    public function retryAllFailedJob(?UserContract $user, PanelContract $panel): bool {
         return true;
     }
 
@@ -24,3 +38,4 @@ class FailedJobPanelPolicy extends XotBasePanelPolicy {
         return true;
     }
 }
+>>>>>>> bb58c29a38fec6af76ff96155b466b272beb677a

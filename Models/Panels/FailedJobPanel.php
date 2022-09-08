@@ -118,6 +118,13 @@ class FailedJobPanel extends XotBasePanel {
             new Actions\DeleteFailedJobsAction(),
             new Actions\ShowFailedJobAction(),
             new Actions\RetryFailedJobAction(),
+<<<<<<< HEAD
         ];
     }
 }
+=======
+            new Actions\RetryAllFailedJobAction(),
+        ];
+    }
+}
+>>>>>>> bb58c29a38fec6af76ff96155b466b272beb677a
