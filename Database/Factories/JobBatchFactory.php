@@ -5,8 +5,6 @@ declare(strict_types=1);
 namespace Modules\Job\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
-
 use Modules\Job\Models\JobBatch;
 
 class JobBatchFactory extends Factory {
@@ -23,8 +21,6 @@ class JobBatchFactory extends Factory {
      * @return array
      */
     public function definition() {
-       
-
         return [
             'id' => $this->faker->word,
             'name' => $this->faker->name,

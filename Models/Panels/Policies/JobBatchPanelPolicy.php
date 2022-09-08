@@ -10,8 +10,7 @@ class JobBatchPanelPolicy extends XotBasePanelPolicy {
 <<<<<<< HEAD
 =======
     /**
-     * Undocumented function
-     *
+     * Undocumented function.
      */
     public function pruneBatches(?UserContract $user, PanelContract $panel): bool {
         return true;

@@ -26,11 +26,7 @@ class _ModulePanelPolicy extends XotBasePanelPolicy {
 =======
 
     /**
-     * Undocumented function
-     *
-     * @param UserContract $user
-     * @param PanelContract $panel
-     * @return boolean
+     * Undocumented function.
      */
     public function tryJob(UserContract $user, PanelContract $panel): bool {
         return true;

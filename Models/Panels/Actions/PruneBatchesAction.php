@@ -4,11 +4,10 @@ declare(strict_types=1);
 
 namespace Modules\Job\Models\Panels\Actions;
 
+use Illuminate\Support\Facades\Artisan;
+use Modules\Job\Models\JobBatch as JobBatchModel;
 use Modules\Xot\Models\Panels\Actions\XotBasePanelAction;
 use Modules\Xot\Services\ArtisanService;
-use Illuminate\Support\Facades\Artisan;
-
-use Modules\Job\Models\JobBatch as JobBatchModel;
 
 /**
  * Class PruneBatchesAction.
@@ -28,13 +27,13 @@ class PruneBatchesAction extends XotBasePanelAction {
      * @return mixed
      */
     public function handle() {
-        $out='';
+        $out = '';
         $cmd = 'queue:prune-batches';
-       // $out = ArtisanService::act($cmd);
+        // $out = ArtisanService::act($cmd);
         Artisan::call($cmd);
-        $out.=Artisan::output();
+        $out .= Artisan::output();
 
-        $res= JobBatchModel::whereRaw('1=1')->delete();
+        $res = JobBatchModel::whereRaw('1=1')->delete();
 
         return $out.'<h3>+Done</h3>';
     }
