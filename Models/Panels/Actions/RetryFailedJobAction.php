@@ -4,10 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Job\Models\Panels\Actions;
 
-use Illuminate\Support\Str;
-use Illuminate\Queue\Jobs\Job;
-use Modules\Job\Models\Job as JobModel;
-use Modules\Xot\Services\ArtisanService;
 use Modules\Xot\Models\Panels\Actions\XotBasePanelAction;
 
 /**
@@ -24,24 +20,18 @@ class RetryFailedJobAction extends XotBasePanelAction {
     public function __construct() {
     }
 
-
     public function handle() {
-        $job=$this->row;
-        $command=$job->payload['data']['command'];
-        $command=unserialize($command);
-        
-        $action=app($command->displayName());
-        
-        $params=$command->parameters()[0];
-        
-        $res=$action->execute($params);
+        $job = $this->row;
+        $command = $job->payload['data']['command'];
+        $command = unserialize($command);
 
+        $action = app($command->displayName());
+
+        $params = $command->parameters()[0];
+
+        $res = $action->execute($params);
 
         dddx($res);
         echo '<h3>DONE?? </h3>';
-        
-
     }
-    
-    
 }
