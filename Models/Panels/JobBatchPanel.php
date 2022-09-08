@@ -123,6 +123,12 @@ class JobBatchPanel extends XotBasePanel {
      * Get the actions available for the resource.
      */
     public function actions(): array {
+<<<<<<< HEAD
         return [];
+=======
+        return [
+            new Actions\PruneBatchesAction(),
+        ];
+>>>>>>> bb58c29a38fec6af76ff96155b466b272beb677a
     }
 }
