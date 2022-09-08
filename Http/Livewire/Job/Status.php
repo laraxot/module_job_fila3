@@ -144,7 +144,8 @@ class Status extends Component {
         $new_content = Str::replace(
             'QUEUE_CONNECTION='.$this->old_value,
             'QUEUE_CONNECTION='.$this->form_data['conn'],
-            $env_content);
+            $env_content
+        );
         putenv('QUEUE_CONNECTION='.$this->form_data['conn']);
         File::put($env_file, $new_content);
         $this->old_value = $this->form_data['conn'];

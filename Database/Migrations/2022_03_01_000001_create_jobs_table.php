@@ -24,17 +24,17 @@ class CreateJobsTable extends XotBaseMigration {
                 $table->unsignedInteger('created_at');
             }
         );
-          // -- UPDATE --
-          $this->tableUpdate(
+        // -- UPDATE --
+        $this->tableUpdate(
             function (Blueprint $table) {
                 if (! $this->hasColumn('created_by')) {
                     $table->string('created_by')->nullable();
                     $table->string('updated_by')->nullable();
                 }
-                if(! $this->hasColumn('updated_at')){
+                if (! $this->hasColumn('updated_at')) {
                     $table->timestamp('updated_at')->nullable();
                 }
-                if(! $this->hasColumn('created_at')){
+                if (! $this->hasColumn('created_at')) {
                     $table->timestamp('created_at')->nullable();
                 }
             }
