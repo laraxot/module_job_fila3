@@ -8,8 +8,7 @@ use Modules\Xot\Models\Panels\Policies\XotBasePanelPolicy;
 
 class JobBatchPanelPolicy extends XotBasePanelPolicy {
     /**
-     * Undocumented function
-     *
+     * Undocumented function.
      */
     public function pruneBatches(?UserContract $user, PanelContract $panel): bool {
         return true;

@@ -14,12 +14,10 @@ class JobServiceProvider extends XotBaseServiceProvider {
     public string $module_name = 'job';
 
     public function bootCallback(): void {
-        
         $this->commands(
             [
                 \Modules\Job\Console\Commands\WorkerCheck::class,
             ]
         );
-
     }
 }

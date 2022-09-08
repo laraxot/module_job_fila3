@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\Job\Models\Panels\Actions;
 
-use Spatie\QueueableAction\QueueableAction;
-use Modules\Xot\Models\Panels\Actions\XotBasePanelAction;
 use Modules\Job\Actions\DummyAction;
+use Modules\Xot\Models\Panels\Actions\XotBasePanelAction;
 
 /**
  * Class TryJobAction.
@@ -16,7 +15,6 @@ class TryJobAction extends XotBasePanelAction {
 
     public string $icon = '<i class="fas fa-eye"></i>Try';
 
-    
     /**
      * ArtisanAction constructor.
      */
@@ -27,7 +25,7 @@ class TryJobAction extends XotBasePanelAction {
      * @return mixed
      */
     public function handle() {
-        for($i=0;$i<1000;$i++){
+        for ($i = 0; $i < 1000; ++$i) {
             app(DummyAction::class)
                 ->onQueue()
                 ->execute();

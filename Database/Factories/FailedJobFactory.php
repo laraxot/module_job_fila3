@@ -5,8 +5,6 @@ declare(strict_types=1);
 namespace Modules\Job\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
-
 use Modules\Job\Models\FailedJob;
 
 class FailedJobFactory extends Factory {
@@ -23,8 +21,6 @@ class FailedJobFactory extends Factory {
      * @return array
      */
     public function definition() {
-       
-
         return [
             'id' => $this->faker->randomNumber(5, false),
             'uuid' => $this->faker->uuid,
@@ -32,7 +28,7 @@ class FailedJobFactory extends Factory {
             'queue' => $this->faker->text,
             'payload' => $this->faker->text,
             'exception' => $this->faker->text,
-            'failed_at' => $this->faker->dateTime
+            'failed_at' => $this->faker->dateTime,
         ];
     }
 }
