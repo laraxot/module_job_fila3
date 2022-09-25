@@ -60,8 +60,11 @@ class WorkerCheck extends Command {
         $this->comment($process_cmd);
         $process = exec($process_cmd);
         // $processIsQueueListener = str_contains($process, 'queue:listen'); // 5.1
+        
         $this->comment($process);
-        $processIsQueueListener = ! empty($process); // 5.6 - see comments
+        //$processIsQueueListener = ! empty($process); // 5.6 - see comments
+        $processIsQueueListener = str_contains($process, substr(base_path(),0,30)); // ..
+       
 
         return $processIsQueueListener;
     }
