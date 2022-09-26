@@ -25,3 +25,5 @@ Homestead.json
 *.stackdump
 *.cache
 
+Console/Commands/queue.pid
+
