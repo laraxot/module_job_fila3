@@ -26,5 +26,6 @@ Homestead.json
 *.cache
 
 Console/Commands/queue.pid
+/Console/Commands/queue.pid
 
 queue.pid
