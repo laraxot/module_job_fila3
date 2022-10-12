@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 /vendor/
 node_modules/
 npm-debug.log
@@ -162,6 +162,7 @@ Console/Commands/queue.pid
 >>>>>>> 914e8a6 (up)
 
 queue.pid
+<<<<<<< HEAD
 =======
 /vendor/
 node_modules/
@@ -195,3 +196,6 @@ Console/Commands/queue.pid
 queue.pid
 >>>>>>> 2ea6e29 (.)
 queue.pid
+=======
+
+>>>>>>> 5fcc696 (.)
