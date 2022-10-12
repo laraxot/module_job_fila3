@@ -1,4 +1,3 @@
-
 /vendor/
 node_modules/
 npm-debug.log
@@ -30,4 +29,3 @@ Console/Commands/queue.pid
 /Console/Commands/queue.pid
 
 queue.pid
-
