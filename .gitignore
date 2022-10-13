@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 /vendor/
 node_modules/
 npm-debug.log
@@ -31,6 +31,7 @@ Console/Commands/queue.pid
 
 <<<<<<< HEAD
 queue.pid
+<<<<<<< HEAD
 =======
 queue.pid
 =======
@@ -66,4 +67,10 @@ Console/Commands/queue.pid
 queue.pid
 >>>>>>> 2ea6e29 (.)
 queue.pid
+<<<<<<< HEAD
 >>>>>>> 58e64b9 (.)
+=======
+=======
+
+>>>>>>> 5fcc696 (.)
+>>>>>>> ca172d0 (rebase)
