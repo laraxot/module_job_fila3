@@ -33,8 +33,11 @@ Console/Commands/queue.pid
 queue.pid
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
 queue.pid
 =======
+=======
+>>>>>>> bc4f3cb (up)
 /vendor/
 node_modules/
 npm-debug.log
