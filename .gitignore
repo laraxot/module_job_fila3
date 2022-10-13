@@ -1,60 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
-<<<<<<< HEAD
->>>>>>> 1e6e4f3 (.)
-/vendor/
-node_modules/
-npm-debug.log
-yarn-error.log
-
-# Laravel 4 specific
-bootstrap/compiled.php
-app/storage/
-
-# Laravel 5 & Lumen specific
-public/storage
-public/hot
-
-# Laravel 5 & Lumen specific with changed public path
-public_html/storage
-public_html/hot
-
-storage/*.key
-.env
-Homestead.yaml
-Homestead.json
-/.vagrant
-.phpunit.result.cache
-
-*.stackdump
-*.cache
-
-Console/Commands/queue.pid
-/Console/Commands/queue.pid
-
-<<<<<<< HEAD
-queue.pid
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-queue.pid
-=======
-=======
->>>>>>> bc4f3cb (up)
-=======
->>>>>>> f6a0332 (up)
-=======
->>>>>>> 6873a1b (up)
-=======
-=======
-
->>>>>>> 5fcc696 (.)
->>>>>>> a26b2f6 (up)
 /vendor/
 node_modules/
 npm-debug.log
@@ -86,25 +29,40 @@ Console/Commands/queue.pid
 /Console/Commands/queue.pid
 
 queue.pid
-<<<<<<< HEAD
->>>>>>> 2ea6e29 (.)
 queue.pid
-<<<<<<< HEAD
->>>>>>> 58e64b9 (.)
-=======
-=======
+/vendor/
+node_modules/
+npm-debug.log
+yarn-error.log
 
->>>>>>> 5fcc696 (.)
->>>>>>> ca172d0 (rebase)
-=======
+# Laravel 4 specific
+bootstrap/compiled.php
+app/storage/
 
-<<<<<<< HEAD
+# Laravel 5 & Lumen specific
+public/storage
+public/hot
+
+# Laravel 5 & Lumen specific with changed public path
+public_html/storage
+public_html/hot
+
+storage/*.key
+.env
+Homestead.yaml
+Homestead.json
+/.vagrant
+.phpunit.result.cache
+
+*.stackdump
+*.cache
+
+Console/Commands/queue.pid
+/Console/Commands/queue.pid
+
 queue.pid
-<<<<<<< HEAD
->>>>>>> f6a0332 (up)
-=======
-=======
-=======
+queue.pid
+queue.pid
 /vendor/
 node_modules/
 npm-debug.log
@@ -135,12 +93,4 @@ Homestead.json
 Console/Commands/queue.pid
 
 queue.pid
->>>>>>> 2ea6e29 (.)
->>>>>>> 1e6e4f3 (.)
-<<<<<<< HEAD
->>>>>>> 6873a1b (up)
-=======
-=======
->>>>>>> 5fcc696 (.)
->>>>>>> a26b2f6 (up)
 Console/Commands/queue.pid
