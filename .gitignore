@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 <<<<<<< HEAD
@@ -38,6 +39,7 @@ queue.pid
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 queue.pid
@@ -48,6 +50,11 @@ queue.pid
 >>>>>>> f6a0332 (up)
 =======
 >>>>>>> 6873a1b (up)
+=======
+=======
+
+>>>>>>> 5fcc696 (.)
+>>>>>>> a26b2f6 (up)
 /vendor/
 node_modules/
 npm-debug.log
@@ -91,6 +98,7 @@ queue.pid
 >>>>>>> ca172d0 (rebase)
 =======
 
+<<<<<<< HEAD
 queue.pid
 <<<<<<< HEAD
 >>>>>>> f6a0332 (up)
@@ -129,4 +137,9 @@ Console/Commands/queue.pid
 queue.pid
 >>>>>>> 2ea6e29 (.)
 >>>>>>> 1e6e4f3 (.)
+<<<<<<< HEAD
 >>>>>>> 6873a1b (up)
+=======
+=======
+>>>>>>> 5fcc696 (.)
+>>>>>>> a26b2f6 (up)
