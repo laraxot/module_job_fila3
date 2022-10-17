@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
-<<<<<<< HEAD
->>>>>>> 1e6e4f3 (.)
 /vendor/
 node_modules/
 npm-debug.log
@@ -33,7 +27,6 @@ Homestead.json
 
 Console/Commands/queue.pid
 /Console/Commands/queue.pid
-<<<<<<< HEAD
 
 queue.pid
 queue.pid
@@ -98,43 +91,10 @@ Homestead.json
 *.cache
 
 Console/Commands/queue.pid
-=======
->>>>>>> 85b62b3 (rebase)
 
-<<<<<<< HEAD
 queue.pid
 Console/Commands/queue.pid
 Console/Commands/queue.pid
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-queue.pid
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 3a83eba2368901981a7f198172c5450c2185c35a
-=======
-queue.pid
->>>>>>> 8cddbef (up)
-<<<<<<< HEAD
->>>>>>> cb2f50d (rebase)
-=======
-=======
-=======
->>>>>>> bc4f3cb (up)
-=======
->>>>>>> f6a0332 (up)
-=======
->>>>>>> 6873a1b (up)
-=======
-=======
-
->>>>>>> 5fcc696 (.)
->>>>>>> a26b2f6 (up)
 /vendor/
 node_modules/
 npm-debug.log
@@ -166,34 +126,8 @@ Console/Commands/queue.pid
 /Console/Commands/queue.pid
 
 queue.pid
-<<<<<<< HEAD
->>>>>>> 2ea6e29 (.)
 queue.pid
-<<<<<<< HEAD
->>>>>>> 58e64b9 (.)
-<<<<<<< HEAD
->>>>>>> 26a6287 (rebase)
-=======
-=======
-=======
-
->>>>>>> 5fcc696 (.)
->>>>>>> ca172d0 (rebase)
-<<<<<<< HEAD
->>>>>>> a6fbb1e (rebase)
-=======
-=======
-
-<<<<<<< HEAD
 queue.pid
-<<<<<<< HEAD
->>>>>>> f6a0332 (up)
-<<<<<<< HEAD
->>>>>>> bbe2487 (rebase)
-=======
-=======
-=======
-=======
 /vendor/
 node_modules/
 npm-debug.log
@@ -224,15 +158,3 @@ Homestead.json
 Console/Commands/queue.pid
 
 queue.pid
->>>>>>> 2ea6e29 (.)
->>>>>>> 1e6e4f3 (.)
-<<<<<<< HEAD
->>>>>>> 6873a1b (up)
-<<<<<<< HEAD
->>>>>>> 1f3dc29 (rebase)
-=======
-=======
-=======
->>>>>>> 5fcc696 (.)
->>>>>>> a26b2f6 (up)
->>>>>>> 4638472 (rebase)
