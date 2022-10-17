@@ -105,6 +105,7 @@ Console/Commands/queue.pid
 <<<<<<< HEAD
 queue.pid
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -118,6 +119,8 @@ queue.pid
 =======
 =======
 >>>>>>> bc4f3cb (up)
+=======
+>>>>>>> f6a0332 (up)
 /vendor/
 node_modules/
 npm-debug.log
@@ -148,6 +151,7 @@ Homestead.json
 Console/Commands/queue.pid
 
 queue.pid
+<<<<<<< HEAD
 >>>>>>> 2ea6e29 (.)
 queue.pid
 <<<<<<< HEAD
@@ -160,4 +164,11 @@ queue.pid
 
 >>>>>>> 5fcc696 (.)
 >>>>>>> ca172d0 (rebase)
+<<<<<<< HEAD
 >>>>>>> a6fbb1e (rebase)
+=======
+=======
+
+queue.pid
+>>>>>>> f6a0332 (up)
+>>>>>>> bbe2487 (rebase)
