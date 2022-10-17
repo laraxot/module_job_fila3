@@ -92,6 +92,17 @@ Homestead.json
 
 Console/Commands/queue.pid
 
+<<<<<<< HEAD
 queue.pid
 Console/Commands/queue.pid
 Console/Commands/queue.pid
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+queue.pid
+=======
+>>>>>>> 3a83eba2368901981a7f198172c5450c2185c35a
+=======
+queue.pid
+>>>>>>> 8cddbef (up)
+>>>>>>> cb2f50d (rebase)
