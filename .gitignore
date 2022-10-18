@@ -27,6 +27,7 @@ Homestead.json
 
 Console/Commands/queue.pid
 /Console/Commands/queue.pid
+<<<<<<< HEAD
 
 queue.pid
 queue.pid
@@ -156,5 +157,7 @@ Homestead.json
 *.cache
 
 Console/Commands/queue.pid
+=======
+>>>>>>> 914e8a6 (up)
 
 queue.pid
