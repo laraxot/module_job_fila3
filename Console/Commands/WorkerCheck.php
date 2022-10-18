@@ -9,6 +9,7 @@ declare(strict_types=1);
 namespace Modules\Job\Console\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Storage;
 
 class WorkerCheck extends Command {
     /**
@@ -75,11 +76,18 @@ class WorkerCheck extends Command {
      * @return bool|string
      */
     private function getLastQueueListenerPID() {
+        
+        /*
         if (! file_exists(__DIR__.'/queue.pid')) {
             return false;
         }
 
         return file_get_contents(__DIR__.'/queue.pid');
+        */
+        if(!Storage::disk('cache')->exists('queue.pid')){
+            return false;
+        }
+        return Storage::disk('cache')->get('queue.pid');
     }
 
     /**
@@ -90,9 +98,16 @@ class WorkerCheck extends Command {
      * @return void
      */
     private function saveQueueListenerPID($pid) {
+        /*
         $path = __DIR__.'/queue.pid';
         file_put_contents($path, $pid);
         $this->comment('saved on ['.$path.'] size ['.filesize($path).']');
+        */
+        Storage::disk('cache')->put('queue.pid',$pid);
+        $path=Storage::disk('cache')->path('queue.pid');
+        $size=Storage::disk('cache')->size('queue.pid');
+        $this->comment('saved on ['.$path.'] size ['.$size.']');
+
     }
 
     /**
