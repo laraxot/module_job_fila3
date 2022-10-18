@@ -28,7 +28,6 @@ Homestead.json
 
 Console/Commands/queue.pid
 /Console/Commands/queue.pid
-<<<<<<< HEAD
 
 queue.pid
 queue.pid
@@ -158,12 +157,8 @@ Homestead.json
 *.cache
 
 Console/Commands/queue.pid
-=======
->>>>>>> 914e8a6 (up)
 
 queue.pid
-<<<<<<< HEAD
-=======
 /vendor/
 node_modules/
 npm-debug.log
@@ -194,7 +189,6 @@ Homestead.json
 Console/Commands/queue.pid
 
 queue.pid
->>>>>>> 2ea6e29 (.)
 queue.pid
 =======
 
