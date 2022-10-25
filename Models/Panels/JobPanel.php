@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <?php
 
 declare(strict_types=1);
@@ -114,6 +115,8 @@ class JobPanel extends XotBasePanel {
     }
 }
 =======
+=======
+>>>>>>> 7563b33 (rebase)
 <?php
 
 declare(strict_types=1);
@@ -228,4 +231,7 @@ class JobPanel extends XotBasePanel {
         ];
     }
 }
+<<<<<<< HEAD
 >>>>>>> 26a6287 (rebase)
+=======
+>>>>>>> 7563b33 (rebase)
