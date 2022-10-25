@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 queue.pid
 <<<<<<< HEAD
 /queue.pid
@@ -11,4 +12,11 @@ queue.pid
 =======
 /queue.pid
 >>>>>>> 8cddbef (up)
+<<<<<<< HEAD
 >>>>>>> cb2f50d (rebase)
+=======
+=======
+queue.pid
+/queue.pid
+>>>>>>> 58e64b9 (.)
+>>>>>>> 26a6287 (rebase)
