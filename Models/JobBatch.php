@@ -1,6 +1,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 <?php
 /**
  * ---.
@@ -142,6 +143,8 @@ class JobBatch extends BaseModel {
 =======
 =======
 >>>>>>> 7563b33 (rebase)
+=======
+>>>>>>> 1f3605a (rebase)
 <?php
 /**
  * ---.
@@ -280,6 +283,7 @@ class JobBatch extends BaseModel {
         return ! is_null($this->cancelled_at);
     }
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> 26a6287 (rebase)
 =======
@@ -424,3 +428,5 @@ class JobBatch extends BaseModel {
     }
 }
 >>>>>>> 1f3dc29 (rebase)
+=======
+>>>>>>> 1f3605a (rebase)

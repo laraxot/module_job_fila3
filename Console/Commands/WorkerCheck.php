@@ -1,6 +1,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 <?php
 
 declare(strict_types=1);
@@ -141,6 +142,8 @@ class WorkerCheck extends Command {
 =======
 =======
 >>>>>>> 7563b33 (rebase)
+=======
+>>>>>>> 1f3605a (rebase)
 <?php
 
 declare(strict_types=1);
@@ -274,6 +277,7 @@ class WorkerCheck extends Command {
         return (string) $pid;
     }
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> 26a6287 (rebase)
 =======
@@ -413,3 +417,5 @@ class WorkerCheck extends Command {
     }
 }
 >>>>>>> 1f3dc29 (rebase)
+=======
+>>>>>>> 1f3605a (rebase)

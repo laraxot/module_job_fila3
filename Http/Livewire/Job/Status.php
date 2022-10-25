@@ -1,6 +1,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 <?php
 
 declare(strict_types=1);
@@ -173,6 +174,8 @@ class Status extends Component {
 =======
 =======
 >>>>>>> 7563b33 (rebase)
+=======
+>>>>>>> 1f3605a (rebase)
 <?php
 
 declare(strict_types=1);
@@ -342,6 +345,7 @@ class Status extends Component {
         session()->flash('message', '1000 dummy Action');
     }
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> 26a6287 (rebase)
 =======
@@ -517,3 +521,5 @@ class Status extends Component {
     }
 }
 >>>>>>> 1f3dc29 (rebase)
+=======
+>>>>>>> 1f3605a (rebase)
