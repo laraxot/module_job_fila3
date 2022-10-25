@@ -63,11 +63,10 @@ class WorkerCheck extends Command {
         $this->comment($process_cmd);
         $process = exec($process_cmd);
         // $processIsQueueListener = str_contains($process, 'queue:listen'); // 5.1
-        
+
         $this->comment($process);
-        //$processIsQueueListener = ! empty($process); // 5.6 - see comments
-        $processIsQueueListener = str_contains($process, substr(base_path(),0,30)); // ..
-       
+        // $processIsQueueListener = ! empty($process); // 5.6 - see comments
+        $processIsQueueListener = str_contains($process, substr(base_path(), 0, 30)); // ..
 
         return $processIsQueueListener;
     }
@@ -78,11 +77,11 @@ class WorkerCheck extends Command {
      * @return bool|string
      */
     private function getLastQueueListenerPID() {
-        
-        if(!Storage::disk('cache')->exists($this->filename)){
+        if (! Storage::disk('cache')->exists($this->filename)) {
             return false;
         }
-        $pid=Storage::disk('cache')->get($this->filename);
+        $pid = Storage::disk('cache')->get($this->filename);
+
         return $pid;
     }
 
@@ -94,12 +93,10 @@ class WorkerCheck extends Command {
      * @return void
      */
     private function saveQueueListenerPID($pid) {
-       
-        Storage::disk('cache')->put($this->filename,$pid);
-        $path=Storage::disk('cache')->path($this->filename);
-        $size=Storage::disk('cache')->size($this->filename);
+        Storage::disk('cache')->put($this->filename, $pid);
+        $path = Storage::disk('cache')->path($this->filename);
+        $size = Storage::disk('cache')->size($this->filename);
         $this->comment('saved on ['.$path.'] size ['.$size.']');
-
     }
 
     /**
