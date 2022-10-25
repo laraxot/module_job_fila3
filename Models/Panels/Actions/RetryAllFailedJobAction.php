@@ -35,7 +35,7 @@ class RetryAllFailedJobAction extends XotBasePanelAction {
 
             $res = $action->execute($params);
 
-            if (200 == $res['status'] && true == $res['res']) {
+            if (200 === $res['status'] && true === $res['res']) {
                 $job->delete();
             } else {
                 dddx($job);

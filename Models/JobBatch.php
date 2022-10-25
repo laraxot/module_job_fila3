@@ -112,7 +112,7 @@ class JobBatch extends BaseModel {
      * Determine if the batch has finished executing.
      */
     public function finished(): bool {
-        return ! is_null($this->finished_at);
+        return null !== $this->finished_at;
     }
 
     /**
@@ -133,6 +133,6 @@ class JobBatch extends BaseModel {
      * Determine if the batch has been canceled.
      */
     public function cancelled(): bool {
-        return ! is_null($this->cancelled_at);
+        return null !== $this->cancelled_at;
     }
 }
