@@ -36,9 +36,4 @@ class _ModulePanelPolicy extends XotBasePanelPolicy {
     public function scheduleManager(UserContract $user, PanelContract $panel): bool {
         return true;
     }
-<<<<<<< HEAD
-
-    
-=======
->>>>>>> 25a4dd4 (up)
 }
