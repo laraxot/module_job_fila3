@@ -29,4 +29,13 @@ class _ModulePanelPolicy extends XotBasePanelPolicy {
     public function tryJob(UserContract $user, PanelContract $panel): bool {
         return true;
     }
+
+    /**
+     * Undocumented function.
+     */
+    public function scheduleManager(UserContract $user, PanelContract $panel): bool {
+        return true;
+    }
+
+    
 }

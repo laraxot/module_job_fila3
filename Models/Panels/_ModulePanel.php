@@ -17,6 +17,7 @@ class _ModulePanel extends XotBasePanel {
         return [
             // new Actions\XlsImportAction(),
             new Actions\TryJobAction(),
+            new Actions\ScheduleManagerAction(),
         ];
     }
 }
