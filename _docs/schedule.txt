@@ -12,3 +12,15 @@ Cronhub helps you to easily run any command or script on schedule without managi
 -----------------------------
 https://github.com/spatie/laravel-schedule-monitor
 
+----------------------------
+https://inspector.dev/laravel/
+
+
+-------------------------------
+https://simple-web.dev/the-laravel-scheduler-without-cronjobs
+
+---------------------------------
+TIME !!
+https://www.thisprogrammingthing.com/what-the-f-ck-is-with-all-the-artisan-commands-schedules/
+
+--------------------------------
