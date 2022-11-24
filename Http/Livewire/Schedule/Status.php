@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Modules\Job\Http\Livewire\Schedule;
 
+use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Events\Dispatcher;
 use Illuminate\Support\Facades\Artisan;
 use Livewire\Component;
 
@@ -17,6 +19,8 @@ class Status extends Component {
     public string $old_value = '';
 
     public function mount() {
+        // $res = $this->getScheduledJobs();
+        // dddx($res);
     }
 
     public function render(): Renderable {
@@ -66,5 +70,13 @@ class Status extends Component {
         Artisan::call($cmd);
         $this->out .= Artisan::output();
         $this->out .= '<hr/>';
+    }
+
+    public function getScheduledJobs() {
+        new \App\Console\Kernel(app(), new Dispatcher());
+        $schedule = app(Schedule::class);
+        $scheduledCommands = collect($schedule->events());
+
+        return $scheduledCommands;
     }
 }

@@ -3,7 +3,9 @@
     "alias": "job",
     "description": "",
     "keywords": [],
-    "priority": 0,
+    "active": 1,
+    "priority": 20,
+    "order": 20,
     "providers": [
         "Modules\\Job\\Providers\\JobServiceProvider"
     ],
