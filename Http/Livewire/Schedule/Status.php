@@ -6,12 +6,10 @@ namespace Modules\Job\Http\Livewire\Schedule;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Str;
 use Livewire\Component;
 
 /**
- * Class Schedule\Status
+ * Class Schedule\Status.
  */
 class Status extends Component {
     public array $form_data = [];
@@ -19,33 +17,39 @@ class Status extends Component {
     public string $old_value = '';
 
     public function mount() {
-
-        
     }
 
     public function render(): Renderable {
         $view = 'job::livewire.schedule.status';
 
         $acts = [
-             (object) [
-                'name' => 'clear-cache',
+            (object) [
+                'name' => 'schedule:clear-cache',
                 'label' => 'Delete the cached mutex files created by scheduler',
             ],
-             (object) [
-                'name' => 'list',
+            (object) [
+                'name' => 'schedule:list',
                 'label' => 'List the scheduled commands',
             ],
-             (object) [
-                'name' => 'run',
+            (object) [
+                'name' => 'schedule:run',
                 'label' => 'Run the scheduled commands',
             ],
-             (object) [
-                'name' => 'test',
+            (object) [
+                'name' => 'schedule:test',
                 'label' => 'Run a scheduled command',
             ],
-             (object) [
-                'name' => 'work',
+            (object) [
+                'name' => 'schedule:work',
                 'label' => 'Start the schedule worker',
+            ],
+            (object) [
+                'name' => 'schedule-monitor:sync',
+                'label' => 'schedule-monitor:sync',
+            ],
+            (object) [
+                'name' => 'schedule-monitor:list',
+                'label' => 'schedule-monitor:list',
             ],
         ];
 
@@ -57,13 +61,10 @@ class Status extends Component {
         return view()->make($view, $view_params);
     }
 
-
     public function artisan(string $cmd) {
         $this->out .= '<hr/>';
-        Artisan::call('schedule:'.$cmd);
+        Artisan::call($cmd);
         $this->out .= Artisan::output();
         $this->out .= '<hr/>';
     }
-
-    
 }

@@ -24,3 +24,7 @@ TIME !!
 https://www.thisprogrammingthing.com/what-the-f-ck-is-with-all-the-artisan-commands-schedules/
 
 --------------------------------
+https://github.com/robersonfaria/laravel-database-schedule
+https://github.com/spatie/laravel-schedule-monitor
+
+

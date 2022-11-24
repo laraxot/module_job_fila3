@@ -33,10 +33,8 @@ class ScheduleManagerAction extends XotBasePanelAction {
         Artisan::call($cmd);
         $out .= Artisan::output();
 
-        dddx($out);
-
         $view = ThemeService::getView();
-        $view_params = [];
+        $view_params = ['view' => $view, 'out' => $out];
 
         return view($view, $view_params);
     }
