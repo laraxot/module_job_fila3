@@ -11,7 +11,6 @@
                 //console.log(e.order.name);
                 alert('echooooo');
             });
-            //*/
-           //console.log(laravelEcho);
+        */
     </script>
 @endpush
