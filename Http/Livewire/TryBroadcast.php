@@ -20,7 +20,7 @@ class TryBroadcast extends Component {
 
     public function try() {
         event(new ClipStatusUpdated(6));
-        session()->flash('message', 'send event!');
+        session()->flash('message', 'send event! ['.now().']');
     }
 
     public function notifyNewClip() {
