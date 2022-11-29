@@ -11,3 +11,9 @@ https://kbouzidi.com/real-time-events-with-laravel-and-soketi
 https://laravel.io/forum/10-09-2016-howto-broadcasting-laravel-echo-laravel-echo-server-and-jwt
 
 laravel/Themes/SandBox/node_modules/pusher-js/README.md
+
+https://github.com/laravel/echo/issues/189
+
+https://medium.com/@marques.joaopereira/laravel-echo-laravel-echo-server-api-authentication-using-passport-1d6b847f91c6
+
+

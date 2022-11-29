@@ -9,7 +9,11 @@ use Livewire\Component;
 use Modules\Mediamonitor\Events\ClipStatusUpdated;
 
 class TryBroadcast extends Component {
-    protected $listeners = ['echo:public,ClipStatusUpdated' => 'notifyNewClip'];
+    protected $listeners = [
+        'echo:public,ClipStatusUpdated' => 'notifyNewClip',
+        'echo:public,Modules\\Mediamonitor\\Events\\ClipStatusUpdated' => 'notifyNewClip',
+        'echo:public,clip.updated' => 'notifyNewClip',
+    ];
 
     public function render(): Renderable {
         $view = 'job::livewire.try_broadcast';
