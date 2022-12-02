@@ -17,7 +17,8 @@ class Broad extends Component {
     public function try() {
         session()->flash('message', 'try ['.now().']');
         // OrderShipped::dispatch();
-        event(new PublicEvent('test'));
+        // event(new PublicEvent('test'));
+        PublicEvent::dispatch();
     }
 
     public function notifyEvent() {
