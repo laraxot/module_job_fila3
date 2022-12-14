@@ -1,4 +1,7 @@
 {
+    "name": "laraxot/module_job",
+    "description": "job/worker/queue/schedule management",
+    "license": "mit",
     "require": {
         "tightenco/jigsaw": "^1.6",
         "tightenco/jigsaw-docs-template": "^1.1",
