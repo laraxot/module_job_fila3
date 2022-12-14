@@ -1,6 +1,6 @@
 ---
 title: Introducendo Job
-description: Introduzione a Module Geo
+description: Introduzione a Module Job
 extends: _layouts.documentation
 section: content
 ---
