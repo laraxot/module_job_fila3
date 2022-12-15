@@ -29,3 +29,4 @@ Console/Commands/queue.pid
 /Console/Commands/queue.pid
 
 queue.pid
+*.lock
