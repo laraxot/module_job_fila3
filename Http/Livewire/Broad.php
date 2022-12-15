@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\Job\Http\Livewire;
 
-use App\Events\PublicEvent;
 use Livewire\Component;
+use Modules\Job\Events\PublicEvent;
 
 class Broad extends Component {
     protected $listeners = ['echo:public,PublicEvent' => 'notifyEvent'];
