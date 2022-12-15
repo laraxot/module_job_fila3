@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Job\Models\Panels\Actions;
 
+use Modules\Job\Models\FailedJob;
 use Modules\Xot\Models\Panels\Actions\XotBasePanelAction;
 
 /**
@@ -22,6 +23,9 @@ class RetryFailedJobAction extends XotBasePanelAction {
 
     public function handle() {
         $job = $this->row;
+        if (! $job instanceof FailedJob) {
+            throw new \Exception('['.__LINE__.']['.__FILE__.']');
+        }
         $command = $job->payload['data']['command'];
         $command = unserialize($command);
 
