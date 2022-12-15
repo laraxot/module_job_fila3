@@ -73,6 +73,9 @@ class Status extends Component {
     }
 
     public function getScheduledJobs() {
+        if (app()->runningInConsole()) {
+            return collect([]);
+        }
         new \App\Console\Kernel(app(), new Dispatcher());
         $schedule = app(Schedule::class);
         $scheduledCommands = collect($schedule->events());
