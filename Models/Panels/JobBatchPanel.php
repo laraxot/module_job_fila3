@@ -6,7 +6,7 @@ namespace Modules\Job\Models\Panels;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
-use Modules\Xot\Models\Panels\XotBasePanel;
+use Modules\Cms\Models\Panels\XotBasePanel;
 
 // --- Services --
 

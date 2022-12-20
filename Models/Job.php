@@ -20,7 +20,6 @@ namespace Modules\Job\Models;
  * @property string|null                     $created_by
  * @property string|null                     $updated_by
  * @property \Illuminate\Support\Carbon|null $updated_at
- *
  * @method static \Modules\Job\Database\Factories\JobFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Job  newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Job  newQuery()
@@ -35,7 +34,6 @@ namespace Modules\Job\Models;
  * @method static \Illuminate\Database\Eloquent\Builder|Job  whereReservedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Job  whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Job  whereUpdatedBy($value)
- *
  * @mixin \Eloquent
  */
 class Job extends BaseModel {
