@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\Job\Models\Panels\Actions;
 
-use Modules\Job\Actions\DummyAction;
 use Modules\Cms\Models\Panels\Actions\XotBasePanelAction;
+use Modules\Job\Actions\DummyAction;
 
 /**
  * Class TryJobAction.

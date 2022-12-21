@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Modules\Job\Models\Panels\Actions;
 
 use Illuminate\Queue\Jobs\Job;
-use Modules\Job\Models\Job as JobModel;
 use Modules\Cms\Models\Panels\Actions\XotBasePanelAction;
+use Modules\Job\Models\Job as JobModel;
 
 /**
  * Class ShowFailedJobAction.
