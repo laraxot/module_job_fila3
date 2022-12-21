@@ -6,7 +6,7 @@ namespace Modules\Job\Models\Panels\Actions;
 
 use Illuminate\Support\Facades\Artisan;
 use Modules\Job\Models\JobBatch as JobBatchModel;
-use Modules\Xot\Models\Panels\Actions\XotBasePanelAction;
+use Modules\Cms\Models\Panels\Actions\XotBasePanelAction;
 use Modules\Xot\Services\ArtisanService;
 
 /**

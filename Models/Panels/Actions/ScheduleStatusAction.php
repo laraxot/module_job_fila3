@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Job\Models\Panels\Actions;
 
-use Modules\Xot\Models\Panels\Actions\XotBasePanelAction;
+use Modules\Cms\Models\Panels\Actions\XotBasePanelAction;
 
 /**
  * Class ShowFailedJobAction.

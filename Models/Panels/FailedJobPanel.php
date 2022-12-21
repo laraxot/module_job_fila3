@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Modules\Job\Models\Panels;
 
 use Illuminate\Http\Request;
-use Modules\Xot\Models\Panels\Actions\ArtisanContainerAction;
+use Modules\Cms\Models\Panels\Actions\ArtisanContainerAction;
 use Modules\Cms\Models\Panels\XotBasePanel;
 
 // --- Services --
