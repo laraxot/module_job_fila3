@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Modules\Job\Models\Panels\Actions;
 
 use Illuminate\Support\Facades\Artisan;
-use Modules\Job\Models\JobBatch as JobBatchModel;
 use Modules\Cms\Models\Panels\Actions\XotBasePanelAction;
+use Modules\Job\Models\JobBatch as JobBatchModel;
 use Modules\Xot\Services\ArtisanService;
 
 /**

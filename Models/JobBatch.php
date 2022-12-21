@@ -22,6 +22,7 @@ namespace Modules\Job\Models;
  * @property \Illuminate\Support\Carbon|null     $cancelled_at
  * @property \Illuminate\Support\Carbon          $created_at
  * @property \Illuminate\Support\Carbon|null     $finished_at
+ *
  * @method static \Modules\Job\Database\Factories\JobBatchFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|JobBatch  newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|JobBatch  newQuery()
@@ -36,6 +37,7 @@ namespace Modules\Job\Models;
  * @method static \Illuminate\Database\Eloquent\Builder|JobBatch  whereOptions($value)
  * @method static \Illuminate\Database\Eloquent\Builder|JobBatch  wherePendingJobs($value)
  * @method static \Illuminate\Database\Eloquent\Builder|JobBatch  whereTotalJobs($value)
+ *
  * @mixin \Eloquent
  */
 class JobBatch extends BaseModel {
