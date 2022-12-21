@@ -6,7 +6,7 @@ namespace Modules\Job\Models\Panels\Actions;
 
 use Illuminate\Support\Facades\Artisan;
 use Modules\Theme\Services\ThemeService;
-use Modules\Xot\Models\Panels\Actions\XotBasePanelAction;
+use Modules\Cms\Models\Panels\Actions\XotBasePanelAction;
 
 /**
  * Class ShowFailedJobAction.

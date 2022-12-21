@@ -6,7 +6,7 @@ namespace Modules\Job\Models\Panels\Actions;
 
 use Illuminate\Queue\Jobs\Job;
 use Modules\Job\Models\Job as JobModel;
-use Modules\Xot\Models\Panels\Actions\XotBasePanelAction;
+use Modules\Cms\Models\Panels\Actions\XotBasePanelAction;
 
 /**
  * Class ShowFailedJobAction.

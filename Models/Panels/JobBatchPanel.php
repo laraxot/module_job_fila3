@@ -14,7 +14,7 @@ class JobBatchPanel extends XotBasePanel {
     /**
      * The model the resource corresponds to.
      */
-    public static string $model = 'Modules\Xot\Models\Panels\JobBatchPanel';
+    public static string $model = 'Modules\Cms\Models\Panels\JobBatchPanel';
 
     /**
      * The single value that should be used to represent the resource when being displayed.

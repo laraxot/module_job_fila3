@@ -14,7 +14,7 @@ class JobPanel extends XotBasePanel {
     /**
      * The model the resource corresponds to.
      */
-    public static string $model = 'Modules\Xot\Models\Panels\JobPanel';
+    public static string $model = 'Modules\Cms\Models\Panels\JobPanel';
 
     /**
      * The single value that should be used to represent the resource when being displayed.
