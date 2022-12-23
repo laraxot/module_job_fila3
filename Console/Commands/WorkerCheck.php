@@ -99,11 +99,12 @@ class WorkerCheck extends Command {
         $this->comment('saved on ['.$path.'] size ['.$size.']');
     }
 
-    /**
+    /*
      * Start the queue listener.
      *
      * @return string
-     */
+     * Method Modules\Job\Console\Commands\WorkerCheck::restartQueue() is unused
+     
     private function restartQueue() {
         // $command = 'php-cli ' . base_path() . '/artisan queue:listen --timeout=60 --sleep=5 --tries=3 > /dev/null & echo $!'; // 5.1
         // $command = 'php-cli '.base_path().'/artisan queue:work --timeout=60 --sleep=5 --tries=3 > /dev/null & echo //$!'; // 5.6 - see comments
@@ -116,7 +117,7 @@ class WorkerCheck extends Command {
 
         return (string) $pid;
     }
-
+    */
     /**
      * Start the queue listener.
      *
