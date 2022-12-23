@@ -18,7 +18,7 @@ class DummyAction {
     /**
      * Undocumented function.
      */
-    public function execute() {
+    public function execute():void {
         // The business logic goes here, this can be executed in an async job.
         echo 'hello'.PHP_EOL;
     }

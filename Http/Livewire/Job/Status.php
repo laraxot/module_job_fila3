@@ -24,7 +24,7 @@ class Status extends Component {
     public string $out = '';
     public string $old_value = '';
 
-    public function mount() {
+    public function mount():void {
         Artisan::call('queue:monitor', ['queues' => 'default,queue01,emails']);
         $this->out .= Artisan::output();
         Artisan::call('worker:check');
@@ -130,7 +130,7 @@ class Status extends Component {
         return view()->make($view, $view_params);
     }
 
-    public function updatedFormData(string $value, string $key) {
+    public function updatedFormData(string $value, string $key):void {
         // dddx([$value,$key,$this->form_data]);
         if ('conn' === $key) {
             // putenv ("QUEUE_CONNECTION=".$value);
@@ -138,7 +138,7 @@ class Status extends Component {
         }
     }
 
-    public function saveEnv() {
+    public function saveEnv():void {
         $env_file = base_path('.env');
         $env_content = File::get($env_file);
         $new_content = Str::replace(
@@ -151,14 +151,14 @@ class Status extends Component {
         $this->old_value = $this->form_data['conn'];
     }
 
-    public function artisan(string $cmd) {
+    public function artisan(string $cmd):void {
         $this->out .= '<hr/>';
         Artisan::call('queue:'.$cmd);
         $this->out .= Artisan::output();
         $this->out .= '<hr/>';
     }
 
-    public function dummyAction() {
+    public function dummyAction():void {
         for ($i = 0; $i < 1000; ++$i) {
             app(DummyAction::class)
                 ->onQueue()
