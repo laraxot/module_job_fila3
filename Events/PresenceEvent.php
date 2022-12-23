@@ -27,7 +27,7 @@ class PresenceEvent implements ShouldBroadcast {
     /**
      * Get the channels the event should broadcast on.
      *
-     * @return \Illuminate\Broadcasting\Channel|array
+     
      */
     public function broadcastOn(): Channel {
         return new PresenceChannel('presence.'.auth()->user()->group_id);
