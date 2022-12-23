@@ -30,7 +30,7 @@ class PrivateEvent implements ShouldBroadcast {
     /**
      * Get the channels the event should broadcast on.
      *
-     * @return \Illuminate\Broadcasting\Channel|array
+     
      */
     public function broadcastOn(): Channel {
         return new PrivateChannel('private.'.auth()->user()->id);
