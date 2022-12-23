@@ -7,6 +7,9 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 class CreateScheduleMonitorTables extends Migration {
+    /**
+     * @return void
+     */
     public function up() {
         Schema::create('monitored_scheduled_tasks', function (Blueprint $table) {
             $table->bigIncrements('id');

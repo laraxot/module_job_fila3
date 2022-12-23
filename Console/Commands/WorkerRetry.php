@@ -46,7 +46,7 @@ class WorkerRetry extends Command {
         }
     }
 
-    protected function retryJob($id) {
+    protected function retryJob(string $id):void {
         $failed = $this->laravel['queue.failer']->find($id);
 
         if (null !== $failed) {

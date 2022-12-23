@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace Modules\Job\Http\Livewire\Schedule;
 
+use Livewire\Component;
+use Illuminate\Events\Dispatcher;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Contracts\Support\Renderable;
-use Illuminate\Events\Dispatcher;
-use Illuminate\Support\Facades\Artisan;
-use Livewire\Component;
 
 /**
  * Class Schedule\Status.
@@ -18,10 +19,10 @@ class Status extends Component {
     public string $out = '';
     public string $old_value = '';
 
-    public function mount() {
+    //public function mount() {
         // $res = $this->getScheduledJobs();
         // dddx($res);
-    }
+    //}
 
     public function render(): Renderable {
         $view = 'job::livewire.schedule.status';
@@ -65,14 +66,14 @@ class Status extends Component {
         return view()->make($view, $view_params);
     }
 
-    public function artisan(string $cmd) {
+    public function artisan(string $cmd):void {
         $this->out .= '<hr/>';
         Artisan::call($cmd);
         $this->out .= Artisan::output();
         $this->out .= '<hr/>';
     }
 
-    public function getScheduledJobs() {
+    public function getScheduledJobs():Collection {
         if (app()->runningInConsole()) {
             return collect([]);
         }
