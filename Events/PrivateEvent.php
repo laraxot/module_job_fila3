@@ -33,6 +33,6 @@ class PrivateEvent implements ShouldBroadcast {
      
      */
     public function broadcastOn(): Channel {
-        return new PrivateChannel('private.'.auth()->user()->id);
+        return new PrivateChannel('private.'.auth()->id());
     }
 }
