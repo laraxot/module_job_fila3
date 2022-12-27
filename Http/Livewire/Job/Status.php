@@ -33,9 +33,12 @@ class Status extends Component {
         $this->out .= '<br/>['.JobModel::count().'] Jobs';
         $this->out .= '<br/>['.FailedJobModel::count().'] Failed Jobs';
         $this->out .= '<br/>['.JobBatchModel::count().'] Job Batch';
-
-        $this->old_value = getenv('QUEUE_CONNECTION');
-        $this->form_data['conn'] = getenv('QUEUE_CONNECTION');
+        $queue_conn= getenv('QUEUE_CONNECTION');
+        if($queue_conn==false){
+            throw new Exception('['.__LINE__.']['.__FILE__.']');
+        }
+        $this->old_value = $queue_conn;
+        $this->form_data['conn'] = $queue_conn;
 
         // $env_file=base_path('.env');
         // dddx(getenv(base_path('')));
