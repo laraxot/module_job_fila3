@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace Modules\Job\Console\Commands;
 
+use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Storage;
 
@@ -63,7 +64,9 @@ class WorkerCheck extends Command {
         $this->comment($process_cmd);
         $process = exec($process_cmd);
         // $processIsQueueListener = str_contains($process, 'queue:listen'); // 5.1
-
+        if($process==false){
+            throw new Exception('['.__LINE__.']['.__FILE__.']');
+        }
         $this->comment($process);
         // $processIsQueueListener = ! empty($process); // 5.6 - see comments
         $processIsQueueListener = str_contains($process, substr(base_path(), 0, 30)); // ..
@@ -74,7 +77,7 @@ class WorkerCheck extends Command {
     /**
      * Get any existing queue listener PID.
      *
-     * @return bool|string
+     * @return string|null|bool
      */
     private function getLastQueueListenerPID() {
         if (! Storage::disk('cache')->exists($this->filename)) {
@@ -131,6 +134,9 @@ class WorkerCheck extends Command {
         // $this->comment($command);
 
         $pid = exec($command);
+        if($pid==false){
+            throw new Exception('['.__LINE__.']['.__FILE__.']');
+        }
         $this->comment($pid);
 
         return (string) $pid;

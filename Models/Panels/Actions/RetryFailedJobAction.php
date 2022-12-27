@@ -4,8 +4,9 @@ declare(strict_types=1);
 
 namespace Modules\Job\Models\Panels\Actions;
 
-use Modules\Cms\Models\Panels\Actions\XotBasePanelAction;
 use Modules\Job\Models\FailedJob;
+use Illuminate\Queue\CallQueuedClosure;
+use Modules\Cms\Models\Panels\Actions\XotBasePanelAction;
 
 /**
  * Class RetryFailedJobAction.
@@ -27,6 +28,9 @@ class RetryFailedJobAction extends XotBasePanelAction {
             throw new \Exception('['.__LINE__.']['.__FILE__.']');
         }
         $command = $job->payload['data']['command'];
+        /*
+         * --- controllare la classe che buttafuori !
+         */
         $command = unserialize($command);
 
         $action = app($command->displayName());

@@ -26,6 +26,7 @@ class RetryAllFailedJobAction extends XotBasePanelAction {
         $rows_count = FailedJob::count();
         echo '<h3>'.$rows_count.' Failed Jobs</h3>';
         foreach ($rows as $job) {
+            //29     Cannot access property $payload on mixed.  
             $command = $job->payload['data']['command'];
             $command = unserialize($command);
 
