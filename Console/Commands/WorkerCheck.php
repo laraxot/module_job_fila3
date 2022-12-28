@@ -62,10 +62,12 @@ class WorkerCheck extends Command {
         }
         $process_cmd = "ps -p $pid -opid=,cmd=";
         $this->comment($process_cmd);
-        $process = exec($process_cmd);
+        $output=null;
+        $process = exec($process_cmd,$output);
         // $processIsQueueListener = str_contains($process, 'queue:listen'); // 5.1
         if($process==false){
-            throw new Exception('['.__LINE__.']['.__FILE__.']');
+            //DISABILITATO PER SBLOCCARE MODULE JOB
+            //throw new Exception('['.__LINE__.']['.__FILE__.']');
         }
         $this->comment($process);
         // $processIsQueueListener = ! empty($process); // 5.6 - see comments
@@ -133,6 +135,8 @@ class WorkerCheck extends Command {
         $command = ' /usr/local/bin/php '.base_path().'/artisan queue:work --timeout=60 --sleep=5 --tries=3 > /dev/null & echo $!';
         // $this->comment($command);
 
+        //dd($command);
+        
         $pid = exec($command);
         if($pid==false){
             throw new Exception('['.__LINE__.']['.__FILE__.']');
