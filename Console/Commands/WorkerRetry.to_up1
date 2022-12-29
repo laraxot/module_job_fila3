@@ -40,6 +40,7 @@ class WorkerRetry extends Command {
      * @return mixed
      */
     public function handle() {
+        //Cannot access offset 'queue.failer' on Illuminate\Contracts\Foundation\Application.
         $ids = Arr::pluck($this->laravel['queue.failer']->all(), 'id');
         foreach ($ids as $id) {
             $this->retryJob($id);
