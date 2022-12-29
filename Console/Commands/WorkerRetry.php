@@ -66,12 +66,13 @@ class WorkerRetry extends Command {
     }
 
     protected function resetAttempts(string $payload):string|false {
-        $payload = json_decode($payload, true);
+        /** @var array $payload_arr */
+        $payload_arr = json_decode($payload, true);
 
-        if (isset($payload['attempts'])) {
-            $payload['attempts'] = 1;
+        if (isset($payload_arr['attempts'])) {
+            $payload_arr['attempts'] = 1;
         }
 
-        return json_encode($payload);
+        return json_encode($payload_arr);
     }
 }
