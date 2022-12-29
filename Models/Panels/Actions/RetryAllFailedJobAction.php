@@ -32,6 +32,7 @@ class RetryAllFailedJobAction extends XotBasePanelAction
             if (!$job instanceof FailedJob) {
                 throw new \Exception('[' . __LINE__ . '][' . __FILE__ . ']');
             }
+            
             $command = $job->payload['data']['command'];
             $command = unserialize($command);
 
