@@ -69,7 +69,9 @@ class WorkerCheck extends Command {
             //DISABILITATO PER SBLOCCARE MODULE JOB
             //throw new Exception('['.__LINE__.']['.__FILE__.']');
         }
-        $this->comment($process);
+        if(\is_string($process)){
+            $this->comment($process);
+        }
         // $processIsQueueListener = ! empty($process); // 5.6 - see comments
         $processIsQueueListener = str_contains($process, substr(base_path(), 0, 30)); // ..
 
