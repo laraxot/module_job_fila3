@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\Job\Models\Panels\Actions;
 
-use Modules\Job\Models\FailedJob;
-use Illuminate\Queue\CallQueuedClosure;
 use Modules\Cms\Models\Panels\Actions\XotBasePanelAction;
+use Modules\Job\Models\FailedJob;
 
 /**
  * Class RetryFailedJobAction.

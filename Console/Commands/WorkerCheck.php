@@ -12,8 +12,7 @@ use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Storage;
 
-class WorkerCheck extends Command
-{
+class WorkerCheck extends Command {
     /**
      * The name and signature of the console command.
      *
@@ -33,8 +32,7 @@ class WorkerCheck extends Command
     /**
      * Create a new command instance.
      */
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
     }
 
@@ -43,11 +41,10 @@ class WorkerCheck extends Command
      *
      * @return void
      */
-    public function handle()
-    {
-        if (!$this->isQueueListenerRunning()) {
+    public function handle() {
+        if (! $this->isQueueListenerRunning()) {
             $pid = $this->startQueueListener();
-            $this->comment('Queue listener is being started. pid[' . $pid . ']');
+            $this->comment('Queue listener is being started. pid['.$pid.']');
             $this->saveQueueListenerPID($pid);
         }
 
@@ -56,12 +53,9 @@ class WorkerCheck extends Command
 
     /**
      * Check if the queue listener is running.
-     *
-     * @return bool
      */
-    private function isQueueListenerRunning(): bool
-    {
-        if (!$pid = $this->getLastQueueListenerPID()) {
+    private function isQueueListenerRunning(): bool {
+        if (! $pid = $this->getLastQueueListenerPID()) {
             return false;
         }
         $process_cmd = "ps -p $pid -opid=,cmd=";
@@ -69,9 +63,9 @@ class WorkerCheck extends Command
         $output = null;
         $process = exec($process_cmd, $output);
         // $processIsQueueListener = str_contains($process, 'queue:listen'); // 5.1
-        if ($process == false) {
-            //DISABILITATO PER SBLOCCARE MODULE JOB
-            //throw new Exception('['.__LINE__.']['.__FILE__.']');
+        if (false == $process) {
+            // DISABILITATO PER SBLOCCARE MODULE JOB
+            // throw new Exception('['.__LINE__.']['.__FILE__.']');
         }
         if (\is_string($process)) {
             $this->comment($process);
@@ -81,17 +75,17 @@ class WorkerCheck extends Command
 
             return $processIsQueueListener;
         }
+
         return false;
     }
 
     /**
      * Get any existing queue listener PID.
      *
-     * @return string|null|bool
+     * @return string|bool|null
      */
-    private function getLastQueueListenerPID()
-    {
-        if (!Storage::disk('cache')->exists($this->filename)) {
+    private function getLastQueueListenerPID() {
+        if (! Storage::disk('cache')->exists($this->filename)) {
             return false;
         }
         $pid = Storage::disk('cache')->get($this->filename);
@@ -106,12 +100,11 @@ class WorkerCheck extends Command
      *
      * @return void
      */
-    private function saveQueueListenerPID($pid)
-    {
+    private function saveQueueListenerPID($pid) {
         Storage::disk('cache')->put($this->filename, $pid);
         $path = Storage::disk('cache')->path($this->filename);
         $size = Storage::disk('cache')->size($this->filename);
-        $this->comment('saved on [' . $path . '] size [' . $size . ']');
+        $this->comment('saved on ['.$path.'] size ['.$size.']');
     }
 
     /*
@@ -119,7 +112,7 @@ class WorkerCheck extends Command
      *
      * @return string
      * Method Modules\Job\Console\Commands\WorkerCheck::restartQueue() is unused
-     
+
     private function restartQueue() {
         // $command = 'php-cli ' . base_path() . '/artisan queue:listen --timeout=60 --sleep=5 --tries=3 > /dev/null & echo $!'; // 5.1
         // $command = 'php-cli '.base_path().'/artisan queue:work --timeout=60 --sleep=5 --tries=3 > /dev/null & echo //$!'; // 5.6 - see comments
@@ -138,19 +131,18 @@ class WorkerCheck extends Command
      *
      * @return string
      */
-    private function startQueueListener()
-    {
+    private function startQueueListener() {
         // $command = 'php-cli ' . base_path() . '/artisan queue:listen --timeout=60 --sleep=5 --tries=3 > /dev/null & echo $!'; // 5.1
         // $command = 'php-cli '.base_path().'/artisan queue:work --timeout=60 --sleep=5 --tries=3 > /dev/null & echo //$!'; // 5.6 - see comments
 
-        $command = ' /usr/local/bin/php ' . base_path() . '/artisan queue:work --timeout=60 --sleep=5 --tries=3 > /dev/null & echo $!';
+        $command = ' /usr/local/bin/php '.base_path().'/artisan queue:work --timeout=60 --sleep=5 --tries=3 > /dev/null & echo $!';
         // $this->comment($command);
 
-        //dd($command);
+        // dd($command);
 
         $pid = exec($command);
-        if ($pid == false) {
-            throw new Exception('[' . __LINE__ . '][' . __FILE__ . ']');
+        if (false == $pid) {
+            throw new Exception('['.__LINE__.']['.__FILE__.']');
         }
         $this->comment($pid);
 

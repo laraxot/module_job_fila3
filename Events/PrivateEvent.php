@@ -29,8 +29,6 @@ class PrivateEvent implements ShouldBroadcast {
 
     /**
      * Get the channels the event should broadcast on.
-     *
-     
      */
     public function broadcastOn(): Channel {
         return new PrivateChannel('private.'.auth()->id());
