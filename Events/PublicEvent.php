@@ -28,8 +28,6 @@ class PublicEvent implements ShouldBroadcast {
 
     /**
      * Get the channels the event should broadcast on.
-     *
-     
      */
     public function broadcastOn(): Channel {
         return new Channel('public');
