@@ -36,7 +36,7 @@ class RetryAllFailedJobAction extends XotBasePanelAction {
             $deserialized = unserialize($command);
 
             try {
-                if (!\method_exists($deserialized, 'displayName')) {
+                if (! \method_exists($deserialized, 'displayName')) {
                     throw new \Exception('method displayName doesn\'t exists');
                 }
 
@@ -44,11 +44,11 @@ class RetryAllFailedJobAction extends XotBasePanelAction {
                     throw new \Exception('['.__LINE__.']['.__FILE__.']');
                 }
 
-                if (!\method_exists($deserialized, 'parameters')) {
+                if (! \method_exists($deserialized, 'parameters')) {
                     throw new \Exception('method displayName doesn\'t exists');
                 }
 
-                if (!isset($deserialized->parameters()[0])) {
+                if (! isset($deserialized->parameters()[0])) {
                     throw new \Exception('parameter[0] doesn\'t exists');
                 }
 

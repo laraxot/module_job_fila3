@@ -26,10 +26,10 @@ class RetryFailedJobAction extends XotBasePanelAction {
         if (! $job instanceof FailedJob) {
             throw new \Exception('['.__LINE__.']['.__FILE__.']');
         }
-        
-         /** @var string $command */
+
+        /** @var string $command */
         $command = $job->payload['data']['command'];
-        
+
         /** @var object $deserialized */
         $deserialized = unserialize($command);
 
@@ -37,14 +37,14 @@ class RetryFailedJobAction extends XotBasePanelAction {
             throw new \Exception('['.__LINE__.']['.__FILE__.']');
         }
 
-        if (!\method_exists($deserialized, 'parameters')) {
+        if (! \method_exists($deserialized, 'parameters')) {
             throw new \Exception('method displayName doesn\'t exists');
         }
 
-        if (!isset($deserialized->parameters()[0])) {
+        if (! isset($deserialized->parameters()[0])) {
             throw new \Exception('parameter[0] doesn\'t exists');
         }
-        
+
         $action = app($deserialized->displayName());
 
         $params = $deserialized->parameters()[0];

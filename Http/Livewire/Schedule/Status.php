@@ -18,6 +18,7 @@ class Status extends Component {
     public array $form_data = [];
     public string $out = '';
     public string $old_value = '';
+
     public function render(): Renderable {
         $view = 'job::livewire.schedule.status';
 
