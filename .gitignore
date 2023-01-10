@@ -31,3 +31,4 @@ Console/Commands/queue.pid
 queue.pid
 *.lock
 composer.lock
+*.lock
