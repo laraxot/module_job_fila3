@@ -6,6 +6,7 @@ namespace Modules\Job\Http\Livewire;
 
 use Illuminate\Contracts\Support\Renderable;
 use Livewire\Component;
+use Modules\Cms\Actions\GetViewAction;
 use Modules\Job\Events\PublicEvent;
 
 class Broad extends Component {
@@ -15,7 +16,9 @@ class Broad extends Component {
     protected $listeners = ['echo:public,PublicEvent' => 'notifyEvent'];
 
     public function render(): Renderable {
-        return view('job::livewire.broad');
+        $view = app(GetViewAction::class)->execute();
+
+        return view($view);
     }
 
     public function try(): void {

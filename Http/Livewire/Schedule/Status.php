@@ -10,6 +10,7 @@ use Illuminate\Events\Dispatcher;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Artisan;
 use Livewire\Component;
+use Modules\Cms\Actions\GetViewAction;
 
 /**
  * Class Schedule\Status.
@@ -20,7 +21,7 @@ class Status extends Component {
     public string $old_value = '';
 
     public function render(): Renderable {
-        $view = 'job::livewire.schedule.status';
+        $view = app(GetViewAction::class)->execute();
 
         $acts = [
             (object) [
