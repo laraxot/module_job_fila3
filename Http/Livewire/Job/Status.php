@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Modules\Job\Http\Livewire\Job;
 
-use Exception;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use Livewire\Component;
+use Modules\Cms\Actions\GetViewAction;
 use Modules\Job\Actions\DummyAction;
 use Modules\Job\Models\FailedJob as FailedJobModel;
 use Modules\Job\Models\Job as JobModel;
@@ -36,7 +36,7 @@ class Status extends Component {
         $this->out .= '<br/>['.JobBatchModel::count().'] Job Batch';
         $queue_conn = getenv('QUEUE_CONNECTION');
         if (false == $queue_conn) {
-            throw new Exception('['.__LINE__.']['.__FILE__.']');
+            throw new \Exception('['.__LINE__.']['.__FILE__.']');
         }
         $this->old_value = $queue_conn;
         $this->form_data['conn'] = $queue_conn;
@@ -48,7 +48,7 @@ class Status extends Component {
     }
 
     public function render(): Renderable {
-        $view = 'job::livewire.job.status';
+        $view = app(GetViewAction::class)->execute();
 
         $acts = [
             /*
