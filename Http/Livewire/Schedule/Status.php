@@ -58,7 +58,7 @@ class Status extends Component {
             'acts' => $acts,
         ];
 
-        return view()->make($view, $view_params);
+        return view($view, $view_params);
     }
 
     public function artisan(string $cmd): void {
