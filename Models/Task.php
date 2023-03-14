@@ -2,16 +2,17 @@
 
 namespace Modules\Job\Models;
 
+use Exception;
 use Carbon\Carbon;
 use Cron\CronExpression;
-use Database\Factories\TotemTaskFactory;
-use Exception;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
-use Studio\Totem\Traits\FrontendSortable;
-use Studio\Totem\Traits\HasFrequencies;
+use Database\Factories\TotemTaskFactory;
+use Illuminate\Notifications\Notifiable;
+use Modules\Job\Models\Traits\HasFrequencies;
+use Modules\Job\Models\Traits\FrontendSortable;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 
 class Task extends BaseModel
 {
@@ -230,13 +231,13 @@ class Task extends BaseModel
         }
     }
 
-    /**
-     * Create a new factory instance for the model.
-     *
-     * @return TotemTaskFactory
-     */
-    protected static function newFactory(): TotemTaskFactory
-    {
-        return TotemTaskFactory::new();
-    }
+    // /**
+    //  * Create a new factory instance for the model.
+    //  *
+    //  * @return TotemTaskFactory
+    //  */
+    // protected static function newFactory(): TotemTaskFactory
+    // {
+    //     return TotemTaskFactory::new();
+    // }
 }
