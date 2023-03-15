@@ -5,7 +5,7 @@ declare(strict_types=1);
 use Illuminate\Database\Schema\Blueprint;
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
-class CreateFrequencyParametersTable extends XotBaseMigration {
+class CreateFrequenciesTable extends XotBaseMigration {
     /**
      * Run the migrations.
      *
@@ -16,9 +16,13 @@ class CreateFrequencyParametersTable extends XotBaseMigration {
         $this->tableCreate(
             function (Blueprint $table) {
                 $table->increments('id');
-                $table->unsignedInteger('frequency_id');
-                $table->string('name');
-                $table->string('value');
+                $table->unsignedInteger('task_id');
+                $table->string('label');
+                $table->string('interval');
+                // $table->index('task_id', 'task_frequencies_task_id_idx');
+                // $table->foreign('task_id', 'task_frequencies_task_id_fk')
+                //     ->references('id')
+                //     ->on(TOTEM_TABLE_PREFIX.'tasks');
                 $table->string('created_by')->nullable();
                 $table->string('updated_by')->nullable();
                 $table->timestamps();
@@ -31,7 +35,6 @@ class CreateFrequencyParametersTable extends XotBaseMigration {
                 //     $table->string('created_by')->nullable();
                 //     $table->string('updated_by')->nullable();
                 // }
-
             }
         );
     }

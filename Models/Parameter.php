@@ -1,12 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Job\Models;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Parameter extends BaseModel
-{
-    protected $table = 'frequency_parameters';
+class Parameter extends BaseModel {
+    // protected $table = 'frequency_parameters';
 
     protected $fillable = [
         'id',
@@ -14,8 +15,7 @@ class Parameter extends BaseModel
         'value',
     ];
 
-    public function task(): BelongsTo
-    {
+    public function task(): BelongsTo {
         return $this->belongsTo(Frequency::class);
     }
 }
