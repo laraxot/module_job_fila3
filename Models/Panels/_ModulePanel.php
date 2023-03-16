@@ -19,6 +19,7 @@ class _ModulePanel extends XotBasePanel {
             new Actions\TryJobAction(),
             new Actions\ScheduleManagerAction(),
             new Actions\ScheduleStatusAction(),
+            new Actions\TaskAction(),
         ];
     }
 }
