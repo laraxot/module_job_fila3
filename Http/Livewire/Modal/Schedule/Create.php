@@ -2,15 +2,24 @@
 
 namespace Modules\Job\Http\Livewire\Modal\Schedule;
 
+use Modules\Job\Models\Task;
 use Modules\Cms\Actions\GetViewAction;
 use WireElements\Pro\Components\Modal\Modal;
+use Modules\Job\Actions\GetTaskCommandsAction;
+use Modules\Job\Actions\GetTaskFrequenciesAction;
 
 
 class Create extends Modal{
-
+    public array $form_data;
     public function render(){
         $view=app(GetViewAction::class)->execute();
-        $view_params=[];
+        $view_params=[
+            'view'=>$view,
+            'task' => new Task(),
+            'commands' => app(GetTaskCommandsAction::class)->execute(),
+            'timezones' => timezone_identifiers_list(),
+            'frequencies' => app(GetTaskFrequenciesAction::class)->execute(),
+        ];
         return view($view,$view_params);
     }
 
@@ -32,7 +41,12 @@ class Create extends Modal{
         return [
             // Set the modal size to 2xl, you can choose between:
             // xs, sm, md, lg, xl, 2xl, 3xl, 4xl, 5xl, 6xl, 7xl
-            'size' => '3xl',
+            'size' => '2xl',
         ];
+    }
+
+
+    public function store(){
+        dddx('store');
     }
 }
