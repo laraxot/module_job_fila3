@@ -10,8 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Arr;
 use function json_decode;
 use function request;
-use Studio\Totem\Frequency;
-// use Studio\Totem\Task;
+use Modules\Job\Models\Frequency;
 
 trait HasFrequencies
 {
