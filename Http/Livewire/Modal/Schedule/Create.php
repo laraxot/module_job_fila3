@@ -2,7 +2,9 @@
 
 namespace Modules\Job\Http\Livewire\Modal\Schedule;
 
+use Illuminate\Http\Request;
 use Modules\Job\Models\Task;
+
 use Modules\Cms\Actions\GetViewAction;
 use WireElements\Pro\Components\Modal\Modal;
 use Modules\Job\Actions\GetTaskCommandsAction;
@@ -10,15 +12,39 @@ use Modules\Job\Actions\GetTaskFrequenciesAction;
 
 
 class Create extends Modal{
-    public array $form_data;
+    public array $form_data=[];
+
+
+    public function mount(Request $request){
+        $this->form_data['type']='';
+        $this->form_data['timezone']=config('app.timezone');
+        $this->form_data=array_merge($this->form_data,$request->all());
+
+    }
     public function render(){
+
         $view=app(GetViewAction::class)->execute();
+        $commands=app(GetTaskCommandsAction::class)->execute();
+        $command_opts=$commands->map(
+            function($item){
+                return [
+                    'id'=>$item->getName(),
+                    'label'=>$item->getName(),
+                ];
+            }
+        )->pluck('label','id')
+        ->all();
+        $frequencies=app(GetTaskFrequenciesAction::class)->execute();
+        $frequency_opts=collect($frequencies)->pluck('interval','interval')->all();
+
         $view_params=[
             'view'=>$view,
             'task' => new Task(),
-            'commands' => app(GetTaskCommandsAction::class)->execute(),
+            'commands' => $commands,
+            'command_opts' => $command_opts,
             'timezones' => timezone_identifiers_list(),
-            'frequencies' => app(GetTaskFrequenciesAction::class)->execute(),
+            'frequencies' => $frequencies,
+            'frequency_opts' => $frequency_opts,
         ];
         return view($view,$view_params);
     }
@@ -46,7 +72,8 @@ class Create extends Modal{
     }
 
 
-    public function store(){
-        dddx('store');
+    public function save(){
+        Task::create($this->form_data);
+        session()->flash('message', 'Task successfully created. at '.now());
     }
 }

@@ -71,10 +71,10 @@ class Task extends BaseModel
      *
      * @throws Exception
      */
-    public function getUpcomingAttribute(): string
-    {
-        return CronExpression::factory($this->getCronExpression())->getNextRunDate()->format('Y-m-d H:i:s');
-    }
+    //public function getUpcomingAttribute(): string
+    //{
+    //    return CronExpression::factory($this->getCronExpression())->getNextRunDate()->format('Y-m-d H:i:s');
+    //}
 
     /**
      * Convert a string of command arguments and options to an array.
