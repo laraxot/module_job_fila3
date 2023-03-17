@@ -21,21 +21,22 @@ class Crud extends Component {
 
     public function render(): Renderable {
         $view = app(GetViewAction::class)->execute();
+        $tasks=Task::paginate(20);
         $view_params = [
+            'tasks' => $tasks,
+            /*
             'task' => new Task(),
             'commands' => $this->getCommands(),
             'timezones' => timezone_identifiers_list(),
             'frequencies' => $this->getFrequencies(),
+            */
         ];
 
         return view($view, $view_params);
     }
 
     public function taskCreate() {
-        // $this->emit('modal.open', 'edit-user', ['user' => 1]);
-        // dddx('aaa');
-        // $this->emit('modal.open', 'modal.schedule.create');
-        $this->create = true;
+       $this->emit('modal.open', 'modal.schedule.create');
     }
 
     /**
