@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Modules\Job\Providers;
 
 use Modules\Job\Models\Task;
+use Modules\Job\Events\Executed;
+use Modules\Job\Events\Executing;
 use Illuminate\Console\Scheduling\Schedule;
 use Modules\Xot\Providers\XotBaseServiceProvider;
 
@@ -55,7 +57,31 @@ class JobServiceProvider extends XotBaseServiceProvider
              * @var Illuminate\Console\Scheduling\Event 
              */
             $event = $schedule->command($task->command, $task->compileParameters(true));
+            //dddx($task);
             //dddx($event);
+            //--- funziona solo con daily per ora
+            $event->{$task->expression}()
+                ->name($task->description)
+                ->timezone($task->timezone)
+                ->before(function () use ($task, $event) {
+                    $event->start = microtime(true);
+                    Executing::dispatch($task);
+                })
+                ->thenWithOutput(function ($output) use ($event, $task) {
+                    Executed::dispatch($task, $event->start ?? microtime(true), $output);
+                });
+            if ($task->dont_overlap) {
+                $event->withoutOverlapping();
+            }
+            if ($task->run_in_maintenance) {
+                $event->evenInMaintenanceMode();
+            }
+            if ($task->run_on_one_server && in_array(config('cache.default'), ['memcached', 'redis', 'database', 'dynamodb'])) {
+                $event->onOneServer();
+            }
+            if ($task->run_in_background) {
+                $event->runInBackground();
+            }
         });
     }
 }
