@@ -15,15 +15,22 @@ use Modules\Cms\Actions\GetViewAction;
 /**
  * Class Schedule\Status.
  */
-class Status extends Component {
+class Status extends Component
+{
     public array $form_data = [];
     public string $out = '';
     public string $old_value = '';
 
-    public function render(): Renderable {
+    public function render(): Renderable
+    {
         $view = app(GetViewAction::class)->execute();
 
         $acts = [
+
+            (object) [
+                'name' => 'job:schedule-list',
+                'label' => 'job:schedule-list',
+            ],
             (object) [
                 'name' => 'schedule:clear-cache',
                 'label' => 'Delete the cached mutex files created by scheduler',
@@ -62,14 +69,16 @@ class Status extends Component {
         return view($view, $view_params);
     }
 
-    public function artisan(string $cmd): void {
+    public function artisan(string $cmd): void
+    {
         $this->out .= '<hr/>';
         Artisan::call($cmd);
         $this->out .= Artisan::output();
         $this->out .= '<hr/>';
     }
 
-    public function getScheduledJobs(): Collection {
+    public function getScheduledJobs(): Collection
+    {
         if (app()->runningInConsole()) {
             return collect([]);
         }

@@ -71,10 +71,11 @@ class Task extends BaseModel
      *
      * @throws Exception
      */
-    //public function getUpcomingAttribute(): string
-    //{
-    //    return CronExpression::factory($this->getCronExpression())->getNextRunDate()->format('Y-m-d H:i:s');
-    //}
+    public function getUpcomingAttribute(): string
+    {
+        //return CronExpression::factory($this->getCronExpression())->getNextRunDate()->format('Y-m-d H:i:s');
+        return 'preso';
+    }
 
     /**
      * Convert a string of command arguments and options to an array.
@@ -91,10 +92,10 @@ class Task extends BaseModel
             $argument_index = 0;
 
             $duplicate_parameter_index = function (array $carry, array $param, string $trimmed_param) {
-                if (! isset($carry[$param[0]])) {
+                if (!isset($carry[$param[0]])) {
                     $carry[$param[0]] = $trimmed_param;
                 } else {
-                    if (! is_array($carry[$param[0]])) {
+                    if (!is_array($carry[$param[0]])) {
                         $carry[$param[0]] = [$carry[$param[0]]];
                     }
                     $carry[$param[0]][] = $trimmed_param;
@@ -121,7 +122,7 @@ class Task extends BaseModel
                     return $duplicate_parameter_index($carry, $param, $trimmed_param);
                 }
 
-                Str::startsWith($param[0], ['--', '-']) && ! $console ?
+                Str::startsWith($param[0], ['--', '-']) && !$console ?
                     $carry[$param[0]] = true :
                     $carry[$argument_index++] = $param[0];
 
