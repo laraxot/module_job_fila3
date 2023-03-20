@@ -9,7 +9,8 @@ use Illuminate\Contracts\Support\Renderable;
 
 use Modules\Cms\Models\Panels\XotBasePanel;
 
-class ResultPanel extends XotBasePanel {
+class ResultPanel extends XotBasePanel
+{
     /**
      * The model the resource corresponds to.
      *
@@ -29,18 +30,19 @@ class ResultPanel extends XotBasePanel {
      *
      * @var array
      */
-    public static $search = array (
-);
+    public static $search = array();
 
     /**
      * The relationships that should be eager loaded on index queries.
      *
      */
-    public function with():array {
+    public function with(): array
+    {
         return [];
     }
 
-    public function search() :array {
+    public function search(): array
+    {
 
         return [];
     }
@@ -55,10 +57,11 @@ class ResultPanel extends XotBasePanel {
      *
      * @return int|string|null
      */
-    public function optionId($row) {
+    public function optionId($row)
+    {
         $key = $row->getKey();
-        if(null===$key||(!is_string($key)&&!is_int($key))){
-            throw new \Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
+        if (null === $key || (!is_string($key) && !is_int($key))) {
+            throw new \Exception('[' . __LINE__ . '][' . class_basename(__CLASS__) . ']');
         }
         return $key;
     }
@@ -68,14 +71,16 @@ class ResultPanel extends XotBasePanel {
      *
      * @param Modules\Job\Models\Result $row
      */
-    public function optionLabel($row):string {
+    public function optionLabel($row): string
+    {
         return 'To Set';
     }
 
     /**
      * index navigation.
      */
-    public function indexNav(): ?Renderable {
+    public function indexNav(): ?Renderable
+    {
         return null;
     }
 
@@ -104,21 +109,33 @@ class ResultPanel extends XotBasePanel {
         'rules_messages' => ['it'=>['required'=>'Nome Obbligatorio']],
         'value'=>'..',
      */
-    public function fields(): array {
-        return array (
-  0 => 
-  (object) array(
-     'type' => 'Text',
-     'name' => 'duration',
-     'comment' => 'not in Doctrine',
-  ),
-  1 => 
-  (object) array(
-     'type' => 'Text',
-     'name' => 'result',
-     'comment' => 'not in Doctrine',
-  ),
-);
+    public function fields(): array
+    {
+        return array(
+
+            (object) array(
+                'type' => 'Id',
+                'name' => 'id',
+                'comment' => 'not in Doctrine',
+            ),
+            (object) array(
+                'type' => 'Text',
+                'name' => 'ran_at',
+                'comment' => 'not in Doctrine',
+            ),
+
+            (object) array(
+                'type' => 'Text',
+                'name' => 'duration',
+                'comment' => 'not in Doctrine',
+            ),
+
+            (object) array(
+                'type' => 'Text',
+                'name' => 'result',
+                'comment' => 'not in Doctrine',
+            ),
+        );
     }
 
     /**
@@ -126,7 +143,8 @@ class ResultPanel extends XotBasePanel {
      *
      * @return array
      */
-    public function tabs():array {
+    public function tabs(): array
+    {
         $tabs_name = [];
 
         return $tabs_name;
@@ -137,7 +155,8 @@ class ResultPanel extends XotBasePanel {
      *
      * @return array
      */
-    public function cards(Request $request):array {
+    public function cards(Request $request): array
+    {
         return [];
     }
 
@@ -148,7 +167,8 @@ class ResultPanel extends XotBasePanel {
      *
      * @return array
      */
-    public function filters(Request $request = null):array {
+    public function filters(Request $request = null): array
+    {
         return [];
     }
 
@@ -157,7 +177,8 @@ class ResultPanel extends XotBasePanel {
      *
      * @return array
      */
-    public function lenses(Request $request):array {
+    public function lenses(Request $request): array
+    {
         return [];
     }
 
@@ -166,7 +187,8 @@ class ResultPanel extends XotBasePanel {
      *
      * @return array
      */
-    public function actions():array {
+    public function actions(): array
+    {
         return [];
     }
 }

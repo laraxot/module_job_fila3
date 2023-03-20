@@ -4,12 +4,14 @@ declare(strict_types=1);
 
 namespace Modules\Job\Models\Panels;
 
-use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use Modules\Cms\Models\Panels\XotBasePanel;
 use Modules\Xot\Contracts\RowsContract;
+use Modules\Cms\Models\Panels\XotBasePanel;
+use Illuminate\Contracts\Support\Renderable;
 
-class TaskPanel extends XotBasePanel {
+class TaskPanel extends XotBasePanel
+{
     /**
      * The model the resource corresponds to.
      */
@@ -25,17 +27,18 @@ class TaskPanel extends XotBasePanel {
      *
      * @var array
      */
-    public static $search = [
-    ];
+    public static $search = [];
 
     /**
      * The relationships that should be eager loaded on index queries.
      */
-    public function with(): array {
+    public function with(): array
+    {
         return [];
     }
 
-    public function search(): array {
+    public function search(): array
+    {
         return [];
     }
 
@@ -49,10 +52,11 @@ class TaskPanel extends XotBasePanel {
      *
      * @return int|string|null
      */
-    public function optionId($row) {
+    public function optionId($row)
+    {
         $key = $row->getKey();
-        if (null === $key || (! is_string($key) && ! is_int($key))) {
-            throw new \Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
+        if (null === $key || (!is_string($key) && !is_int($key))) {
+            throw new \Exception('[' . __LINE__ . '][' . class_basename(__CLASS__) . ']');
         }
 
         return $key;
@@ -63,14 +67,16 @@ class TaskPanel extends XotBasePanel {
      *
      * @param Modules\Job\Models\Task $row
      */
-    public function optionLabel($row): string {
-        return 'To Set';
+    public function optionLabel($row): string
+    {
+        return Str::slug($row->command, '-');
     }
 
     /**
      * index navigation.
      */
-    public function indexNav(): ?Renderable {
+    public function indexNav(): ?Renderable
+    {
         return null;
     }
 
@@ -81,105 +87,174 @@ class TaskPanel extends XotBasePanel {
      *
      * @return RowsContract
      */
-    public function indexQuery(array $data, $query) {
+    public function indexQuery(array $data, $query)
+    {
         // return $query->where('user_id', $request->user()->id);
         return $query;
+    }
+
+    public function notificationFields(): array
+    {
+        return [
+            (object) [
+                'type' => 'Text',
+                'name' => 'notification_email_address',
+                'comment' => 'not in Doctrine',
+                'col_size' => 4
+            ],
+            (object) [
+                'type' => 'Text',
+                'name' => 'notification_phone_number',
+                'comment' => 'not in Doctrine',
+                'col_size' => 4
+            ],
+            (object) [
+                'type' => 'Text',
+                'name' => 'notification_slack_webhook',
+                'comment' => 'not in Doctrine',
+                'col_size' => 4
+            ],
+        ];
+    }
+
+    public function autoCleanupFields(): array
+    {
+        return [
+            (object) [
+                'type' => 'Text',
+                'name' => 'auto_cleanup_type',
+                'comment' => 'not in Doctrine',
+                'col_size' => 3
+            ],
+            (object) [
+                'type' => 'Text',
+                'name' => 'auto_cleanup_num',
+                'comment' => 'not in Doctrine',
+                'col_size' => 3
+            ],
+
+        ];
+    }
+
+    public function commandFields(): array
+    {
+        return [
+            (object) [
+                'type' => 'Text',
+                'name' => 'command',
+                'comment' => 'not in Doctrine',
+                'col_size' => 3
+            ],
+            (object) [
+                'type' => 'Text',
+                'name' => 'parameters',
+                'comment' => 'not in Doctrine',
+                'col_size' => 4
+            ],
+            (object) [
+                'type' => 'Text',
+                'name' => 'expression',
+                'comment' => 'not in Doctrine',
+                'col_size' => 3
+            ],
+            (object) [
+                'type' => 'Text',
+                'name' => 'timezone',
+                'comment' => 'not in Doctrine',
+                'col_size' => 3
+            ],
+            (object) [
+                'type' => 'Text',
+                'name' => 'is_active',
+                'comment' => 'not in Doctrine',
+                'col_size' => 2
+            ],
+
+        ];
+    }
+
+    public function runFields(): array
+    {
+        return [
+            (object) [
+                'type' => 'Integer',
+                'name' => 'dont_overlap',
+                'comment' => 'not in Doctrine',
+                'col_size' => 2
+            ],
+            (object) [
+                'type' => 'Integer',
+                'name' => 'run_in_maintenance',
+                'comment' => 'not in Doctrine',
+                'col_size' => 2
+            ],
+            (object) [
+                'type' => 'Integer',
+                'name' => 'run_on_one_server',
+                'comment' => 'not in Doctrine',
+                'col_size' => 2
+            ],
+            (object) [
+                'type' => 'Integer',
+                'name' => 'run_in_background',
+                'comment' => 'not in Doctrine',
+                'col_size' => 2
+            ],
+        ];
     }
 
     /**
      * Get the fields displayed by the resource.
         'value'=>'..',
      */
-    public function fields(): array {
+    public function fields(): array
+    {
         return [
-            // (object) [
-            //     'type' => 'Text',
-            //     'name' => 'id',
-            //     'comment' => 'not in Doctrine',
-            // ],
+            (object) [
+                'type' => 'Id',
+                'name' => 'id',
+                'comment' => 'not in Doctrine',
+            ],
             (object) [
                 'type' => 'Text',
                 'name' => 'description',
                 'comment' => 'not in Doctrine',
             ],
-            (object) [
-                'type' => 'Text',
-                'name' => 'command',
-                'comment' => 'not in Doctrine',
+
+
+            (object)[
+                'type' => 'Cell',
+                'name' => 'Command',
+                'fields' => $this->commandFields(),
             ],
-            (object) [
-                'type' => 'Text',
-                'name' => 'parameters',
-                'comment' => 'not in Doctrine',
+
+            (object)[
+                'type' => 'Cell',
+                'name' => 'Notification',
+                'fields' => $this->notificationFields(),
             ],
-            (object) [
-                'type' => 'Text',
-                'name' => 'expression',
-                'comment' => 'not in Doctrine',
+            (object)[
+                'type' => 'Cell',
+                'name' => 'Auto Cleanup',
+                'fields' => $this->autoCleanupFields(),
             ],
-            (object) [
-                'type' => 'Text',
-                'name' => 'timezone',
-                'comment' => 'not in Doctrine',
+
+            (object)[
+                'type' => 'Cell',
+                'name' => 'run ',
+                'fields' => $this->runFields(),
             ],
-            (object) [
-                'type' => 'Text',
-                'name' => 'is_active',
-                'comment' => 'not in Doctrine',
-            ],
-            (object) [
-                'type' => 'Text',
-                'name' => 'dont_overlap',
-                'comment' => 'not in Doctrine',
-            ],
-            (object) [
-                'type' => 'Text',
-                'name' => 'run_in_maintenance',
-                'comment' => 'not in Doctrine',
-            ],
-            (object) [
-                'type' => 'Text',
-                'name' => 'notification_email_address',
-                'comment' => 'not in Doctrine',
-            ],
-            (object) [
-                'type' => 'Text',
-                'name' => 'notification_phone_number',
-                'comment' => 'not in Doctrine',
-            ],
-            (object) [
-                'type' => 'Text',
-                'name' => 'notification_slack_webhook',
-                'comment' => 'not in Doctrine',
-            ],
-            (object) [
-                'type' => 'Text',
-                'name' => 'auto_cleanup_type',
-                'comment' => 'not in Doctrine',
-            ],
-            (object) [
-                'type' => 'Text',
-                'name' => 'auto_cleanup_num',
-                'comment' => 'not in Doctrine',
-            ],
-            (object) [
-                'type' => 'Text',
-                'name' => 'run_on_one_server',
-                'comment' => 'not in Doctrine',
-            ],
-            (object) [
-                'type' => 'Text',
-                'name' => 'run_in_background',
-                'comment' => 'not in Doctrine',
-            ],
+
+
         ];
     }
 
     /**
      * Get the tabs available.
      */
-    public function tabs(): array {
-        $tabs_name = [];
+    public function tabs(): array
+    {
+        $tabs_name = ['results', 'frequencies'];
 
         return $tabs_name;
     }
@@ -187,7 +262,8 @@ class TaskPanel extends XotBasePanel {
     /**
      * Get the cards available for the request.
      */
-    public function cards(Request $request): array {
+    public function cards(Request $request): array
+    {
         return [];
     }
 
@@ -196,21 +272,26 @@ class TaskPanel extends XotBasePanel {
      *
      * @param \Illuminate\Http\Request $request
      */
-    public function filters(Request $request = null): array {
+    public function filters(Request $request = null): array
+    {
         return [];
     }
 
     /**
      * Get the lenses available for the resource.
      */
-    public function lenses(Request $request): array {
+    public function lenses(Request $request): array
+    {
         return [];
     }
 
     /**
      * Get the actions available for the resource.
      */
-    public function actions(): array {
-        return [];
+    public function actions(): array
+    {
+        return [
+            new Actions\ExecuteTaskPanelAction(),
+        ];
     }
 }

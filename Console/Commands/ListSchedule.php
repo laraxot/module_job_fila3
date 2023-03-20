@@ -15,7 +15,7 @@ class ListSchedule extends Command
      *
      * @var string
      */
-    protected $signature = 'schedule:list';
+    protected $signature = 'job:schedule-list';
 
     /**
      * The console command description.
