@@ -43,11 +43,4 @@ class _ModulePanelPolicy extends XotBasePanelPolicy {
     public function scheduleStatus(UserContract $user, PanelContract $panel): bool {
         return true;
     }
-
-    /**
-     * Undocumented function.
-     */
-    public function task(UserContract $user, PanelContract $panel): bool {
-        return true;
-    }
 }
