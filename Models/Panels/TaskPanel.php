@@ -161,7 +161,7 @@ class TaskPanel extends XotBasePanel
                 'type' => 'Text',
                 'name' => 'timezone',
                 'comment' => 'not in Doctrine',
-                'col_size' => 3
+                'col_size' => 3,
             ],
             (object) [
                 'type' => 'Text',

@@ -44,4 +44,10 @@ class _ModulePanelPolicy extends XotBasePanelPolicy {
         return true;
     }
 
+    /**
+     * Undocumented function.
+     */
+    public function task(UserContract $user, PanelContract $panel): bool {
+        return true;
+    }
 }
