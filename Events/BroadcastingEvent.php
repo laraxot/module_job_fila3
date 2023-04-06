@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Job\Events;
 
 use Illuminate\Broadcasting\InteractsWithSockets;
@@ -12,21 +14,19 @@ class BroadcastingEvent extends TaskEvent implements ShouldBroadcast
 
     /**
      * Get the channels the event should broadcast on.
-     *
-     * @return PrivateChannel
      */
     public function broadcastOn(): PrivateChannel
     {
-        return new PrivateChannel(config('totem.broadcasting.channel'));
+        // return new PrivateChannel(config('totem.broadcasting.channel'));
+        return 'task.events';
     }
 
     /**
      * Toggles event broadcasting on/off based on config value.
-     *
-     * @return bool
      */
     public function broadcastWhen(): bool
     {
-        return config('totem.broadcasting.enabled');
+        // return config('totem.broadcasting.enabled');
+        return true;
     }
 }
