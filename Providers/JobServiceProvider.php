@@ -37,6 +37,7 @@ class JobServiceProvider extends XotBaseServiceProvider {
             [
                 \Modules\Job\Console\Commands\WorkerCheck::class,
                 \Modules\Job\Console\Commands\ListSchedule::class,
+                \Modules\Job\Console\Commands\TestCommand::class,
             ]
         );
     }
