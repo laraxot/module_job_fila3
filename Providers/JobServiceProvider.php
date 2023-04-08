@@ -28,7 +28,11 @@ class JobServiceProvider extends XotBaseServiceProvider {
         */
         $this->app->booted(function () {
             $schedule = $this->app->make(Schedule::class);
-            $this->registerSchedule($schedule);
+            try {
+                $this->registerSchedule($schedule);
+            }catch(\Illuminate\Database\QueryException $e){
+                echo $e->getMessage();
+            };
         });
     }
 
