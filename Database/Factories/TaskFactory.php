@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Job\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -12,9 +14,9 @@ class TaskFactory extends Factory
     public function definition()
     {
         return [
-            'description'  => $this->faker->sentence,
-            'command'      => 'Studio\Totem\Console\Commands\ListSchedule',
-            'expression'   => '* * * * *',
+            'description' => $this->faker->sentence,
+            'command' => 'Modules\Job\Console\Commands\ListSchedule',
+            'expression' => '* * * * *',
         ];
     }
 }
