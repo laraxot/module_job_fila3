@@ -11,21 +11,21 @@ use Illuminate\Notifications\Messages\NexmoMessage;
 use Illuminate\Notifications\Messages\SlackAttachment;
 use Illuminate\Notifications\Messages\SlackMessage;
 use Illuminate\Notifications\Notification;
+use Modules\Job\Models\Task;
 
-class TaskCompleted extends Notification implements ShouldQueue {
+class TaskCompleted extends Notification implements ShouldQueue
+{
     use Queueable;
 
-    /**
-     * @var mixed
-     */
-    private $output;
+    private string $output;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($output) {
+    public function __construct(string $output)
+    {
         $this->output = $output;
     }
 
@@ -35,7 +35,8 @@ class TaskCompleted extends Notification implements ShouldQueue {
      * @param Task $notifiable
      */
     // public function via(mixed $notifiable): array {
-    public function via($notifiable): array {
+    public function via($notifiable): array
+    {
         $channels = [];
         if ($notifiable->notification_email_address) {
             $channels[] = 'mail';
@@ -53,7 +54,8 @@ class TaskCompleted extends Notification implements ShouldQueue {
     /**
      * Get the mail representation of the notification.
      */
-    public function toMail(mixed $notifiable): MailMessage {
+    public function toMail(Task $notifiable): MailMessage
+    {
         return (new MailMessage())
             ->subject($notifiable->description)
             ->greeting('Hi,')
@@ -61,18 +63,21 @@ class TaskCompleted extends Notification implements ShouldQueue {
             ->line($this->output);
     }
 
-    /**
+    /*
      * Get the Nexmo / SMS representation of the notification.
-     */
-    public function toNexmo(mixed $notifiable): NexmoMessage {
+
+    public function toNexmo(mixed $notifiable): NexmoMessage
+    {
         return (new NexmoMessage())
             ->content($notifiable->description.' just finished running.');
     }
+    */
 
-    /**
+    /*
      * Get the Slack representation of the notification.
-     */
-    public function toSlack(mixed $notifiable): SlackMessage {
+
+    public function toSlack(mixed $notifiable): SlackMessage
+    {
         return (new SlackMessage())
             ->content(config('app.name'))
             ->attachment(function (SlackAttachment $attachment) use ($notifiable) {
@@ -81,4 +86,5 @@ class TaskCompleted extends Notification implements ShouldQueue {
                     ->content($notifiable->description.' just finished running.');
             });
     }
+    */
 }

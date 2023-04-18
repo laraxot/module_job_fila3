@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Job\Console\Commands;
 
 use Carbon\Carbon;
@@ -32,7 +34,6 @@ class ListSchedule extends Command
     /**
      * Create a new command instance.
      *
-     * @param  Schedule  $schedule
      * @return void
      */
     public function __construct(Schedule $schedule)
@@ -51,16 +52,18 @@ class ListSchedule extends Command
     {
         if (count($this->schedule->events()) > 0) {
             $events = collect($this->schedule->events())->map(function ($event) {
+                $command = ltrim(strtok(Str::after(strval($event->command), "'artisan'"), ' '));
+
                 return [
-                    'description'   => $event->description ?: 'N/A',
-                    'command'       => ltrim(strtok(Str::after($event->command, "'artisan'"), ' ')),
-                    'schedule'      => $event->expression,
-                    'upcoming'      => $this->upcoming($event),
-                    'timezone'      => $event->timezone ?: config('app.timezone'),
-                    'overlaps'      => $event->withoutOverlapping ? 'No' : 'Yes',
-                    'maintenance'   => $event->evenInMaintenanceMode ? 'Yes' : 'No',
-                    'one_server'   => $event->onOneServer ? 'Yes' : 'No',
-                    'in_background'   => $event->runInBackground ? 'Yes' : 'No',
+                    'description' => $event->description ?: 'N/A',
+                    'command' => $command,
+                    'schedule' => $event->expression,
+                    'upcoming' => $this->upcoming($event),
+                    'timezone' => $event->timezone ?: config('app.timezone'),
+                    'overlaps' => $event->withoutOverlapping ? 'No' : 'Yes',
+                    'maintenance' => $event->evenInMaintenanceMode ? 'Yes' : 'No',
+                    'one_server' => $event->onOneServer ? 'Yes' : 'No',
+                    'in_background' => $event->runInBackground ? 'Yes' : 'No',
                 ];
             });
 
@@ -86,6 +89,6 @@ class ListSchedule extends Command
             $date->setTimezone($event->timezone);
         }
 
-        return (CronExpression::factory($event->expression)->getNextRunDate($date->toDateTimeString()))->format('Y-m-d H:i:s');
+        return CronExpression::factory($event->expression)->getNextRunDate($date->toDateTimeString())->format('Y-m-d H:i:s');
     }
 }

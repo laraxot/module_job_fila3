@@ -1,17 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Job\Models\Traits;
 
 use Illuminate\Database\Eloquent\Builder;
 
 trait FrontendSortable
 {
-    /**
-     * @param  Builder  $builder
-     * @param  array  $sortableColumns
-     * @param  array  $defaultSort
-     * @return Builder
-     */
     public function scopeSortableBy(Builder $builder, array $sortableColumns, array $defaultSort = ['name' => 'asc']): Builder
     {
         $request = request();
@@ -19,8 +15,8 @@ trait FrontendSortable
 
         return $builder->when($sorted, function (Builder $query) use ($request) {
             $query->orderBy(
-                $request->input('sort_by'),
-                (($request->input('sort_direction', 'asc') == 'desc') ? 'desc' : 'asc')
+                strval($request->input('sort_by')),
+                ('desc' == strval($request->input('sort_direction', 'asc'))) ? 'desc' : 'asc'
             );
         }, function (Builder $query) use ($defaultSort) {
             foreach ($defaultSort as $key => $direction) {
