@@ -11,18 +11,19 @@ use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\DB;
 
 /**
- * Modules\Job\Models\Result
+ * Modules\Job\Models\Result.
  *
- * @property int $id
- * @property int $task_id
- * @property \Illuminate\Support\Carbon $ran_at
- * @property string $duration
- * @property string $result
- * @property string|null $created_by
- * @property string|null $updated_by
+ * @property int                             $id
+ * @property int                             $task_id
+ * @property \Illuminate\Support\Carbon      $ran_at
+ * @property string                          $duration
+ * @property string                          $result
+ * @property string|null                     $created_by
+ * @property string|null                     $updated_by
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Modules\Job\Models\Task|null $task
+ * @property \Modules\Job\Models\Task|null   $task
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|Result newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Result newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Result query()
@@ -35,9 +36,11 @@ use Illuminate\Support\Facades\DB;
  * @method static \Illuminate\Database\Eloquent\Builder|Result whereTaskId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Result whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Result whereUpdatedBy($value)
+ *
  * @mixin \Eloquent
  */
-class Result extends BaseModel {
+class Result extends BaseModel
+{
     use HasFactory;
 
     // protected $table = 'task_results';
@@ -51,21 +54,26 @@ class Result extends BaseModel {
         'ran_at' => 'datetime',
     ];
 
-    public function task(): BelongsTo {
+    public function task(): BelongsTo
+    {
         return $this->belongsTo(Task::class);
     }
 
-    public function getLastRun(): Builder {
+    public function getLastRun(): Builder
+    {
         return $this->select('ran_at')
-            ->whereColumn('task_id', TOTEM_TABLE_PREFIX.'tasks.id')
+            // ->whereColumn('task_id', TOTEM_TABLE_PREFIX.'tasks.id')
+            ->whereColumn('task_id', 'tasks.id')
             ->latest()
             ->limit(1)
             ->getQuery();
     }
 
-    public function getAverageRunTime(): Builder {
+    public function getAverageRunTime(): Builder
+    {
         return $this->select(DB::raw('avg(duration)'))
-            ->whereColumn('task_id', TOTEM_TABLE_PREFIX.'tasks.id')
+            // ->whereColumn('task_id', TOTEM_TABLE_PREFIX.'tasks.id')
+            ->whereColumn('task_id', 'tasks.id')
             ->getQuery();
     }
 

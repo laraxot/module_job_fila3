@@ -17,37 +17,38 @@ use Modules\Job\Models\Traits\HasFrequencies;
 /**
  * Undocumented class.
  *
- * @property string $name
- * @property string $command
- * @property string $expression
- * @property string $description
- * @property string $timezone
- * @property bool   $dont_overlap
- * @property bool   $run_in_maintenance
- * @property bool   $run_on_one_server
- * @property bool   $run_in_background
- * @property array  $parameters
- * @property int $id
- * @property int $is_active
- * @property string|null $notification_email_address
- * @property string|null $notification_phone_number
- * @property string $notification_slack_webhook
- * @property int $auto_cleanup_num
- * @property string|null $auto_cleanup_type
- * @property string|null $created_by
- * @property string|null $updated_by
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\Job\Models\Frequency> $frequencies
- * @property-read int|null $frequencies_count
- * @property-read bool $activated
- * @property-read float $average_runtime
- * @property-read \Modules\Job\Models\Result|null $last_result
- * @property-read string $upcoming
- * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
- * @property-read int|null $notifications_count
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\Job\Models\Result> $results
- * @property-read int|null $results_count
+ * @property string                                                                                                        $name
+ * @property string                                                                                                        $command
+ * @property string                                                                                                        $expression
+ * @property string                                                                                                        $description
+ * @property string                                                                                                        $timezone
+ * @property bool                                                                                                          $dont_overlap
+ * @property bool                                                                                                          $run_in_maintenance
+ * @property bool                                                                                                          $run_on_one_server
+ * @property bool                                                                                                          $run_in_background
+ * @property string                                                                                                        $parameters
+ * @property int                                                                                                           $id
+ * @property int                                                                                                           $is_active
+ * @property string|null                                                                                                   $notification_email_address
+ * @property string|null                                                                                                   $notification_phone_number
+ * @property string                                                                                                        $notification_slack_webhook
+ * @property int                                                                                                           $auto_cleanup_num
+ * @property string|null                                                                                                   $auto_cleanup_type
+ * @property string|null                                                                                                   $created_by
+ * @property string|null                                                                                                   $updated_by
+ * @property \Illuminate\Support\Carbon|null                                                                               $created_at
+ * @property \Illuminate\Support\Carbon|null                                                                               $updated_at
+ * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\Job\Models\Frequency>                                  $frequencies
+ * @property int|null                                                                                                      $frequencies_count
+ * @property bool                                                                                                          $activated
+ * @property float                                                                                                         $average_runtime
+ * @property \Modules\Job\Models\Result|null                                                                               $last_result
+ * @property string                                                                                                        $upcoming
+ * @property \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
+ * @property int|null                                                                                                      $notifications_count
+ * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\Job\Models\Result>                                     $results
+ * @property int|null                                                                                                      $results_count
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|Task newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Task newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Task query()
@@ -72,21 +73,24 @@ use Modules\Job\Models\Traits\HasFrequencies;
  * @method static \Illuminate\Database\Eloquent\Builder|Task whereTimezone($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Task whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Task whereUpdatedBy($value)
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\Job\Models\Frequency> $frequencies
- * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\Job\Models\Result> $results
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\Job\Models\Frequency> $frequencies
- * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\Job\Models\Result> $results
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\Job\Models\Frequency> $frequencies
- * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\Job\Models\Result> $results
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\Job\Models\Frequency> $frequencies
- * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\Job\Models\Result> $results
+ *
+ * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\Job\Models\Frequency>                                  $frequencies
+ * @property \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
+ * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\Job\Models\Result>                                     $results
+ * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\Job\Models\Frequency>                                  $frequencies
+ * @property \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
+ * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\Job\Models\Result>                                     $results
+ * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\Job\Models\Frequency>                                  $frequencies
+ * @property \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
+ * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\Job\Models\Result>                                     $results
+ * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\Job\Models\Frequency>                                  $frequencies
+ * @property \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
+ * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\Job\Models\Result>                                     $results
+ *
  * @mixin \Eloquent
  */
-class Task extends BaseModel {
+class Task extends BaseModel
+{
     use Notifiable;
     use HasFrequencies;
     use FrontendSortable;
@@ -95,7 +99,7 @@ class Task extends BaseModel {
     /**
      * The attributes that are mass assignable.
      *
-     * @var array<string, string>
+     * @var array<string>
      */
     protected $fillable = [
         'id',
@@ -131,8 +135,9 @@ class Task extends BaseModel {
     /**
      * Activated Accessor.
      */
-    public function getActivatedAttribute(): bool {
-        return $this->is_active ?? true;
+    public function getActivatedAttribute(): bool
+    {
+        return (bool) $this->is_active;
     }
 
     /**
@@ -140,7 +145,8 @@ class Task extends BaseModel {
      *
      * @throws \Exception
      */
-    public function getUpcomingAttribute(): string {
+    public function getUpcomingAttribute(): string
+    {
         // return CronExpression::factory($this->getCronExpression())->getNextRunDate()->format('Y-m-d H:i:s');
         return 'preso';
     }
@@ -150,8 +156,9 @@ class Task extends BaseModel {
      *
      * @param bool $console if true will convert arguments to non associative array
      */
-    public function compileParameters(bool $console = false): array {
-        if ($this->parameters) {
+    public function compileParameters(bool $console = false): array
+    {
+        if ($this->parameters && is_string($this->parameters)) {
             $regex = '/(?=\S)[^\'"\s]*(?:\'[^\']*\'[^\'"\s]*|"[^"]*"[^\'"\s]*)*/';
             preg_match_all($regex, $this->parameters, $matches, PREG_SET_ORDER, 0);
 
@@ -202,46 +209,53 @@ class Task extends BaseModel {
     /**
      * Results Relation.
      */
-    public function results(): HasMany {
+    public function results(): HasMany
+    {
         return $this->hasMany(Result::class, 'task_id', 'id');
     }
 
     /**
      * Returns the most recent result entry for this task.
      */
-    public function getLastResultAttribute(): Result|null {
+    public function getLastResultAttribute(): Result|null
+    {
         return $this->results()->orderBy('id', 'desc')->first();
     }
 
-    public function getAverageRuntimeAttribute(): float {
+    public function getAverageRuntimeAttribute(): float
+    {
         return (float) $this->results()->avg('duration');
     }
 
     /**
      * Route notifications for the mail channel.
      */
-    public function routeNotificationForMail(): string {
+    public function routeNotificationForMail(): string
+    {
         return $this->notification_email_address;
     }
 
     /**
      * Route notifications for the Nexmo channel.
      */
-    public function routeNotificationForNexmo(): string {
+    public function routeNotificationForNexmo(): string
+    {
         return $this->notification_phone_number;
     }
 
     /**
      * Route notifications for the Slack channel.
      */
-    public function routeNotificationForSlack(): string {
+    public function routeNotificationForSlack(): string
+    {
         return $this->notification_slack_webhook;
     }
 
     /**
      * Attempt to perform clean on task results.
      */
-    public function autoCleanup() {
+    public function autoCleanup()
+    {
         if ($this->auto_cleanup_num > 0) {
             if ('results' === $this->auto_cleanup_type) {
                 $oldest_id = $this->results()

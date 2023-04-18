@@ -29,6 +29,8 @@ trait HasParameters
 
     /**
      * @throws FileNotFoundException
+     *
+     * @return void
      */
     public function afterSave()
     {
