@@ -27,6 +27,64 @@ use Modules\Job\Models\Traits\HasFrequencies;
  * @property bool   $run_on_one_server
  * @property bool   $run_in_background
  * @property array  $parameters
+ * @property int $id
+ * @property int $is_active
+ * @property string|null $notification_email_address
+ * @property string|null $notification_phone_number
+ * @property string $notification_slack_webhook
+ * @property int $auto_cleanup_num
+ * @property string|null $auto_cleanup_type
+ * @property string|null $created_by
+ * @property string|null $updated_by
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\Job\Models\Frequency> $frequencies
+ * @property-read int|null $frequencies_count
+ * @property-read bool $activated
+ * @property-read float $average_runtime
+ * @property-read \Modules\Job\Models\Result|null $last_result
+ * @property-read string $upcoming
+ * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
+ * @property-read int|null $notifications_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\Job\Models\Result> $results
+ * @property-read int|null $results_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Task newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Task newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Task query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Task sortableBy(array $sortableColumns, array $defaultSort = [])
+ * @method static \Illuminate\Database\Eloquent\Builder|Task whereAutoCleanupNum($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Task whereAutoCleanupType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Task whereCommand($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Task whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Task whereCreatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Task whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Task whereDontOverlap($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Task whereExpression($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Task whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Task whereIsActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Task whereNotificationEmailAddress($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Task whereNotificationPhoneNumber($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Task whereNotificationSlackWebhook($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Task whereParameters($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Task whereRunInBackground($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Task whereRunInMaintenance($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Task whereRunOnOneServer($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Task whereTimezone($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Task whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Task whereUpdatedBy($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\Job\Models\Frequency> $frequencies
+ * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\Job\Models\Result> $results
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\Job\Models\Frequency> $frequencies
+ * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\Job\Models\Result> $results
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\Job\Models\Frequency> $frequencies
+ * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\Job\Models\Result> $results
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\Job\Models\Frequency> $frequencies
+ * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\Job\Models\Result> $results
+ * @mixin \Eloquent
  */
 class Task extends BaseModel {
     use Notifiable;
