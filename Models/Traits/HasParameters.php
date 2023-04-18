@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Job\Models\Traits;
 
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
@@ -7,13 +9,13 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Arr;
 use Studio\Totem\Parameter;
 
-trait HasParameters
-{
+trait HasParameters {
     /**
      * Boot HasParameters Trait.
+     *
+     * @return void
      */
-    public static function bootHasParameters()
-    {
+    public static function bootHasParameters() {
         static::saved(function ($model) {
             $model->afterSave();
         });
@@ -26,8 +28,7 @@ trait HasParameters
     /**
      * @throws FileNotFoundException
      */
-    public function afterSave()
-    {
+    public function afterSave() {
         $data = $this->processData();
 
         $frequency = collect($data['frequencies'])->filter(function ($frequency) {
@@ -41,16 +42,11 @@ trait HasParameters
         }
     }
 
-    public function beforeDelete()
-    {
+    public function beforeDelete() {
         $this->parameters()->delete();
     }
 
-    /**
-     * @return HasMany
-     */
-    public function parameters(): HasMany
-    {
+    public function parameters(): HasMany {
         return $this->hasMany(Parameter::class);
     }
 
@@ -60,8 +56,7 @@ trait HasParameters
      *
      * @throws FileNotFoundException
      */
-    private function processData(): array
-    {
+    private function processData(): array {
         $data = request()->all();
 
         if (! request()->hasFile('tasks')) {

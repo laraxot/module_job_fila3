@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Job\Notifications;
 
 use Illuminate\Bus\Queueable;
@@ -10,31 +12,30 @@ use Illuminate\Notifications\Messages\SlackAttachment;
 use Illuminate\Notifications\Messages\SlackMessage;
 use Illuminate\Notifications\Notification;
 
-class TaskCompleted extends Notification implements ShouldQueue
-{
+class TaskCompleted extends Notification implements ShouldQueue {
     use Queueable;
 
     /**
-     * @var
+     * @var mixed
      */
     private $output;
 
     /**
      * Create a new notification instance.
+     *
+     * @return void
      */
-    public function __construct($output)
-    {
+    public function __construct($output) {
         $this->output = $output;
     }
 
     /**
      * Get the notification's delivery channels.
      *
-     * @param  mixed  $notifiable
-     * @return array
+     * @param Task $notifiable
      */
-    public function via(mixed $notifiable): array
-    {
+    // public function via(mixed $notifiable): array {
+    public function via($notifiable): array {
         $channels = [];
         if ($notifiable->notification_email_address) {
             $channels[] = 'mail';
@@ -51,13 +52,9 @@ class TaskCompleted extends Notification implements ShouldQueue
 
     /**
      * Get the mail representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return MailMessage
      */
-    public function toMail(mixed $notifiable): MailMessage
-    {
-        return (new MailMessage)
+    public function toMail(mixed $notifiable): MailMessage {
+        return (new MailMessage())
             ->subject($notifiable->description)
             ->greeting('Hi,')
             ->line("{$notifiable->description} just finished running.")
@@ -66,30 +63,22 @@ class TaskCompleted extends Notification implements ShouldQueue
 
     /**
      * Get the Nexmo / SMS representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return NexmoMessage
      */
-    public function toNexmo(mixed $notifiable): NexmoMessage
-    {
-        return (new NexmoMessage)
-            ->content($notifiable->description . ' just finished running.');
+    public function toNexmo(mixed $notifiable): NexmoMessage {
+        return (new NexmoMessage())
+            ->content($notifiable->description.' just finished running.');
     }
 
     /**
      * Get the Slack representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return SlackMessage
      */
-    public function toSlack(mixed $notifiable): SlackMessage
-    {
-        return (new SlackMessage)
+    public function toSlack(mixed $notifiable): SlackMessage {
+        return (new SlackMessage())
             ->content(config('app.name'))
             ->attachment(function (SlackAttachment $attachment) use ($notifiable) {
                 $attachment
                     ->title('Totem Task')
-                    ->content($notifiable->description . ' just finished running.');
+                    ->content($notifiable->description.' just finished running.');
             });
     }
 }
