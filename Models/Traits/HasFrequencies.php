@@ -1,40 +1,35 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Job\Models\Traits;
 
-use Closure;
 use Illuminate\Console\Scheduling\ManagesFrequencies;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Arr;
-use function json_decode;
-use function request;
 use Modules\Job\Models\Frequency;
 
-trait HasFrequencies
-{
+trait HasFrequencies {
     use ManagesFrequencies;
 
     /**
      * The array of filter callbacks.
-     *
-     * @var array
      */
     protected array $filters = [];
 
     /**
      * The array of reject callbacks.
-     *
-     * @var array
      */
     protected array $rejects = [];
 
     /**
      * Boot HasFrequencies Trait.
+     *
+     * @return void
      */
-    public static function bootHasFrequencies()
-    {
+    public static function bootHasFrequencies() {
         static::saved(function ($model) {
             $model->afterSave();
         });
@@ -49,12 +44,11 @@ trait HasFrequencies
      * update or create the frequencies included in input else delete the frequency. If the type is not frequency and
      * the task in question has frequencies saved in databased, delete them all.
      */
-    public function afterSave()
-    {
+    public function afterSave() {
         $input = $this->processData();
 
         if (isset($input['type'])) {
-            if ($input['type'] == 'frequency') {
+            if ('frequency' == $input['type']) {
                 foreach ($this->frequencies as $frequency) {
                     if (! in_array($frequency->interval, collect($input['frequencies'])->pluck('interval')->toArray())) {
                         $frequency->delete();
@@ -75,8 +69,7 @@ trait HasFrequencies
     /**
      * Task Deleted.
      */
-    public function beforeDelete()
-    {
+    public function beforeDelete() {
         $this->frequencies->each(function ($frequency) {
             $frequency->delete();
         });
@@ -86,21 +79,15 @@ trait HasFrequencies
 
     /**
      * Frequencies Relation.
-     *
-     * @return HasMany
      */
-    public function frequencies(): HasMany
-    {
+    public function frequencies(): HasMany {
         return $this->hasMany(Frequency::class, 'task_id', 'id')->with('parameters');
     }
 
     /**
      * Generate a cron expression from frequencies.
-     *
-     * @return string
      */
-    public function getCronExpression(): string
-    {
+    public function getCronExpression(): string {
         if (! $this->expression) {
             $this->expression = '* * * * *';
 
@@ -120,12 +107,8 @@ trait HasFrequencies
 
     /**
      * Determine if the filters pass for the event.
-     *
-     * @param  Application  $app
-     * @return bool
      */
-    public function filtersPass(Application $app): bool
-    {
+    public function filtersPass(Application $app): bool {
         foreach ($this->filters as $callback) {
             if (! $app->call($callback)) {
                 return false;
@@ -144,11 +127,9 @@ trait HasFrequencies
     /**
      * Register a callback to further filter the schedule.
      *
-     * @param  Closure  $callback
      * @return $this
      */
-    public function when(Closure $callback): static
-    {
+    public function when(\Closure $callback): static {
         $this->filters[] = $callback;
 
         return $this;
@@ -157,12 +138,12 @@ trait HasFrequencies
     /**
      * Schedule the event to run between start and end time.
      *
-     * @param  string  $startTime
-     * @param  string  $endTime
+     * @param string $startTime
+     * @param string $endTime
+     *
      * @return $this
      */
-    public function between($startTime, $endTime): static
-    {
+    public function between($startTime, $endTime): static {
         return $this->when($this->inTimeInterval($startTime, $endTime));
     }
 
@@ -172,15 +153,14 @@ trait HasFrequencies
      *
      * @throws FileNotFoundException
      */
-    private function processData(): array
-    {
-        $data = request()->all();
+    private function processData(): array {
+        $data = \request()->all();
 
-        if (! request()->hasFile('tasks')) {
+        if (! \request()->hasFile('tasks')) {
             return $data;
         }
 
-        $task = collect(json_decode(request()->file('tasks')->get()))
+        $task = collect(\json_decode(\request()->file('tasks')->get()))
             ->filter(function ($task) {
                 return $task->id === $this->id;
             })
