@@ -224,7 +224,7 @@ class Task extends BaseModel
 
     public function getAverageRuntimeAttribute(): float
     {
-        return (float) $this->results()->avg('duration');
+        return floatval($this->results()->avg('duration'));
     }
 
     /**
