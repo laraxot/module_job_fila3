@@ -12,7 +12,7 @@ class Executed extends BroadcastingEvent
     /**
      * Executed constructor.
      *
-     * @param string|float|int $started
+     * @param float $started
      *
      * @return void
      */
