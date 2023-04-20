@@ -11,7 +11,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Arr;
 use Modules\Job\Models\Frequency;
 
-trait HasFrequencies {
+trait HasFrequencies
+{
     use ManagesFrequencies;
 
     /**
@@ -29,7 +30,8 @@ trait HasFrequencies {
      *
      * @return void
      */
-    public static function bootHasFrequencies() {
+    public static function bootHasFrequencies()
+    {
         static::saved(function ($model) {
             $model->afterSave();
         });
@@ -44,7 +46,8 @@ trait HasFrequencies {
      * update or create the frequencies included in input else delete the frequency. If the type is not frequency and
      * the task in question has frequencies saved in databased, delete them all.
      */
-    public function afterSave() {
+    public function afterSave(): void
+    {
         $input = $this->processData();
 
         if (isset($input['type'])) {
@@ -69,7 +72,8 @@ trait HasFrequencies {
     /**
      * Task Deleted.
      */
-    public function beforeDelete() {
+    public function beforeDelete(): void
+    {
         $this->frequencies->each(function ($frequency) {
             $frequency->delete();
         });
@@ -80,14 +84,16 @@ trait HasFrequencies {
     /**
      * Frequencies Relation.
      */
-    public function frequencies(): HasMany {
+    public function frequencies(): HasMany
+    {
         return $this->hasMany(Frequency::class, 'task_id', 'id')->with('parameters');
     }
 
     /**
      * Generate a cron expression from frequencies.
      */
-    public function getCronExpression(): string {
+    public function getCronExpression(): string
+    {
         if (! $this->expression) {
             $this->expression = '* * * * *';
 
@@ -108,7 +114,8 @@ trait HasFrequencies {
     /**
      * Determine if the filters pass for the event.
      */
-    public function filtersPass(Application $app): bool {
+    public function filtersPass(Application $app): bool
+    {
         foreach ($this->filters as $callback) {
             if (! $app->call($callback)) {
                 return false;
@@ -129,7 +136,8 @@ trait HasFrequencies {
      *
      * @return $this
      */
-    public function when(\Closure $callback): static {
+    public function when(\Closure $callback): static
+    {
         $this->filters[] = $callback;
 
         return $this;
@@ -143,7 +151,8 @@ trait HasFrequencies {
      *
      * @return $this
      */
-    public function between($startTime, $endTime): static {
+    public function between($startTime, $endTime): static
+    {
         return $this->when($this->inTimeInterval($startTime, $endTime));
     }
 
@@ -153,7 +162,8 @@ trait HasFrequencies {
      *
      * @throws FileNotFoundException
      */
-    private function processData(): array {
+    private function processData(): array
+    {
         $data = \request()->all();
 
         if (! \request()->hasFile('tasks')) {
@@ -168,9 +178,10 @@ trait HasFrequencies {
 
         if ($task && ($task->frequencies ?? false)) {
             $data['type'] = 'frequency';
-            $data['frequencies'] = collect($task->frequencies)->map(function ($frequency) {
-                return (array) $frequency;
-            })->toArray();
+            $data['frequencies'] = collect($task->frequencies)->map(
+                function ($frequency) {
+                    return (array) $frequency;
+                })->toArray();
         }
 
         return $data;

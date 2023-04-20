@@ -230,7 +230,7 @@ class Task extends BaseModel
     /**
      * Route notifications for the mail channel.
      */
-    public function routeNotificationForMail(): string
+    public function routeNotificationForMail(): ?string
     {
         return $this->notification_email_address;
     }
@@ -238,7 +238,7 @@ class Task extends BaseModel
     /**
      * Route notifications for the Nexmo channel.
      */
-    public function routeNotificationForNexmo(): string
+    public function routeNotificationForNexmo(): ?string
     {
         return $this->notification_phone_number;
     }
@@ -246,7 +246,7 @@ class Task extends BaseModel
     /**
      * Route notifications for the Slack channel.
      */
-    public function routeNotificationForSlack(): string
+    public function routeNotificationForSlack(): ?string
     {
         return $this->notification_slack_webhook;
     }
@@ -254,7 +254,7 @@ class Task extends BaseModel
     /**
      * Attempt to perform clean on task results.
      */
-    public function autoCleanup()
+    public function autoCleanup(): void
     {
         if ($this->auto_cleanup_num > 0) {
             if ('results' === $this->auto_cleanup_type) {

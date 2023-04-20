@@ -75,7 +75,7 @@ class Create extends Modal
         ];
     }
 
-    public function save()
+    public function save(): void
     {
         Task::create($this->form_data);
         session()->flash('message', 'Task successfully created. at '.now());
