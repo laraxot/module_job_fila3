@@ -7,6 +7,9 @@ use Cron\CronExpression;
 use Illuminate\Console\Command;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Mail;
+use Modules\Test\Emails\MailWithSerder;
+use Modules\Quaeris\Models\SurveyPdf;
 
 class TestCommand extends Command {
     /**
@@ -31,8 +34,13 @@ class TestCommand extends Command {
      */
     public function handle(){
         
-        $this->info('HELLO !');
+        // $this->info('HELLO !');
         
+        Mail::raw('test di email', function ($msg) {
+            $msg->from('survey@quaerisofficina.it');
+            $msg->to('vair81@gmail.com')->subject('test di prova');
+        });
+
     }
 
     
