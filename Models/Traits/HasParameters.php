@@ -18,9 +18,11 @@ trait HasParameters
      */
     public static function bootHasParameters()
     {
-        static::saved(function ($model) {
-            $model->afterSave();
-        });
+        static::saved(
+            function ($model) {
+                $model->afterSave();
+            }
+        );
 
         static::deleting(function ($model) {
             $model->beforeDelete();
@@ -36,9 +38,12 @@ trait HasParameters
     {
         $data = $this->processData();
 
-        $frequency = collect($data['frequencies'])->filter(function ($frequency) {
-            return $frequency['interval'] == $this->interval;
-        })->first();
+        $frequency = collect($data['frequencies'])
+            ->filter(
+                function ($frequency) {
+                    return $frequency['interval'] == $this->interval;
+                }
+            )->first();
 
         if (isset($frequency['parameters'])) {
             foreach ($frequency['parameters'] as $parameter) {
@@ -47,7 +52,7 @@ trait HasParameters
         }
     }
 
-    public function beforeDelete()
+    public function beforeDelete(): void
     {
         $this->parameters()->delete();
     }
@@ -73,20 +78,22 @@ trait HasParameters
 
         $task = collect(json_decode(request()->file('tasks')->get()))
             ->filter(function ($task) {
-                return $task->id === $this->task->id;
+                return $task->id === $this->task?->id;
             })
             ->first();
 
         if ($task && $task->frequencies) {
             $data['frequencies'] = collect($task->frequencies)
-                ->map(function ($frequency) {
-                    $frequency->parameters = collect($frequency->parameters)
-                        ->map(function ($parameter) {
-                            return (array) $parameter;
-                        });
+                ->map(
+                    function ($frequency) {
+                        $frequency->parameters = collect($frequency->parameters)
+                            ->map(
+                                function ($parameter) {
+                                    return (array) $parameter;
+                                });
 
-                    return (array) $frequency;
-                })
+                        return (array) $frequency;
+                    })
                 ->toArray();
         }
 

@@ -64,21 +64,25 @@ class Crud extends Component
         $whitelist = config('totem.artisan.whitelist', true);
         $all_commands = collect(Artisan::all());
 
+        /*
         if (! empty($command_filter)) {
             // $all_commands = $all_commands->filter(function (Command $command) use ($command_filter, $whitelist) {
-            $all_commands = $all_commands->filter(function ($command) use ($command_filter, $whitelist) {
-                foreach ($command_filter as $filter) {
-                    if (fnmatch($filter, $command->getName())) {
-                        return $whitelist;
+            $all_commands = $all_commands->filter(
+                function ($command) use ($command_filter, $whitelist) {
+                    foreach ($command_filter as $filter) {
+                        if (fnmatch($filter, $command->getName())) {
+                            return $whitelist;
+                        }U/Notifications/VerifyEmail.php
                     }
-                }
 
-                return ! $whitelist;
-            });
+                    return ! $whitelist;
+                }
+            );
         }
+        */
 
         return $all_commands->sortBy(function (Command $command) {
-            $name = $command->getName();
+            $name = strval($command->getName());
             if (false === mb_strpos($name, ':')) {
                 $name = ':'.$name;
             }
@@ -87,7 +91,7 @@ class Crud extends Component
         });
     }
 
-    public function executeTask(string $task_id)
+    public function executeTask(string $task_id): void
     {
         app(ExecuteTaskAction::class)->execute($task_id);
 

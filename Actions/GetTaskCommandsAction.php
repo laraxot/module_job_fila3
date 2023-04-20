@@ -15,9 +15,10 @@ class GetTaskCommandsAction
 
     public function execute(): Collection
     {
+        $all_commands = collect(Artisan::all());
+        /*
         $command_filter = config('totem.artisan.command_filter');
         $whitelist = config('totem.artisan.whitelist', true);
-        $all_commands = collect(Artisan::all());
 
         if (! empty($command_filter)) {
             // $all_commands = $all_commands->filter(function (Command $command) use ($command_filter, $whitelist) {
@@ -31,9 +32,9 @@ class GetTaskCommandsAction
                 return ! $whitelist;
             });
         }
-
+        */
         return $all_commands->sortBy(function (Command $command) {
-            $name = $command->getName();
+            $name = strval($command->getName());
             if (false === mb_strpos($name, ':')) {
                 $name = ':'.$name;
             }
