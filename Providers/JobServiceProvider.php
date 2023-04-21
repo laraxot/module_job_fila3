@@ -11,14 +11,16 @@ use Modules\Job\Events\Executing;
 use Modules\Job\Models\Task;
 use Modules\Xot\Providers\XotBaseServiceProvider;
 
-class JobServiceProvider extends XotBaseServiceProvider {
+class JobServiceProvider extends XotBaseServiceProvider
+{
     protected string $module_dir = __DIR__;
 
     protected string $module_ns = __NAMESPACE__;
 
     public string $module_name = 'job';
 
-    public function bootCallback(): void {
+    public function bootCallback(): void
+    {
         $this->registerCommands();
         /*
         $this->app->resolving(Schedule::class, function ($schedule) {
@@ -30,13 +32,14 @@ class JobServiceProvider extends XotBaseServiceProvider {
             $schedule = $this->app->make(Schedule::class);
             try {
                 $this->registerSchedule($schedule);
-            }catch(\Illuminate\Database\QueryException $e){
+            } catch (\Illuminate\Database\QueryException $e) {
                 echo $e->getMessage();
-            };
+            }
         });
     }
 
-    public function registerCommands(): void {
+    public function registerCommands(): void
+    {
         $this->commands(
             [
                 \Modules\Job\Console\Commands\WorkerCheck::class,
@@ -46,7 +49,8 @@ class JobServiceProvider extends XotBaseServiceProvider {
         );
     }
 
-    public function registerSchedule(Schedule $schedule): void {
+    public function registerSchedule(Schedule $schedule): void
+    {
         if (Schema::hasTable('tasks')) {
             $tasks = app(Task::class)
                 ->query()
@@ -68,6 +72,9 @@ class JobServiceProvider extends XotBaseServiceProvider {
                     ->timezone($task->timezone)
                     ->before(function () use ($event, $task) {
                         // Access to an undefined property Illuminate\Console\Scheduling\Event::$start.
+                        if (! property_exists($event, 'start')) {
+                            throw new \Exception('['.__LINE__.']['.__FILE__.']');
+                        }
                         $event->start = microtime(true);
                         Executing::dispatch($task);
                     })
