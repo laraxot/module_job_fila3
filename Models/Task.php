@@ -6,13 +6,14 @@ namespace Modules\Job\Models;
 
 use Carbon\Carbon;
 use Cron\CronExpression;
-use Database\Factories\TotemTaskFactory;
+// use Database\Factories\TotemTaskFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
 use Modules\Job\Models\Traits\FrontendSortable;
-use Modules\Job\Models\Traits\HasFrequencies;
+
+// use Modules\Job\Models\Traits\HasFrequencies;
 
 /**
  * Undocumented class.
@@ -92,7 +93,7 @@ use Modules\Job\Models\Traits\HasFrequencies;
 class Task extends BaseModel
 {
     use Notifiable;
-    use HasFrequencies;
+    // use HasFrequencies;
     use FrontendSortable;
     use HasFactory;
 
@@ -149,6 +150,14 @@ class Task extends BaseModel
     {
         // return CronExpression::factory($this->getCronExpression())->getNextRunDate()->format('Y-m-d H:i:s');
         return 'preso';
+    }
+
+    /**
+     * Frequencies Relation.
+     */
+    public function frequencies(): HasMany
+    {
+        return $this->hasMany(Frequency::class, 'task_id', 'id')->with('parameters');
     }
 
     /**

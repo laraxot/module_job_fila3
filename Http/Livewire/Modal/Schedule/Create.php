@@ -10,6 +10,7 @@ use Modules\Cms\Actions\GetViewAction;
 use Modules\Job\Actions\GetTaskCommandsAction;
 use Modules\Job\Actions\GetTaskFrequenciesAction;
 use Modules\Job\Models\Task;
+use Symfony\Component\Console\Command\Command;
 use WireElements\Pro\Components\Modal\Modal;
 
 class Create extends Modal
@@ -29,6 +30,10 @@ class Create extends Modal
         $commands = app(GetTaskCommandsAction::class)->execute();
         $command_opts = $commands->map(
             function ($item) {
+                if (! $item instanceof Command) {
+                    throw new \Exception('['.__LINE__.']['.__FILE__.']');
+                }
+
                 return [
                     'id' => $item->getName(),
                     'label' => $item->getName(),
