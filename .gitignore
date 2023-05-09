@@ -32,3 +32,4 @@ queue.pid
 *.lock
 composer.lock
 *.lock
+/build/
