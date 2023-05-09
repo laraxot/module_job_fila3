@@ -1,5 +1,6 @@
 includes:
     - phpstan-baseline.neon
+    - ./vendor/nunomaduro/larastan/extension.neon
 
 parameters:
     level: 1
@@ -7,9 +8,23 @@ parameters:
         - .
 
     excludePaths:
+        - ./build/*
         - ./vendor/*
+        - ./*/vendor/*
         - ./docs/*
         - ./Tests/*
+        - ./_ide_helper.php
     
+    bootstrapFiles:
+
+    
+    scanFiles:
+        
+
+    tmpDir: build/phpstan
+    reportUnmatchedIgnoredErrors: false
+    #checkOctaneCompatibility: false
+    #checkModelProperties: false
     checkMissingIterableValueType: false
-    treatPhpDocTypesAsCertain: false
+    checkGenericClassInNonGenericObjectType: false
+   
