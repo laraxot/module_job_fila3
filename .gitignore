@@ -1,6 +1,10 @@
 /vendor/
 node_modules/
 npm-debug.log
+*.cache
+*.phar
+*.lock
+package-lock.json
 yarn-error.log
 
 # Laravel 4 specific
@@ -30,6 +34,11 @@ Console/Commands/queue.pid
 
 queue.pid
 *.lock
+package-lock.json
 composer.lock
 *.lock
+<<<<<<< HEAD
 /build/
+=======
+package-lock.json
+>>>>>>> 391e898 (.)
