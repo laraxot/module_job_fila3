@@ -37,8 +37,5 @@ queue.pid
 package-lock.json
 composer.lock
 *.lock
-<<<<<<< HEAD
 /build/
-=======
 package-lock.json
->>>>>>> 391e898 (.)
