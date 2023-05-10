@@ -38,33 +38,6 @@
             "Modules\\Job\\": ""
         }
     },
-<<<<<<< HEAD
-=======
-    "require": {
-        "laraxot/module_xot": "dev-master",
-        "laraxot/module_theme": "dev-master"
-    },
-    "require-dev": {
-        "barryvdh/laravel-ide-helper": "^2.12",
-        "fakerphp/faker": "^1.14",
-        "friendsofphp/php-cs-fixer": "^3.0",
-        "inertiajs/inertia-laravel": "^0.6.3",
-        "nesbot/carbon": "^2.63",
-        "nette/php-generator": "^4.0",
-        "nunomaduro/larastan": "^2.0|^1.0.3",
-        "orchestra/testbench": "^6.24|^7.6",
-        "pestphp/pest": "^1.22",
-        "pestphp/pest-plugin-laravel": "^1.3",
-        "phpstan/extension-installer": "^1.1",
-        "phpunit/phpunit": "^9.3",
-        "spatie/invade": "^1.0",
-        "spatie/laravel-queueable-action": "*",
-        "spatie/laravel-typescript-transformer": "^2.1.6",
-        "spatie/pest-plugin-snapshots": "^1.1",
-        "spatie/phpunit-snapshot-assertions": "^4.2",
-        "spatie/test-time": "^1.2"
-    },
->>>>>>> d8dfa00 (.)
     "scripts": {
         "post-autoload-dump": "@php ./vendor/bin/testbench package:discover --ansi",
         "analyse": "vendor/bin/phpstan analyse",
