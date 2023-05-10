@@ -10,8 +10,8 @@ use Modules\Cms\Actions\GetViewAction;
 use Modules\Job\Actions\GetTaskCommandsAction;
 use Modules\Job\Actions\GetTaskFrequenciesAction;
 use Modules\Job\Models\Task;
+use Modules\Modal\View\Components\Modal\Modal;
 use Symfony\Component\Console\Command\Command;
-use WireElements\Pro\Components\Modal\Modal;
 
 class Create extends Modal
 {
