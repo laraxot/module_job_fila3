@@ -29,7 +29,11 @@ class ExecuteTaskPanelAction extends XotBasePanelAction
      */
     public function handle()
     {
-        $task_id = strval($this->row->getKey());
+        /**
+         * @var string $model_key
+         */
+        $model_key = $this->row->getKey();
+        $task_id = strval($model_key);
         $res = app(ExecuteTaskAction::class)->execute((string) $task_id);
         $view = app(GetViewAction::class)->execute();
         $view_params = [
