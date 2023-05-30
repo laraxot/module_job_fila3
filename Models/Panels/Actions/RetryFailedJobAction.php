@@ -21,6 +21,9 @@ class RetryFailedJobAction extends XotBasePanelAction {
     public function __construct() {
     }
 
+    /**
+     * @return mixed
+     */
     public function handle() {
         $job = $this->row;
         if (! $job instanceof FailedJob) {
