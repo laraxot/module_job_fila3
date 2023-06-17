@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Filament\Http\Middleware\MirrorConfigToSubpackages;
@@ -17,8 +19,8 @@ $moduleName = 'Job';
 $moduleNs = 'Modules\Job';
 $contextNs = 'Modules\\Job\\Filament';
 $contextPath = 'Filament';
-return [
 
+return [
     /*
     |--------------------------------------------------------------------------
     | Filament Path
@@ -124,7 +126,7 @@ return [
     'auth' => [
         'guard' => env('FILAMENT_AUTH_GUARD', 'web'),
         'pages' => [
-            'login' => Modules\Quaeris\Http\Livewire\Auth\FilamentLogin::class,
+            // 'login' => Modules\Job\Http\Livewire\Auth\FilamentLogin::class,
         ],
     ],
 
@@ -140,8 +142,8 @@ return [
 
     'middleware' => [
         'auth' => [
-        //  Authenticate::class,
-            Modules\Quaeris\Http\Middleware\FilamentMiddleware::class
+            //  Authenticate::class,
+            Modules\Job\Http\Middleware\FilamentMiddleware::class,
         ],
         'base' => [
             EncryptCookies::class,
