@@ -33,11 +33,7 @@ jobs:
       run: echo "privacyfed.github.io/doc_extrafield" > ./build_production/CNAME
 
     - name: gh-pages
-<<<<<<< HEAD
-      uses: JamesIves/github-pages-deploy-action@v4.4.1
-=======
       uses: JamesIves/github-pages-deploy-action@v4.4.2
->>>>>>> 58e93f7a8f1288ea18f26e78df5948644e425250
       with:
         branch: gh-pages
         folder: build_production
