@@ -11,16 +11,14 @@ use Modules\Job\Events\Executing;
 use Modules\Job\Models\Task;
 use Modules\Xot\Providers\XotBaseServiceProvider;
 
-class JobServiceProvider extends XotBaseServiceProvider
-{
+class JobServiceProvider extends XotBaseServiceProvider {
     protected string $module_dir = __DIR__;
 
     protected string $module_ns = __NAMESPACE__;
 
     public string $module_name = 'job';
 
-    public function bootCallback(): void
-    {
+    public function bootCallback(): void {
         $this->registerCommands();
         /*
         $this->app->resolving(Schedule::class, function ($schedule) {
@@ -38,8 +36,7 @@ class JobServiceProvider extends XotBaseServiceProvider
         });
     }
 
-    public function registerCommands(): void
-    {
+    public function registerCommands(): void {
         $this->commands(
             [
                 \Modules\Job\Console\Commands\WorkerCheck::class,
@@ -49,8 +46,7 @@ class JobServiceProvider extends XotBaseServiceProvider
         );
     }
 
-    public function registerSchedule(Schedule $schedule): void
-    {
+    public function registerSchedule(Schedule $schedule): void {
         if (Schema::hasTable('tasks')) {
             $tasks = app(Task::class)
                 ->query()
@@ -59,42 +55,38 @@ class JobServiceProvider extends XotBaseServiceProvider
                 ->get();
 
             $tasks->each(
-function ($task) use ($schedule) {
-                if (! $task instanceof Task) {
-                    throw new \Exception('['.__LINE__.']['.__FILE__.']');
-                }
-                /*
-                 * var \Illuminate\Console\Scheduling\Event
-                 */
-                $event = $schedule->command($task->command, $task->compileParameters(true));
-                // --- funziona solo con daily per ora
-                $event->{$task->expression}()
-                    ->name($task->description)
-                    ->timezone($task->timezone)
-                    ->before(function () use ($event, $task) {
-                        // Access to an undefined property Illuminate\Console\Scheduling\Event::$start.
-                        if (! property_exists($event, 'start')) {
-                            throw new \Exception('['.__LINE__.']['.__FILE__.']');
-                        }
-                        $event->start = microtime(true);
-                        Executing::dispatch($task);
-                    })
-                    ->thenWithOutput(function ($output) use ($event, $task) {
-                        Executed::dispatch($task, $event->start ?? microtime(true), $output);
-                    });
-                if ($task->dont_overlap) {
-                    $event->withoutOverlapping();
-                }
-                if ($task->run_in_maintenance) {
-                    $event->evenInMaintenanceMode();
-                }
-                if ($task->run_on_one_server && in_array(config('cache.default'), ['memcached', 'redis', 'database', 'dynamodb'])) {
-                    $event->onOneServer();
-                }
-                if ($task->run_in_background) {
-                    $event->runInBackground();
-                }
-            });
+                function ($task) use ($schedule) {
+                    if (! $task instanceof Task) {
+                        throw new \Exception('['.__LINE__.']['.__FILE__.']');
+                    }
+                    /*
+                     * var \Illuminate\Console\Scheduling\Event
+                     */
+                    $event = $schedule->command($task->command, $task->compileParameters(true));
+                    // --- funziona solo con daily per ora
+                    $event->{$task->expression}()
+                        ->name($task->description)
+                        ->timezone($task->timezone)
+                        ->before(function () use ($event, $task) {
+                            $event->start = microtime(true);
+                            Executing::dispatch($task);
+                        })
+                        ->thenWithOutput(function ($output) use ($event, $task) {
+                            Executed::dispatch($task, $event->start ?? microtime(true), $output);
+                        });
+                    if ($task->dont_overlap) {
+                        $event->withoutOverlapping();
+                    }
+                    if ($task->run_in_maintenance) {
+                        $event->evenInMaintenanceMode();
+                    }
+                    if ($task->run_on_one_server && in_array(config('cache.default'), ['memcached', 'redis', 'database', 'dynamodb'])) {
+                        $event->onOneServer();
+                    }
+                    if ($task->run_in_background) {
+                        $event->runInBackground();
+                    }
+                });
         }
     }
 }
