@@ -37,6 +37,7 @@ namespace Modules\Job\Models;
  * @mixin \Eloquent
  */
 class Job extends BaseModel {
+
     protected $fillable = [
         'id',
         'queue',
@@ -50,4 +51,8 @@ class Job extends BaseModel {
     protected $casts = [
         'payload' => 'array',
     ];
+
+    public function getTable(): string {
+        return config('queue.connections.database.table');
+    }
 }
