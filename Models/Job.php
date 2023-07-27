@@ -35,6 +35,7 @@ namespace Modules\Job\Models;
  * @method static \Illuminate\Database\Eloquent\Builder|Job whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Job whereUpdatedBy($value)
  * @mixin \Eloquent
+ * @mixin IdeHelperJob
  */
 class Job extends BaseModel {
 

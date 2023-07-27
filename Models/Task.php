@@ -45,7 +45,6 @@ use Modules\Job\Models\Traits\FrontendSortable;
  * @property int|null                                                                                                      $notifications_count
  * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\Job\Models\Result>                                     $results
  * @property int|null                                                                                                      $results_count
- *
  * @method static \Illuminate\Database\Eloquent\Builder|Task newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Task newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Task query()
@@ -70,8 +69,8 @@ use Modules\Job\Models\Traits\FrontendSortable;
  * @method static \Illuminate\Database\Eloquent\Builder|Task whereTimezone($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Task whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Task whereUpdatedBy($value)
- *
  * @mixin \Eloquent
+ * @mixin IdeHelperTask
  */
 class Task extends BaseModel
 {

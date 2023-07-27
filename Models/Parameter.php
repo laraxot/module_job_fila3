@@ -31,6 +31,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static \Illuminate\Database\Eloquent\Builder|Parameter whereUpdatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Parameter whereValue($value)
  * @mixin \Eloquent
+ * @mixin IdeHelperParameter
  */
 class Parameter extends BaseModel {
     // protected $table = 'frequency_parameters';
