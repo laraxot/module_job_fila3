@@ -35,8 +35,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static \Illuminate\Database\Eloquent\Builder|Frequency whereTaskId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Frequency whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Frequency whereUpdatedBy($value)
- * @mixin \Eloquent
  * @mixin IdeHelperFrequency
+ * @mixin \Eloquent
  */
 class Frequency extends BaseModel
 {

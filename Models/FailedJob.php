@@ -28,8 +28,8 @@ namespace Modules\Job\Models;
  * @method static \Illuminate\Database\Eloquent\Builder|FailedJob wherePayload($value)
  * @method static \Illuminate\Database\Eloquent\Builder|FailedJob whereQueue($value)
  * @method static \Illuminate\Database\Eloquent\Builder|FailedJob whereUuid($value)
- * @mixin \Eloquent
  * @mixin IdeHelperFailedJob
+ * @mixin \Eloquent
  */
 class FailedJob extends BaseModel {
     protected $fillable = [

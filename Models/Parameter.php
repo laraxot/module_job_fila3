@@ -30,8 +30,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static \Illuminate\Database\Eloquent\Builder|Parameter whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Parameter whereUpdatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Parameter whereValue($value)
- * @mixin \Eloquent
  * @mixin IdeHelperParameter
+ * @mixin \Eloquent
  */
 class Parameter extends BaseModel {
     // protected $table = 'frequency_parameters';

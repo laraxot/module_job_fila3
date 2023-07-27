@@ -36,8 +36,8 @@ namespace Modules\Job\Models;
  * @method static \Illuminate\Database\Eloquent\Builder|JobBatch whereOptions($value)
  * @method static \Illuminate\Database\Eloquent\Builder|JobBatch wherePendingJobs($value)
  * @method static \Illuminate\Database\Eloquent\Builder|JobBatch whereTotalJobs($value)
- * @mixin \Eloquent
  * @mixin IdeHelperJobBatch
+ * @mixin \Eloquent
  */
 class JobBatch extends BaseModel {
     /**

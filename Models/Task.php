@@ -69,8 +69,8 @@ use Modules\Job\Models\Traits\FrontendSortable;
  * @method static \Illuminate\Database\Eloquent\Builder|Task whereTimezone($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Task whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Task whereUpdatedBy($value)
- * @mixin \Eloquent
  * @mixin IdeHelperTask
+ * @mixin \Eloquent
  */
 class Task extends BaseModel
 {

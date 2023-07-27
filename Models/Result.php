@@ -35,8 +35,8 @@ use Illuminate\Support\Facades\DB;
  * @method static \Illuminate\Database\Eloquent\Builder|Result whereTaskId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Result whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Result whereUpdatedBy($value)
- * @mixin \Eloquent
  * @mixin IdeHelperResult
+ * @mixin \Eloquent
  */
 class Result extends BaseModel
 {
