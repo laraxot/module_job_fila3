@@ -20,6 +20,9 @@ class RetryAllFailedJobAction extends XotBasePanelAction {
     public function __construct() {
     }
 
+    /**
+     * @return mixed|void
+     */
     public function handle() {
         $rows = $this->rows->limit(50)->get();
         $rows_count = FailedJob::count();

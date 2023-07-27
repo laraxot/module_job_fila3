@@ -12,6 +12,8 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
 use Modules\Job\Models\Traits\FrontendSortable;
 
+use function Safe\preg_match_all;
+
 /**
  * Modules\Job\Models\Task.
  *

@@ -12,6 +12,8 @@ use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Storage;
 
+use function Safe\exec;
+
 class WorkerCheck extends Command {
     /**
      * The name and signature of the console command.
