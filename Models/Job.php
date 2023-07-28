@@ -7,6 +7,8 @@ declare(strict_types=1);
 
 namespace Modules\Job\Models;
 
+use Webmozart\Assert\Assert;
+
 /**
  * Modules\Job\Models\Job
  *
@@ -37,8 +39,8 @@ namespace Modules\Job\Models;
  * @mixin IdeHelperJob
  * @mixin \Eloquent
  */
-class Job extends BaseModel {
-
+class Job extends BaseModel
+{
     protected $fillable = [
         'id',
         'queue',
@@ -53,7 +55,9 @@ class Job extends BaseModel {
         'payload' => 'array',
     ];
 
-    public function getTable(): string {
-        return config('queue.connections.database.table');
+    public function getTable(): string
+    {
+        Assert::string($res=config('queue.connections.database.table'));
+        return $res;
     }
 }

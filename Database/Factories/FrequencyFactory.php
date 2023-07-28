@@ -24,7 +24,7 @@ class FrequencyFactory extends Factory
     public function definition()
     {
         return [
-            // 'id' => $this->faker->randomNumber,
+            // 'id' => $this->faker->randomNumber(5, false),
             'label' => $this->faker->word,
             'interval' => $this->faker->word,
         ];
