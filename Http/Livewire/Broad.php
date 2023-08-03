@@ -6,7 +6,7 @@ namespace Modules\Job\Http\Livewire;
 
 use Illuminate\Contracts\Support\Renderable;
 use Livewire\Component;
-use Modules\Cms\Actions\GetViewAction;
+use Modules\Xot\Actions\GetViewAction;
 use Modules\Job\Events\PublicEvent;
 
 class Broad extends Component {

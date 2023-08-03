@@ -10,7 +10,7 @@ use Illuminate\Support\Str;
 use Webmozart\Assert\Assert;
 use Illuminate\Support\Facades\File;
 use Modules\Job\Actions\DummyAction;
-use Modules\Cms\Actions\GetViewAction;
+use Modules\Xot\Actions\GetViewAction;
 use Illuminate\Support\Facades\Artisan;
 use Modules\Job\Models\Job as JobModel;
 use Illuminate\Contracts\Support\Renderable;
