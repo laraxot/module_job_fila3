@@ -169,7 +169,13 @@ class Task extends BaseModel
 
                 return $carry;
             };
-
+            /* Unable to resolve the template type TKey in call to function collect
+         💡 See: https://phpstan.org/blog/solving-phpstan-error-unable-to-resolve-template-type
+         ✏️  Job\Models\Task.php
+  173    Unable to resolve the template type TValue in call to function collect
+         💡 See: https://phpstan.org/blog/solving-phpstan-error-unable-to-resolve-template-type
+         ✏️  Job\Models\Task.php
+            */
             return collect($matches)->reduce(function ($carry, $parameter) use ($console, &$argument_index, $duplicate_parameter_index) {
                 $param = explode('=', $parameter[0], 2);
 

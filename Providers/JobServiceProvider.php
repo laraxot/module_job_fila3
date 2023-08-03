@@ -68,6 +68,7 @@ class JobServiceProvider extends XotBaseServiceProvider {
                         ->name($task->description)
                         ->timezone($task->timezone)
                         ->before(function () use ($event, $task) {
+                            //Access to an undefined property Illuminate\Console\Scheduling\Event::$start.
                             $event->start = microtime(true);
                             Executing::dispatch($task);
                         })
