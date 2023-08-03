@@ -6,7 +6,7 @@ namespace Modules\Job\Http\Livewire\Modal\Schedule;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
-use Modules\Cms\Actions\GetViewAction;
+use Modules\Xot\Actions\GetViewAction;
 use Modules\Job\Actions\GetTaskCommandsAction;
 use Modules\Job\Actions\GetTaskFrequenciesAction;
 use Modules\Job\Models\Task;
