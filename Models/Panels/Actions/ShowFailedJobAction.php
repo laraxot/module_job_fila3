@@ -30,7 +30,7 @@ class ShowFailedJobAction extends XotBasePanelAction {
      * @return mixed
      */
     public function handle() {
-        dddx($this->panel->row);
+        dddx($this->panel->getRow());
     }
 
     // end handle

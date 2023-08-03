@@ -4,18 +4,19 @@ declare(strict_types=1);
 
 namespace Modules\Job\Http\Livewire\Job;
 
-use Illuminate\Contracts\Support\Renderable;
-use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Str;
 use Livewire\Component;
-use Modules\Cms\Actions\GetViewAction;
-use Modules\Job\Actions\DummyAction;
-use Modules\Job\Models\FailedJob as FailedJobModel;
-use Modules\Job\Models\Job as JobModel;
-use Modules\Job\Models\JobBatch as JobBatchModel;
-
 use function Safe\putenv;
+use Illuminate\Support\Str;
+use Webmozart\Assert\Assert;
+use Illuminate\Support\Facades\File;
+use Modules\Job\Actions\DummyAction;
+use Modules\Cms\Actions\GetViewAction;
+use Illuminate\Support\Facades\Artisan;
+use Modules\Job\Models\Job as JobModel;
+use Illuminate\Contracts\Support\Renderable;
+
+use Modules\Job\Models\JobBatch as JobBatchModel;
+use Modules\Job\Models\FailedJob as FailedJobModel;
 
 
 
@@ -153,6 +154,7 @@ class Status extends Component {
             $env_content
         );
         putenv('QUEUE_CONNECTION='.$this->form_data['conn']);
+        Assert::string($new_content);
         File::put($env_file, $new_content);
         $this->old_value = $this->form_data['conn'];
     }
