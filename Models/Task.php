@@ -144,66 +144,7 @@ class Task extends BaseModel
         return $this->hasMany(Frequency::class, 'task_id', 'id')->with('parameters');
     }
 
-    /**
-     * Convert a string of command arguments and options to an array.
-     *
-     * @param bool $console if true will convert arguments to non associative array
-     */
-    public function compileParameters(bool $console = false): array
-    {
-        if ($this->parameters && is_string($this->parameters)) {
-            $regex = '/(?=\S)[^\'"\s]*(?:\'[^\']*\'[^\'"\s]*|"[^"]*"[^\'"\s]*)*/';
-            preg_match_all($regex, $this->parameters, $matches, PREG_SET_ORDER, 0);
 
-            $argument_index = 0;
-
-            $duplicate_parameter_index = function (array $carry, array $param, string $trimmed_param) {
-                if (! isset($carry[$param[0]])) {
-                    $carry[$param[0]] = $trimmed_param;
-                } else {
-                    if (! is_array($carry[$param[0]])) {
-                        $carry[$param[0]] = [$carry[$param[0]]];
-                    }
-                    $carry[$param[0]][] = $trimmed_param;
-                }
-
-                return $carry;
-            };
-            /* Unable to resolve the template type TKey in call to function collect
-         💡 See: https://phpstan.org/blog/solving-phpstan-error-unable-to-resolve-template-type
-         ✏️  Job\Models\Task.php
-  173    Unable to resolve the template type TValue in call to function collect
-         💡 See: https://phpstan.org/blog/solving-phpstan-error-unable-to-resolve-template-type
-         ✏️  Job\Models\Task.php
-            */
-            return collect($matches)->reduce(function ($carry, $parameter) use ($console, &$argument_index, $duplicate_parameter_index) {
-                $param = explode('=', $parameter[0], 2);
-
-                if (count($param) > 1) {
-                    $trimmed_param = trim(trim($param[1], '"'), "'");
-                    if ($console) {
-                        if (Str::startsWith($param[0], ['--', '-'])) {
-                            $carry = $duplicate_parameter_index($carry, $param, $trimmed_param);
-                        } else {
-                            $carry[$argument_index++] = $trimmed_param;
-                        }
-
-                        return $carry;
-                    }
-
-                    return $duplicate_parameter_index($carry, $param, $trimmed_param);
-                }
-
-                Str::startsWith($param[0], ['--', '-']) && ! $console ?
-                    $carry[$param[0]] = true :
-                    $carry[$argument_index++] = $param[0];
-
-                return $carry;
-            }, []);
-        }
-
-        return [];
-    }
 
     /**
      * Results Relation.
