@@ -49,6 +49,7 @@ class JobBatch extends BaseModel
      * @var bool
      */
     public $incrementing = false;
+
     /**
      * The "type" of the primary key ID.
      *
