@@ -1,18 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Job\Filament\Resources;
 
-use Modules\Job\Filament\Resources\JobResource\Pages;
-use Modules\Job\Filament\Resources\JobResource\RelationManagers;
-use Modules\Job\Models\Job;
-use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
-
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Modules\Job\Filament\Resources\JobResource\Pages;
+use Modules\Job\Models\Job;
 use Savannabits\FilamentModules\Concerns\ContextualResource;
 
 class JobResource extends Resource
@@ -24,18 +21,12 @@ class JobResource extends Resource
 
     protected static ?string $navigationGroup = 'jobs';
 
-    protected static ?string $recordTitleAttribute='name';
-
-    protected static function getNavigationBadge(): ?string
-	{
-		return (string) Job::query()->count();
-	}
+    protected static ?string $recordTitleAttribute = 'name';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                //
             ]);
     }
 
@@ -45,20 +36,18 @@ class JobResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('id')->sortable()->searchable()->toggleable(),
                 Tables\Columns\TextColumn::make('queue'),
-                
-                //Tables\Columns\TextColumn::make('payload'),
+
+                // Tables\Columns\TextColumn::make('payload'),
                 Tables\Columns\TextColumn::make('attempts'),
                 Tables\Columns\TextColumn::make('reserved_at'),
                 Tables\Columns\TextColumn::make('available_at'),
                 Tables\Columns\TextColumn::make('created_at'),
-                //Tables\Columns\TextColumn::make('created_by'),
-                //Tables\Columns\TextColumn::make('updated_by'),
-                //Tables\Columns\TextColumn::make('updated_at'),
+                // Tables\Columns\TextColumn::make('created_by'),
+                // Tables\Columns\TextColumn::make('updated_by'),
+                // Tables\Columns\TextColumn::make('updated_at'),
                 Tables\Columns\ViewColumn::make('payload')->view('ui::filament.tables.columns.array'),
-
             ])
             ->filters([
-                //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
@@ -67,14 +56,13 @@ class JobResource extends Resource
                 Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
-            //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -82,5 +70,10 @@ class JobResource extends Resource
             'create' => Pages\CreateJob::route('/create'),
             'edit' => Pages\EditJob::route('/{record}/edit'),
         ];
-    }    
+    }
+
+    protected static function getNavigationBadge(): ?string
+    {
+        return (string) Job::query()->count();
+    }
 }

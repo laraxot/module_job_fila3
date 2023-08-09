@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Job\Filament\Resources\JobResource\Pages;
 
-use Modules\Job\Filament\Resources\JobResource;
 use Filament\Pages\Actions;
 use Filament\Resources\Pages\ListRecords;
+use Modules\Job\Filament\Resources\JobResource;
 
 class ListJobs extends ListRecords
 {

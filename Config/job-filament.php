@@ -56,8 +56,8 @@ return [
     */
 
     'pages' => [
-        'namespace' => $contextNs.'\\Pages',
-        'path' => base_path('Modules/'.$moduleName."/$contextPath/Pages"),
+        'namespace' => $contextNs . '\\Pages',
+        'path' => base_path('Modules/' . $moduleName . "/{$contextPath}/Pages"),
         'register' => [
             Pages\Dashboard::class,
         ],
@@ -74,8 +74,8 @@ return [
     */
 
     'resources' => [
-        'namespace' => $contextNs.'\\Resources',
-        'path' => base_path('Modules/'.$moduleName."/$contextPath/Resources"),
+        'namespace' => $contextNs . '\\Resources',
+        'path' => base_path('Modules/' . $moduleName . "/{$contextPath}/Resources"),
         'register' => [],
     ],
 
@@ -90,11 +90,11 @@ return [
     */
 
     'widgets' => [
-        'namespace' => $contextNs.'\\Widgets',
-        'path' => base_path('Modules/'.$moduleName."/$contextPath/Widgets"),
+        'namespace' => $contextNs . '\\Widgets',
+        'path' => base_path('Modules/' . $moduleName . "/{$contextPath}/Widgets"),
         'register' => [
-            //Widgets\AccountWidget::class,
-            //Widgets\FilamentInfoWidget::class,
+            // Widgets\AccountWidget::class,
+            // Widgets\FilamentInfoWidget::class,
         ],
     ],
 
@@ -109,8 +109,8 @@ return [
     */
 
     'livewire' => [
-        'namespace' => $moduleNs.'\\Http\\Livewire',
-        'path' => base_path('Modules/'.$moduleName.'/Http/Livewire'),
+        'namespace' => $moduleNs . '\\Http\\Livewire',
+        'path' => base_path('Modules/' . $moduleName . '/Http/Livewire'),
     ],
 
     /*

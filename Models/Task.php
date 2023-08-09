@@ -6,13 +6,11 @@ namespace Modules\Job\Models;
 
 use Carbon\Carbon;
 use Cron\CronExpression;
+use Exception;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Str;
 use Modules\Job\Models\Traits\FrontendSortable;
-
-use function Safe\preg_match_all;
 
 /**
  * Modules\Job\Models\Task.
@@ -47,6 +45,7 @@ use function Safe\preg_match_all;
  * @property int|null                                                                                                      $notifications_count
  * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\Job\Models\Result>                                     $results
  * @property int|null                                                                                                      $results_count
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|Task newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Task newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Task query()
@@ -71,6 +70,7 @@ use function Safe\preg_match_all;
  * @method static \Illuminate\Database\Eloquent\Builder|Task whereTimezone($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Task whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Task whereUpdatedBy($value)
+ *
  * @mixin IdeHelperTask
  * @mixin \Eloquent
  */
@@ -128,7 +128,7 @@ class Task extends BaseModel
     /**
      * Upcoming Accessor.
      *
-     * @throws \Exception
+     * @throws Exception
      */
     public function getUpcomingAttribute(): string
     {
@@ -144,8 +144,6 @@ class Task extends BaseModel
         return $this->hasMany(Frequency::class, 'task_id', 'id')->with('parameters');
     }
 
-
-
     /**
      * Results Relation.
      */
@@ -157,7 +155,7 @@ class Task extends BaseModel
     /**
      * Returns the most recent result entry for this task.
      */
-    public function getLastResultAttribute(): Result|null
+    public function getLastResultAttribute(): ?Result
     {
         return $this->results()->orderBy('id', 'desc')->first();
     }

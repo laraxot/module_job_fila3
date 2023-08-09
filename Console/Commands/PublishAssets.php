@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Job\Console\Commands;
 
 use Illuminate\Console\Command;
@@ -22,13 +24,11 @@ class PublishAssets extends Command
 
     /**
      * Execute the console command.
-     *
-     * @return mixed
      */
     public function handle()
     {
         $this->call('vendor:publish', [
-            '--tag'   => 'totem-assets',
+            '--tag' => 'totem-assets',
             '--force' => true,
         ]);
     }

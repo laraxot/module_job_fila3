@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Job\Events;
 
 use Illuminate\Foundation\Events\Dispatchable;
@@ -8,17 +10,13 @@ use Modules\Job\Models\Task;
 
 class TaskEvent extends Event
 {
-    use Dispatchable, SerializesModels;
+    use Dispatchable;
+    use SerializesModels;
 
-    /**
-     * @var Task
-     */
     public Task $task;
 
     /**
      * Constructor.
-     *
-     * @param  Task  $task
      */
     public function __construct(Task $task)
     {

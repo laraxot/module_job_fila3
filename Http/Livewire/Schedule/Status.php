@@ -26,7 +26,6 @@ class Status extends Component
         $view = app(GetViewAction::class)->execute();
 
         $acts = [
-
             (object) [
                 'name' => 'job:schedule-list',
                 'label' => 'job:schedule-list',
@@ -82,7 +81,7 @@ class Status extends Component
         if (app()->runningInConsole()) {
             return collect([]);
         }
-        new \App\Console\Kernel(app(), new Dispatcher());
+        new \App\Console\Kernel(app(), new Dispatcher);
         $schedule = app(Schedule::class);
         $scheduledCommands = collect($schedule->events());
 

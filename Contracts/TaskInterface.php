@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Modules\Job\Models\Task;
 
-interface TaskInterface {
+interface TaskInterface
+{
     /**
      * Returns Eloquent Builder.
      */
