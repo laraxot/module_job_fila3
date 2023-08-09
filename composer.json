@@ -15,11 +15,8 @@
     }],
     "require": {
         "php": "^8.1",
-        "illuminate/contracts": "*",
-        "illuminate/support": "*",
         "laraxot/module_xot": "*",
-        "spatie/laravel-package-tools": "*",
-        "thecodingmachine/safe": "*"
+        "invaders-xx/filament-jsoneditor": "*"
     },
     "require-dev": {
         "laravel/pint": "*",
@@ -29,7 +26,6 @@
         "pestphp/pest": "*",
         "pestphp/pest-plugin-arch": "*",
         "pestphp/pest-plugin-laravel": "*",
-        "phpstan/extension-installer": "*",
         "phpstan/phpstan-deprecation-rules": "*",
         "phpstan/phpstan-phpunit": "*",
         "psalm/plugin-laravel": "*",
