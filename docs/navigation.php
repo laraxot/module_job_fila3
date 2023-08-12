@@ -6,7 +6,7 @@ return [
     'Introduzione' => [
         'url' => '#',
         'children' => [
-            'Introducendo '.$moduleName => [
+            'Introducendo ' . $moduleName => [
                 'url' => 'docs/introduction',
             ],
             'Installazione' => [

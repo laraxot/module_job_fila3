@@ -6,13 +6,11 @@ namespace Modules\Job\Models;
 
 use Carbon\Carbon;
 use Cron\CronExpression;
+use Exception;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Str;
 use Modules\Job\Models\Traits\FrontendSortable;
-
-use function Safe\preg_match_all;
 
 /**
  * Modules\Job\Models\Task.
@@ -47,6 +45,7 @@ use function Safe\preg_match_all;
  * @property int|null                                                                                                      $notifications_count
  * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\Job\Models\Result>                                     $results
  * @property int|null                                                                                                      $results_count
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|Task newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Task newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Task query()
@@ -71,6 +70,7 @@ use function Safe\preg_match_all;
  * @method static \Illuminate\Database\Eloquent\Builder|Task whereTimezone($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Task whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Task whereUpdatedBy($value)
+ *
  * @mixin IdeHelperTask
  * @mixin \Eloquent
  */
@@ -128,7 +128,7 @@ class Task extends BaseModel
     /**
      * Upcoming Accessor.
      *
-     * @throws \Exception
+     * @throws Exception
      */
     public function getUpcomingAttribute(): string
     {
@@ -145,67 +145,6 @@ class Task extends BaseModel
     }
 
     /**
-     * Convert a string of command arguments and options to an array.
-     *
-     * @param bool $console if true will convert arguments to non associative array
-     */
-    public function compileParameters(bool $console = false): array
-    {
-        if ($this->parameters && is_string($this->parameters)) {
-            $regex = '/(?=\S)[^\'"\s]*(?:\'[^\']*\'[^\'"\s]*|"[^"]*"[^\'"\s]*)*/';
-            preg_match_all($regex, $this->parameters, $matches, PREG_SET_ORDER, 0);
-
-            $argument_index = 0;
-
-            $duplicate_parameter_index = function (array $carry, array $param, string $trimmed_param) {
-                if (! isset($carry[$param[0]])) {
-                    $carry[$param[0]] = $trimmed_param;
-                } else {
-                    if (! is_array($carry[$param[0]])) {
-                        $carry[$param[0]] = [$carry[$param[0]]];
-                    }
-                    $carry[$param[0]][] = $trimmed_param;
-                }
-
-                return $carry;
-            };
-            /* Unable to resolve the template type TKey in call to function collect
-         💡 See: https://phpstan.org/blog/solving-phpstan-error-unable-to-resolve-template-type
-         ✏️  Job\Models\Task.php
-  173    Unable to resolve the template type TValue in call to function collect
-         💡 See: https://phpstan.org/blog/solving-phpstan-error-unable-to-resolve-template-type
-         ✏️  Job\Models\Task.php
-            */
-            return collect($matches)->reduce(function ($carry, $parameter) use ($console, &$argument_index, $duplicate_parameter_index) {
-                $param = explode('=', $parameter[0], 2);
-
-                if (count($param) > 1) {
-                    $trimmed_param = trim(trim($param[1], '"'), "'");
-                    if ($console) {
-                        if (Str::startsWith($param[0], ['--', '-'])) {
-                            $carry = $duplicate_parameter_index($carry, $param, $trimmed_param);
-                        } else {
-                            $carry[$argument_index++] = $trimmed_param;
-                        }
-
-                        return $carry;
-                    }
-
-                    return $duplicate_parameter_index($carry, $param, $trimmed_param);
-                }
-
-                Str::startsWith($param[0], ['--', '-']) && ! $console ?
-                    $carry[$param[0]] = true :
-                    $carry[$argument_index++] = $param[0];
-
-                return $carry;
-            }, []);
-        }
-
-        return [];
-    }
-
-    /**
      * Results Relation.
      */
     public function results(): HasMany
@@ -216,7 +155,7 @@ class Task extends BaseModel
     /**
      * Returns the most recent result entry for this task.
      */
-    public function getLastResultAttribute(): Result|null
+    public function getLastResultAttribute(): ?Result
     {
         return $this->results()->orderBy('id', 'desc')->first();
     }

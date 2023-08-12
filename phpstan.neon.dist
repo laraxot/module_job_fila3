@@ -3,9 +3,15 @@ includes:
     - ./vendor/nunomaduro/larastan/extension.neon
 
 parameters:
-    level: 1
+
+    level: max
+
     paths:
         - .
+
+    ignoreErrors:
+    #    - '#Unsafe usage of new static#'
+        - '#PHPDoc tag @mixin contains unknown class #'
 
     excludePaths:
         - ./build/*
@@ -14,17 +20,23 @@ parameters:
         - ./docs/*
         - ./Tests/*
         - ./_ide_helper.php
-    
+        - ./Services/Trend.php
+
     bootstrapFiles:
+        # - ./phpstan_constants.php
+        # - ./vendor/amenadiel/jpgraph/src/config.inc.php
 
-    
     scanFiles:
-        
+        # - ./Helpers/Helper.php
 
-    tmpDir: build/phpstan
-    reportUnmatchedIgnoredErrors: false
-    #checkOctaneCompatibility: false
-    #checkModelProperties: false
+    editorUrl: 'vscode://file/%%file%%:%%line%%'
+
+    tmpDir: ./build/phpstan
+    checkUnusedViews: false
     checkMissingIterableValueType: false
     checkGenericClassInNonGenericObjectType: false
-   
+    treatPhpDocTypesAsCertain: false
+    reportUnmatchedIgnoredErrors: false
+    checkOctaneCompatibility: false
+    checkModelProperties: false
+

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Job\Actions;
 
+use Exception;
 use Spatie\QueueableAction\QueueableAction;
 
 class GetTaskFrequenciesAction
@@ -16,6 +17,6 @@ class GetTaskFrequenciesAction
         if (is_array($res)) {
             return $res;
         }
-        throw new \Exception('['.__LINE__.']['.__FILE__.']');
+        throw new Exception('[' . __LINE__ . '][' . __FILE__ . ']');
     }
 }

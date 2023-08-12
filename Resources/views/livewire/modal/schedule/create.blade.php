@@ -79,10 +79,10 @@
         </div>
         --}}
         <x-input.group type="radio.options" name="type" :options="['expression'=>'expression','frequency'=>'frequency']" />
-        @if($form_data['type']=='expression')
+        @if ($form_data['type']=='expression')
             <x-input.group type="text" name="expression" />
         @endif
-        @if($form_data['type']=='frequency')
+        @if ($form_data['type']=='frequency')
             <x-input.group type="select" name="expression" :options="$frequency_opts"/>
         @endif
         {{--

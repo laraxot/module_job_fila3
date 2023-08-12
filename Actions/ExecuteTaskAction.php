@@ -15,6 +15,7 @@ class ExecuteTaskAction
 
     public function execute(string $task_id): string
     {
+        /*
         $task = Task::findOrFail($task_id);
         $start = microtime(true);
         try {
@@ -26,5 +27,9 @@ class ExecuteTaskAction
         Executed::dispatch($task, $start, $output);
 
         return $output;
+        */
+        dddx('wip');
+
+        return 'WIP';
     }
 }

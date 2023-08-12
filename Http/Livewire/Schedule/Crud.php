@@ -4,14 +4,15 @@ declare(strict_types=1);
 
 namespace Modules\Job\Http\Livewire\Schedule;
 
+use Exception;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Artisan;
 use Livewire\Component;
-use Modules\Cms\Actions\GetViewAction;
 use Modules\Job\Actions\ExecuteTaskAction;
 use Modules\Job\Models\Task;
+use Modules\Xot\Actions\GetViewAction;
 use Symfony\Component\Console\Command\Command;
 
 /**
@@ -20,6 +21,18 @@ use Symfony\Component\Console\Command\Command;
 class Crud extends Component
 {
     public bool $create = false;
+
+    /**
+     * Return available frequencies.
+     */
+    public static function getFrequencies(): array
+    {
+        $res = config('totem.frequencies');
+        if (is_array($res)) {
+            return $res;
+        }
+        throw new Exception('[' . __LINE__ . '][' . __FILE__ . ']');
+    }
 
     public function render(): Renderable
     {
@@ -41,18 +54,6 @@ class Crud extends Component
     public function taskCreate(): void
     {
         $this->emit('modal.open', 'modal.schedule.create');
-    }
-
-    /**
-     * Return available frequencies.
-     */
-    public static function getFrequencies(): array
-    {
-        $res = config('totem.frequencies');
-        if (is_array($res)) {
-            return $res;
-        }
-        throw new \Exception('['.__LINE__.']['.__FILE__.']');
     }
 
     /**
@@ -84,7 +85,7 @@ class Crud extends Component
         return $all_commands->sortBy(function (Command $command) {
             $name = strval($command->getName());
             if (false === mb_strpos($name, ':')) {
-                $name = ':'.$name;
+                $name = ':' . $name;
             }
 
             return $name;
@@ -95,6 +96,6 @@ class Crud extends Component
     {
         app(ExecuteTaskAction::class)->execute($task_id);
 
-        session()->flash('message', 'task ['.$task_id.'] executed at '.now());
+        session()->flash('message', 'task [' . $task_id . '] executed at ' . now());
     }
 }

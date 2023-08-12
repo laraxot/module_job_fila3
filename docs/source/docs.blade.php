@@ -1,5 +1,5 @@
 @extends('_layouts.master')
- 
+
 @section('body')
     <h1>Doc Posts</h1>
     {{-- $page --}}

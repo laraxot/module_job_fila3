@@ -1,14 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Job\Filament\Resources\FailedJobsResource\Pages;
 
-use Modules\Job\Models\FailedJob;
-use Filament\Pages\Actions\Action;
-use Illuminate\Support\Facades\Artisan;
 use Filament\Notifications\Notification;
+use Filament\Pages\Actions\Action;
 use Filament\Resources\Pages\ListRecords;
+use Illuminate\Support\Facades\Artisan;
 use Modules\Job\Filament\Resources\FailedJobsResource;
-
+use Modules\Job\Models\FailedJob;
 
 class ListFailedJobs extends ListRecords
 {

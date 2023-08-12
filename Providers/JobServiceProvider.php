@@ -11,14 +11,16 @@ use Modules\Job\Events\Executing;
 use Modules\Job\Models\Task;
 use Modules\Xot\Providers\XotBaseServiceProvider;
 
-class JobServiceProvider extends XotBaseServiceProvider {
+class JobServiceProvider extends XotBaseServiceProvider
+{
+    public string $module_name = 'job';
+
     protected string $module_dir = __DIR__;
 
     protected string $module_ns = __NAMESPACE__;
 
-    public string $module_name = 'job';
-
-    public function bootCallback(): void {
+    public function bootCallback(): void
+    {
         $this->registerCommands();
         /*
         $this->app->resolving(Schedule::class, function ($schedule) {
@@ -26,26 +28,27 @@ class JobServiceProvider extends XotBaseServiceProvider {
             //
         });
         */
-        $this->app->booted(function () {
-            $schedule = $this->app->make(Schedule::class);
-            try {
-                $this->registerSchedule($schedule);
-            } catch (\Illuminate\Database\QueryException $e) {
-                echo $e->getMessage();
-            }
-        });
+        // $this->app->booted(function () {
+        // $schedule = $this->app->make(Schedule::class);
+        // try {
+        //    $this->registerSchedule($schedule);
+        // } catch (\Illuminate\Database\QueryException $e) {
+        //    echo $e->getMessage();
+        // }
+        // });
     }
 
-    public function registerCommands(): void {
+    public function registerCommands(): void
+    {
         $this->commands(
             [
                 \Modules\Job\Console\Commands\WorkerCheck::class,
-                \Modules\Job\Console\Commands\ListSchedule::class,
-                \Modules\Job\Console\Commands\TestCommand::class,
+                //    \Modules\Job\Console\Commands\ListSchedule::class,
+                //    \Modules\Job\Console\Commands\TestCommand::class,
             ]
         );
     }
-
+    /*
     public function registerSchedule(Schedule $schedule): void {
         if (Schema::hasTable('tasks')) {
             $tasks = app(Task::class)
@@ -59,17 +62,17 @@ class JobServiceProvider extends XotBaseServiceProvider {
                     if (! $task instanceof Task) {
                         throw new \Exception('['.__LINE__.']['.__FILE__.']');
                     }
-                    /*
-                     * var \Illuminate\Console\Scheduling\Event
-                     */
+                    //
+                    // var \Illuminate\Console\Scheduling\Event
+                    //
                     $event = $schedule->command($task->command, $task->compileParameters(true));
                     // --- funziona solo con daily per ora
                     $event->{$task->expression}()
                         ->name($task->description)
                         ->timezone($task->timezone)
-                        ->before(function () use ($event, $task) {
+                        ->before(function () use ($task) {
                             //Access to an undefined property Illuminate\Console\Scheduling\Event::$start.
-                            $event->start = microtime(true);
+                            //$event->start = microtime(true);
                             Executing::dispatch($task);
                         })
                         ->thenWithOutput(function ($output) use ($event, $task) {
@@ -90,4 +93,5 @@ class JobServiceProvider extends XotBaseServiceProvider {
                 });
         }
     }
+    */
 }
