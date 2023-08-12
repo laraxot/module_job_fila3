@@ -10,7 +10,8 @@ use Modules\Xot\Services\ArtisanService;
 /**
  * Class ShowFailedJobAction.
  */
-class DeleteFailedJobsAction extends XotBasePanelAction {
+class DeleteFailedJobsAction extends XotBasePanelAction
+{
     public bool $onContainer = true;
 
     public string $icon = '<i class="fas fa-dumpster-fire"></i>';
@@ -18,13 +19,12 @@ class DeleteFailedJobsAction extends XotBasePanelAction {
     /**
      * ArtisanAction constructor.
      */
-    public function __construct() {
+    public function __construct()
+    {
     }
 
-    /**
-     * @return mixed
-     */
-    public function handle() {
+    public function handle()
+    {
         $cmd = 'queue:flush';
         $out = ArtisanService::act($cmd);
 

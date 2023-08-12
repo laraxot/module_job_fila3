@@ -11,7 +11,8 @@ use Modules\Job\Models\Job as JobModel;
 /**
  * Class ShowFailedJobAction.
  */
-class FixQueueNameAction extends XotBasePanelAction {
+class FixQueueNameAction extends XotBasePanelAction
+{
     public bool $onContainer = true;
 
     public string $icon = '<i class="fas fa-wrench"></i>Fix Queue Name';
@@ -19,17 +20,16 @@ class FixQueueNameAction extends XotBasePanelAction {
     /**
      * ArtisanAction constructor.
      */
-    public function __construct() {
+    public function __construct()
+    {
     }
 
-    /**
-     * @return mixed
-     */
-    public function handle() {
+    public function handle()
+    {
         $jobs = JobModel::inRandomOrder()
-             ->limit(10000)
-             ->get();
-        echo '<h3>'.$jobs->count().' Jobs to check</h3>';
+            ->limit(10000)
+            ->get();
+        echo '<h3>' . $jobs->count() . ' Jobs to check</h3>';
 
         // $job=app(Job::class);
         // dddx([

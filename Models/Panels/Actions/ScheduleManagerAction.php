@@ -11,7 +11,8 @@ use Modules\UI\Services\ThemeService;
 /**
  * Class ShowFailedJobAction.
  */
-class ScheduleManagerAction extends XotBasePanelAction {
+class ScheduleManagerAction extends XotBasePanelAction
+{
     public bool $onContainer = true; // onlyContainer
 
     public bool $onItem = false; // onlyItem
@@ -21,13 +22,12 @@ class ScheduleManagerAction extends XotBasePanelAction {
     /**
      * ArtisanAction constructor.
      */
-    public function __construct() {
+    public function __construct()
+    {
     }
 
-    /**
-     * @return mixed
-     */
-    public function handle() {
+    public function handle()
+    {
         $out = '';
         $cmd = 'schedule:list';
         Artisan::call($cmd);
@@ -36,8 +36,8 @@ class ScheduleManagerAction extends XotBasePanelAction {
         /**
          * @phpstan-var view-string
          */
-        //$view = ThemeService::getView();
-$view = $this->panel->getView();
+        // $view = ThemeService::getView();
+        $view = $this->panel->getView();
         $view_params = ['view' => $view, 'out' => $out];
 
         return view($view, $view_params);
