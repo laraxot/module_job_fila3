@@ -9,7 +9,8 @@ use Modules\Cms\Models\Panels\Actions\XotBasePanelAction;
 /**
  * Class ShowFailedJobAction.
  */
-class ShowFailedJobAction extends XotBasePanelAction {
+class ShowFailedJobAction extends XotBasePanelAction
+{
     public bool $onContainer = false; // onlyContainer
 
     public bool $onItem = true; // onlyContainer
@@ -23,13 +24,12 @@ class ShowFailedJobAction extends XotBasePanelAction {
     /**
      * ArtisanAction constructor.
      */
-    public function __construct() {
+    public function __construct()
+    {
     }
 
-    /**
-     * @return mixed
-     */
-    public function handle() {
+    public function handle()
+    {
         dddx($this->panel->getRow());
     }
 

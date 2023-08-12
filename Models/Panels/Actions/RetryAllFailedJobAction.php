@@ -4,32 +4,36 @@ declare(strict_types=1);
 
 namespace Modules\Job\Models\Panels\Actions;
 
+use Exception;
 use Modules\Cms\Models\Panels\Actions\XotBasePanelAction;
 use Modules\Job\Models\FailedJob;
 
 /**
  * Class RetryFailedJobAction.
  */
-class RetryAllFailedJobAction extends XotBasePanelAction {
+class RetryAllFailedJobAction extends XotBasePanelAction
+{
     public bool $onContainer = true;
     public string $icon = '<i class="fas fa-reply"></i>Retry All';
 
     /**
      * ArtisanAction constructor.
      */
-    public function __construct() {
+    public function __construct()
+    {
     }
 
     /**
      * @return mixed|void
      */
-    public function handle() {
+    public function handle()
+    {
         $rows = $this->rows->limit(50)->get();
         $rows_count = FailedJob::count();
-        echo '<h3>'.$rows_count.' Failed Jobs</h3>';
+        echo '<h3>' . $rows_count . ' Failed Jobs</h3>';
         foreach ($rows as $job) {
             if (! $job instanceof FailedJob) {
-                throw new \Exception('['.__LINE__.']['.__FILE__.']');
+                throw new Exception('[' . __LINE__ . '][' . __FILE__ . ']');
             }
 
             /** @var string $command */
@@ -40,19 +44,19 @@ class RetryAllFailedJobAction extends XotBasePanelAction {
 
             try {
                 if (! \method_exists($deserialized, 'displayName')) {
-                    throw new \Exception('method displayName doesn\'t exists');
+                    throw new Exception('method displayName doesn\'t exists');
                 }
 
                 if (! method_exists($deserialized, 'displayName')) {
-                    throw new \Exception('['.__LINE__.']['.__FILE__.']');
+                    throw new Exception('[' . __LINE__ . '][' . __FILE__ . ']');
                 }
 
                 if (! \method_exists($deserialized, 'parameters')) {
-                    throw new \Exception('method displayName doesn\'t exists');
+                    throw new Exception('method displayName doesn\'t exists');
                 }
 
                 if (! isset($deserialized->parameters()[0])) {
-                    throw new \Exception('parameter[0] doesn\'t exists');
+                    throw new Exception('parameter[0] doesn\'t exists');
                 }
 
                 $action = app($deserialized->displayName());
@@ -66,7 +70,7 @@ class RetryAllFailedJobAction extends XotBasePanelAction {
                 } else {
                     dddx(['Error 1' => $job]);
                 }
-            } catch (\Exception $e) {
+            } catch (Exception $e) {
                 dddx(['Error 2' => $job]);
             }
         }

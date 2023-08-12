@@ -24,9 +24,6 @@ class ExecuteTaskPanelAction extends XotBasePanelAction
     {
     }
 
-    /**
-     * @return mixed
-     */
     public function handle()
     {
         /**

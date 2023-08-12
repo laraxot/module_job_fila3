@@ -11,18 +11,21 @@ use Modules\Xot\Contracts\UserContract;
 /**
  * Undocumented class.
  */
-class JobPanelPolicy extends XotBasePanelPolicy {
+class JobPanelPolicy extends XotBasePanelPolicy
+{
     /**
      * Undocumented function.
      */
-    public function deleteAllJobs(?UserContract $user, PanelContract $panel): bool {
+    public function deleteAllJobs(?UserContract $user, PanelContract $panel): bool
+    {
         return true;
     }
 
     /**
      * Undocumented function.
      */
-    public function fixQueueName(?UserContract $user, PanelContract $panel): bool {
+    public function fixQueueName(?UserContract $user, PanelContract $panel): bool
+    {
         return true;
     }
 }

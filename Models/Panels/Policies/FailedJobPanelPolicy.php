@@ -8,24 +8,30 @@ use Modules\Cms\Contracts\PanelContract;
 use Modules\Cms\Models\Panels\Policies\XotBasePanelPolicy;
 use Modules\Xot\Contracts\UserContract;
 
-class FailedJobPanelPolicy extends XotBasePanelPolicy {
-    public function artisanContainer(?UserContract $user, PanelContract $panel): bool {
+class FailedJobPanelPolicy extends XotBasePanelPolicy
+{
+    public function artisanContainer(?UserContract $user, PanelContract $panel): bool
+    {
         return true;
     }
 
-    public function showFailedJob(?UserContract $user, PanelContract $panel): bool {
+    public function showFailedJob(?UserContract $user, PanelContract $panel): bool
+    {
         return true;
     }
 
-    public function retryFailedJob(?UserContract $user, PanelContract $panel): bool {
+    public function retryFailedJob(?UserContract $user, PanelContract $panel): bool
+    {
         return true;
     }
 
-    public function retryAllFailedJob(?UserContract $user, PanelContract $panel): bool {
+    public function retryAllFailedJob(?UserContract $user, PanelContract $panel): bool
+    {
         return true;
     }
 
-    public function deleteFailedJobs(?UserContract $user, PanelContract $panel): bool {
+    public function deleteFailedJobs(?UserContract $user, PanelContract $panel): bool
+    {
         return true;
     }
 }

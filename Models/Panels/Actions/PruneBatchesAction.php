@@ -12,7 +12,8 @@ use Modules\Xot\Services\ArtisanService;
 /**
  * Class PruneBatchesAction.
  */
-class PruneBatchesAction extends XotBasePanelAction {
+class PruneBatchesAction extends XotBasePanelAction
+{
     public bool $onContainer = true;
 
     public string $icon = '<i class="fas fa-dumpster-fire"></i>';
@@ -20,13 +21,12 @@ class PruneBatchesAction extends XotBasePanelAction {
     /**
      * ArtisanAction constructor.
      */
-    public function __construct() {
+    public function __construct()
+    {
     }
 
-    /**
-     * @return mixed
-     */
-    public function handle() {
+    public function handle()
+    {
         $out = '';
         $cmd = 'queue:prune-batches';
         // $out = ArtisanService::act($cmd);
@@ -35,7 +35,7 @@ class PruneBatchesAction extends XotBasePanelAction {
 
         $res = JobBatchModel::whereRaw('1=1')->delete();
 
-        return $out.'<h3>+Done</h3>';
+        return $out . '<h3>+Done</h3>';
     }
 
     // end handle
