@@ -1,5 +1,5 @@
 <div>
-  
+
     @php
     /*
     dd([
@@ -10,7 +10,7 @@
     */
     @endphp
     <ul>
-    @foreach($getState() as $key=>$value)
+    @foreach ($getState() as $key=>$value)
         @include('job::filament.tables.columns.array.item',['key'=>$key,'value'=>$value])
     @endforeach
     </ul>
