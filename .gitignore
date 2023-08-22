@@ -39,3 +39,4 @@ composer.lock
 *.lock
 /build/
 package-lock.json
+.git-rewrite
