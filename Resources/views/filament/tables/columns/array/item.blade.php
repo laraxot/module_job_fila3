@@ -10,9 +10,9 @@
 @endphp
 
 <li><b>{{ $key }}</b>:
-    @if(is_iterable($value))
+    @if (is_iterable($value))
         <ul>
-            @foreach($value as $k=>$v)
+            @foreach ($value as $k=>$v)
                 @include('job::filament.tables.columns.array.item',['key'=>$k,'value'=>$v])
             @endforeach
         </ul>
