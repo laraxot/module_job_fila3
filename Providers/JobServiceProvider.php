@@ -13,11 +13,10 @@ use Modules\Xot\Providers\XotBaseServiceProvider;
 
 class JobServiceProvider extends XotBaseServiceProvider
 {
+    public string $module_name = 'job';
     protected string $module_dir = __DIR__;
 
     protected string $module_ns = __NAMESPACE__;
-
-    public string $module_name = 'job';
 
     public function bootCallback(): void
     {
@@ -28,14 +27,14 @@ class JobServiceProvider extends XotBaseServiceProvider
             //
         });
         */
-        //$this->app->booted(function () {
-        //$schedule = $this->app->make(Schedule::class);
-        //try {
+        // $this->app->booted(function () {
+        // $schedule = $this->app->make(Schedule::class);
+        // try {
         //    $this->registerSchedule($schedule);
-        //} catch (\Illuminate\Database\QueryException $e) {
+        // } catch (\Illuminate\Database\QueryException $e) {
         //    echo $e->getMessage();
-        //}
-        //});
+        // }
+        // });
     }
 
     public function registerCommands(): void

@@ -7,7 +7,8 @@ namespace Modules\Job\Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Job\Models\FailedJob;
 
-class FailedJobFactory extends Factory {
+class FailedJobFactory extends Factory
+{
     /**
      * The name of the factory's corresponding model.
      *
@@ -20,7 +21,8 @@ class FailedJobFactory extends Factory {
      *
      * @return array
      */
-    public function definition() {
+    public function definition()
+    {
         return [
             'id' => $this->faker->randomNumber(5, false),
             'uuid' => $this->faker->uuid,

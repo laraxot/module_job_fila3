@@ -22,7 +22,7 @@
             </tr>
         </thead>
         <tbody>
-            @forelse($tasks  as $task)
+            @forelse ($tasks  as $task)
                 <tr class="{{ $task->is_active ? '' : 'uk-text-danger' }}">
                     <td>
                         {{ $task->description }}

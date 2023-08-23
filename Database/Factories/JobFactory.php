@@ -7,7 +7,8 @@ namespace Modules\Job\Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Job\Models\Job;
 
-class JobFactory extends Factory {
+class JobFactory extends Factory
+{
     /**
      * The name of the factory's corresponding model.
      *
@@ -20,7 +21,8 @@ class JobFactory extends Factory {
      *
      * @return array
      */
-    public function definition() {
+    public function definition()
+    {
         return [
             // 'id' => $this->faker->randomNumber(5, false),
             'queue' => $this->faker->word,

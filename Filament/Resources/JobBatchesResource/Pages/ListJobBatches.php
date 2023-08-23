@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Job\Filament\Resources\JobBatchesResource\Pages;
 
-use Filament\Resources\Pages\ListRecords;
 use Filament\Notifications\Notification;
 use Filament\Pages\Actions\Action;
+use Filament\Resources\Pages\ListRecords;
 use Illuminate\Support\Facades\Artisan;
 use Modules\Job\Filament\Resources\JobBatchesResource;
 
