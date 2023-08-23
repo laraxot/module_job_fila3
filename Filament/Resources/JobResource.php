@@ -45,11 +45,7 @@ class JobResource extends Resource
                 // Tables\Columns\TextColumn::make('created_by'),
                 // Tables\Columns\TextColumn::make('updated_by'),
                 // Tables\Columns\TextColumn::make('updated_at'),
-<<<<<<< HEAD
-                Tables\Columns\ViewColumn::make('payload')->view('ui::filament.tables.columns.array'),
-=======
                 Tables\Columns\ViewColumn::make('payload')->view('job::filament.tables.columns.array'),
->>>>>>> 66724f3787a73d281e3a053e65d0e51ca5849165
             ])
             ->filters([
             ])
