@@ -1,6 +1,10 @@
 <?xml version="1.0"?>
 <psalm
+<<<<<<< HEAD
     errorLevel="6"
+=======
+    errorLevel="4"
+>>>>>>> 66724f3787a73d281e3a053e65d0e51ca5849165
     resolveFromConfigFile="true"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns="https://getpsalm.org/schema/config"
@@ -9,6 +13,7 @@
     findUnusedCode="true"
 >
     <projectFiles>
+<<<<<<< HEAD
         <file name="Actions/DummyAction.php"/>
         <file name="Actions/ExecuteTaskAction.php"/>
         <file name="Actions/GetTaskCommandsAction.php"/>
@@ -74,6 +79,26 @@
         <file name="docs/source/docs.blade.php"/>
         <file name="docs/source/index.blade.php"/>
         <file name="docs/source/posts.blade.php"/>
+=======
+        <file name="Actions/DB/DownloadAction.php"/>
+        <file name="Config/config.php"/>
+        <file name="Config/setting-filament.php"/>
+        <file name="Database/Migrations/2023_01_01_000001_create_settings_table.php"/>
+        <file name="Database/Seeders/SettingDatabaseSeeder.php"/>
+        <file name="Filament/Pages/BackupMysql.php"/>
+        <file name="Filament/Pages/Dashboard.php"/>
+        <file name="Filament/Pages/ManageGeneralSettings.php"/>
+        <file name="Http/Middleware/FilamentMiddleware.php"/>
+        <file name="Models/BaseModel.php"/>
+        <file name="Models/Setting.php"/>
+        <file name="Providers/FilamentServiceProvider.php"/>
+        <file name="Providers/RouteServiceProvider.php"/>
+        <file name="Providers/SettingServiceProvider.php"/>
+        <file name="Resources/views/index.blade.php"/>
+        <file name="Routes/api.php"/>
+        <file name="Routes/web.php"/>
+        <file name="Settings/GeneralSettings.php"/>
+>>>>>>> 66724f3787a73d281e3a053e65d0e51ca5849165
         <file name="vendor/autoload.php"/>
         <file name="vendor/composer/ClassLoader.php"/>
         <file name="vendor/composer/InstalledVersions.php"/>
