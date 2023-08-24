@@ -1,6 +1,5 @@
-
-
-<?php $__env->startSection('body'); ?>
+<?php declare(strict_types=1);
+$__env->startSection('body'); ?>
 <section class="container max-w-6xl mx-auto px-6 py-10 md:py-12">
     <div class="flex flex-col-reverse mb-10 lg:flex-row lg:mb-24">
         <div class="mt-8">
@@ -12,11 +11,16 @@
             ----------------
             <br/>Url: <?php echo e(url('/')); ?>
 
-            <?php $__currentLoopData = $docs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $doc): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>            
+            <?php $__currentLoopData = $docs;
+$__env->addLoop($__currentLoopData);
+foreach ($__currentLoopData as $doc) {
+    $__env->incrementLoopIndices();
+    $loop = $__env->getLastLoop(); ?>
                 <h2><a href="<?php echo e(url($doc->getPath())); ?>"><?php echo e($doc->title); ?></a>
-                    
+
                 </h2>
-            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            <?php } $__env->popLoop();
+$loop = $__env->getLastLoop(); ?>
             ------------------
 
             <div class="flex my-10">

@@ -1,6 +1,5 @@
-
-
-<?php $__env->startSection('nav-toggle'); ?>
+<?php declare(strict_types=1);
+$__env->startSection('nav-toggle'); ?>
     <?php echo $__env->make('_nav.menu-toggle', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <?php $__env->stopSection(); ?>
 

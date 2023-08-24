@@ -1,4 +1,5 @@
-<?php $__env->startSection('content'); ?><h1 id="aggiornamenti">Aggiornamenti</h1>
+<?php declare(strict_types=1);
+$__env->startSection('content'); ?><h1 id="aggiornamenti">Aggiornamenti</h1>
 
 <p>Cms onsiste in un pacchetto PHP.</p>
 

@@ -1,4 +1,5 @@
-<?php $__env->startSection('content'); ?><h1 id="installazione">Installazione</h1>
+<?php declare(strict_types=1);
+$__env->startSection('content'); ?><h1 id="installazione">Installazione</h1>
 
 <p>Un'applicazione Laravel fresca è il modo ideale per iniziare con questo pacchetto.</p>
 

@@ -1,4 +1,5 @@
-<?php $__env->startSection('content'); ?><h1 id="introducendo-job">Introducendo Job</h1>
+<?php declare(strict_types=1);
+$__env->startSection('content'); ?><h1 id="introducendo-job">Introducendo Job</h1>
 
 <p>Il module_job in Laravel è un tipo di classe che rappresenta un lavoro che può essere inserito in una coda e eseguito in un momento successivo.</p>
 
