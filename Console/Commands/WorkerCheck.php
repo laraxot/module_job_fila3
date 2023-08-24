@@ -11,6 +11,7 @@ namespace Modules\Job\Console\Commands;
 use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Storage;
+use function Safe\exec;
 
 use function is_string;
 
