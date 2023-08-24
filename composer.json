@@ -4,9 +4,17 @@
     "keywords": [
         "laraxot",
         "laravel",
-        "module_job"
+        "filament",
+        "module_job",
+        "Laravel", 
+        "Job module", 
+        "background tasks", 
+        "app performance", 
+        "email sending", 
+        "data processing", 
+        "user experience"
     ],
-    "homepage": "https://github.com/laraxot/module_job",
+    "homepage": "https://github.com/laraxot/module_job_fila",
     "license": "MIT",
     "authors": [{
         "name": ":author_name",
