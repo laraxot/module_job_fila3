@@ -1,6 +1,6 @@
 {
-    "name": "laraxot/module_job",
-    "description": ":package_description",
+    "name": "laraxot/module_job_fila",
+    "description": "job module enables efficient background task execution. It lets you offload resource-heavy processes, like sending emails or data processing, improving app performance. Through simple job definition and dispatching, you can enhance user experience while tasks run seamlessly in the background.",
     "keywords": [
         "laraxot",
         "laravel",
