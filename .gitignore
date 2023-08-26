@@ -1,6 +1,6 @@
 *.lock
-*.lock
-*.lock
 package-lock.json
 .git-rewrite
 /docs/cache
+/build
+/vendor
