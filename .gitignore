@@ -1,44 +1,6 @@
 *.lock
 package-lock.json
-<<<<<<< HEAD
-yarn-error.log
-
-# Laravel 4 specific
-bootstrap/compiled.php
-app/storage/
-
-# Laravel 5 & Lumen specific
-public/storage
-public/hot
-
-# Laravel 5 & Lumen specific with changed public path
-public_html/storage
-public_html/hot
-
-storage/*.key
-.env
-Homestead.yaml
-Homestead.json
-/.vagrant
-.phpunit.result.cache
-
-*.stackdump
-*.cache
-
-Console/Commands/queue.pid
-/Console/Commands/queue.pid
-
-queue.pid
-*.lock
-package-lock.json
-composer.lock
-*.lock
-/build/
-package-lock.json
-.git-rewrite
-=======
 .git-rewrite
 /docs/cache
 /build
 /vendor
->>>>>>> 2a7f34ffe466e0bbd3620a4a1763b346ef0ff3fb
