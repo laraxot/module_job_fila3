@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Job\Models;
 
-use Database\Factories\TotemResultFactory;
+use Modules\Camping\Database\Factories\TotemResultFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Query\Builder;
