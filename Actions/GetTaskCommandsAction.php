@@ -16,6 +16,7 @@ class GetTaskCommandsAction
     public function execute(): Collection
     {
         $all_commands = collect(Artisan::all());
+
         /*
         $command_filter = config('totem.artisan.command_filter');
         $whitelist = config('totem.artisan.whitelist', true);
